@@ -1,14 +1,8 @@
-// DallasTemperature - Version: Latest 
-#include <DallasTemperature.h>
-// OneWire - Version: Latest 
-#include <OneWire.h>
-// Ethernet - Version: Latest 
-#include <Ethernet.h>
-// SPI - enables communication with devices using Serial Peripheral Interface
-#include <SPI.h>
-// i
-#include <Wire.h>
-
+#include <DallasTemperature.h> // DallasTemperature - For the DS18B20, grants functionality for it
+#include <OneWire.h> // OneWire -  For the DS18B20, lets you access 1-wire devices made by Maxim/Dallas
+#include <Ethernet.h> // Ethernet - Allows for Ethernet functionality
+#include <SPI.h> // SPI - Enables communication with devices using Serial Peripheral Interface
+#include <Wire.h> // Wire - This library allows you to communicate with I2C / TWI devices
 
 #define ONE_WIRE_BUS 2 // External temp sensor
 #define BME280_ADDRESS 0x76
@@ -40,10 +34,11 @@ DallasTemperature sensors(&oneWire);
 // MAC address and IP Address for this server
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xCD };
 IPAddress ip(192, 168, 1, 45);
+// Listen on Port 80 of the above IP address
 EthernetServer server(80);
 
 void setup() {
-  // COPIED
+  // Define variables of type unsigned integer 8 bits in length (AKA: A byte)
   uint8_t osrs_t = 1;             //Temperature oversampling x 1
   uint8_t osrs_p = 1;             //Pressure oversampling x 1
   uint8_t osrs_h = 1;             //Humidity oversampling x 1
@@ -94,22 +89,20 @@ void setup() {
 
 void loop() {
   double temp_act = 0.0, press_act = 0.0,hum_act=0.0;
-    signed long int temp_cal;
-    unsigned long int press_cal,hum_cal;
+  signed long int temp_cal;
+  unsigned long int press_cal,hum_cal;
     
-    readData();
-    sensors.requestTemperatures();
+  readData();
+  sensors.requestTemperatures();
     
-    temp_cal = calibration_T(temp_raw);
-    press_cal = calibration_P(pres_raw);
-    hum_cal = calibration_H(hum_raw);
-    temp_act = (double)temp_cal / 100.0;
-    press_act = (double)press_cal / 100.0;
-    hum_act = (double)hum_cal / 1024.0;
+  temp_cal = calibration_T(temp_raw);
+  press_cal = calibration_P(pres_raw);
+  hum_cal = calibration_H(hum_raw);
+  temp_act = (double)temp_cal / 100.0;
+  press_act = (double)press_cal / 100.0;
+  hum_act = (double)hum_cal / 1024.0;
       
-    
-    delay(1000);
-    
+  delay(1000);
     
   // listen for incoming clients
   EthernetClient client = server.available();
