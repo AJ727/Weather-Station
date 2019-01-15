@@ -1,10 +1,11 @@
+// Docs here: https://github.com/milesburton/Arduino-Temperature-Control-Library/blob/3.7.6/examples/
 #include <DallasTemperature.h> // DallasTemperature - For the DS18B20, grants functionality for it
 #include <OneWire.h> // OneWire -  For the DS18B20, lets you access 1-wire devices made by Maxim/Dallas
 #include <Ethernet.h> // Ethernet - Allows for Ethernet functionality
 #include <SPI.h> // SPI - Enables communication with devices using Serial Peripheral Interface
 #include <Wire.h> // Wire - This library allows you to communicate with I2C / TWI devices
 
-#define ONE_WIRE_BUS 2 // External temp sensor
+#define ONE_WIRE_BUS 2 // Data wire is plugged into port 2 on the Arduino
 #define BME280_ADDRESS 0x76
 unsigned long int hum_raw,temp_raw,pres_raw;
 signed long int t_fine;
@@ -28,8 +29,9 @@ uint16_t dig_P1;
  int16_t dig_H5;
  int8_t  dig_H6;
  
-OneWire oneWire(ONE_WIRE_BUS);
-DallasTemperature sensors(&oneWire);
+// Create OneWire and DallasTemp objects
+OneWire oneWire(ONE_WIRE_BUS); // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
+DallasTemperature sensors(&oneWire); // Pass in our reference of the OneWire object
 
 // MAC address and IP Address for this server
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xCD };
@@ -51,11 +53,11 @@ void setup() {
   uint8_t config_reg    = (t_sb << 5) | (filter << 2) | spi3w_en;
   uint8_t ctrl_hum_reg  = osrs_h;
   
-  // Open serial communications and wait for port to open:
-  Serial.begin(9600);
-  sensors.begin(); // for the ext temp sensor
+  Serial.begin(9600); // Open serial communications and wait for port to open
+  sensors.begin(); // startup the DallasTemp library
   
-  Wire.begin();
+  Wire.begin(); // Initiate the Wire library and join the I2C bus as a master or slave
+  // Write to 3 sensor registers with the provided values
   writeReg(0xF2,ctrl_hum_reg);
   writeReg(0xF4,ctrl_meas_reg);
   writeReg(0xF5,config_reg);
@@ -66,7 +68,7 @@ void setup() {
   }
   Serial.println("Ethernet WebServer Example");
 
-  // start the Ethernet connection and the server:
+  // start the Ethernet connection and the server
   Ethernet.begin(mac, ip);
 
   // Check for Ethernet hardware present
@@ -93,6 +95,7 @@ void loop() {
   unsigned long int press_cal,hum_cal;
     
   readData();
+  // retrieve sensor data from the DS18B20 external sensor
   sensors.requestTemperatures();
     
   temp_cal = calibration_T(temp_raw);
@@ -128,6 +131,8 @@ void loop() {
           client.println("<html>");
           // output the value of each analog input pin
           client.println("INTERNAL TEMP (BME 280): ");
+// TODO: The DallasTemp library has a toFahrenheit function
+// float DallasTemperature::toFahrenheit(float temp_act);
           client.println(toF(temp_act));
           client.println(" Degrees F");
           client.println("<br />");
@@ -241,6 +246,14 @@ void readData()
     hum_raw  = (data[6] << 8) | data[7];
 }
 
+/* 
+NOTES:
+x >> y means to shift the bits of x by y places to the right (<< to the left).
+
+OR operator: x | y means to compare the bits of x and y, putting a 1 in each bit if either x or y has a 1 in that position.
+
+AND operator: x & y is the same as |, except that the result is 1 if BOTH x and y have a 1.
+*/
 
 signed long int calibration_T(signed long int adc_T)
 {
