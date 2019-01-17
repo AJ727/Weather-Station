@@ -14,14 +14,17 @@ const port = process.env.PORT || 3000;
 app.use(express.static(publicPath));
 
 // ---API--- //
-// GET request handler
-app.get('/api/getRequest', (req, res) => {
+// GET request handler (nothing to do with the arduino)
+//app.get('/api/getRequest', (req, res) => {
+//});
 
-});
-
-// POST request handler
+console.log("server log");
+// POST request handler (arduino data is sent here)
+// When data is received, validate, parse, and pass to database
 app.post('/api/postRequest', (req, res) => {
-
+    // var query = "";
+    // executeQuery();
+    console.log("POST REQUEST RECEIVED");
 });
 
 // First arg: path (the * matches all unmatched routes)
@@ -33,5 +36,5 @@ app.get('*', (req, res) => {
 // First arg: port number
 // Second arg: callback function
 app.listen(port, () => {
-    console.log('server is UP!');
+    console.log('server is UP AT ' + port);
 });
