@@ -105,6 +105,8 @@ void loop() {
   press_act = (double)press_cal / 100.0;
   hum_act = (double)hum_cal / 1024.0;
       
+  String data = "temperature="+String(toF(sensors.getTempCByIndex(0)), 0)+"&pressure="+String(press_act, 0)+"&humidity="+String(hum_act, 0);
+   
   delay(1000);
     
   // listen for incoming clients
@@ -120,16 +122,20 @@ void loop() {
         // if you've gotten to the end of the line (received a newline
         // character) and the line is blank, the http request has ended,
         // so you can send a reply
-        if (c == '\n' && currentLineIsBlank) {
+        
           // send a standard http response header
-          client.println("HTTP/1.1 200 OK");
-          client.println("Content-Type: text/html");
-          client.println("Connection: close");  // the connection will be closed after completion of the response
-          client.println("Refresh: 5");  // refresh the page automatically every 5 sec
+          client.println("POST /api/postRequest HTTP/1.1");
+          client.println("Host:  192.168.0.1");
+          client.println("Refresh: 5");
+          client.println("Content-Type: application/x-www-form-urlencoded;");
+          client.print("Content-Length: ");
+          client.println(data.length());
           client.println();
-          client.println("<!DOCTYPE HTML>");
-          client.println("<html>");
-          // output the value of each analog input pin
+          client.print(data);
+          //Serial.println(data);
+          Serial.println("We have connection");
+          
+          /*// output the value of each analog input pin
           client.println("INTERNAL TEMP (BME 280): ");
 // TODO: The DallasTemp library has a toFahrenheit function
 // float DallasTemperature::toFahrenheit(float temp_act);
@@ -149,8 +155,9 @@ void loop() {
           client.println(" %");   
           client.println("<br />");
           client.println("</html>");
+          break;*/
           break;
-        }
+        
         if (c == '\n') {
           // you're starting a new line
           currentLineIsBlank = true;
