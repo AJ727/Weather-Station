@@ -36,5 +36,5 @@ app.get('*', (req, res) => {
 // First arg: port number
 // Second arg: callback function
 app.listen(port, () => {
-    console.log('server is UP AT ' + port);
+    console.log('server is up at port: ' + port);
 });
