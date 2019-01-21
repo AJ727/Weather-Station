@@ -1,14 +1,14 @@
 // NODE.JS AND EXPRESS.JS
 const path = require('path');
 const express = require('express');
-const bodyParse = require('body-parser');
 
 // If the heroku env variable exists, use it, if not, use 3000
 const port = process.env.PORT || 3000;
+
 // Create an instance of express
 const app = express();
-app.use(bodyParse.urlencoded({ extended: true}));
-app.use(bodyParse.json());
+app.use(express.urlencoded({ extended: true}));
+app.use(express.json());
 
 const publicPath = path.join(__dirname, '..', 'public');
 // Take the return value (a function) and pass it into app.use
@@ -18,14 +18,15 @@ app.use(express.static(publicPath));
 
 // -------------API------------ //
 
-// Middleware: next() ensures we don't stop here
+// Middleware: will validate and format data
 app.use((req, res, next) => {
-    console.log('Post request received.');
-    next();
+    console.log(req.body);
+    res.send(req.body);
+    next(); // ensures we don't stop here
 });
 
 // POST request handler (arduino data is sent here)
-// When data is received, validate, parse, and pass to database
+// Sends validated and formatted data to database
 app.post('/api/POST', (req, res) => {
     res.json({ message: 'POST response from the Express Server' });
 });
