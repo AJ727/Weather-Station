@@ -1,10 +1,10 @@
 // NODE.JS AND EXPRESS.JS
 const path = require('path');
 const express = require('express');
+const sql = require('mssql');
 
 // If the heroku env variable exists, use it, if not, use 3000
 const port = process.env.PORT || 3000;
-
 // Create an instance of express
 const app = express();
 app.use(express.urlencoded({ extended: true}));
@@ -15,12 +15,25 @@ const publicPath = path.join(__dirname, '..', 'public');
 // This serves up all assets from the public folder
 app.use(express.static(publicPath));
 
+// -----------DB Config----------//
+
+const dbConfig = {
+    user: "weather",
+    password: "We@ther304",
+    server: "54.174.128.184\EC2AMAZ-JRSH35R\SQLEXPRESS,4600",
+    database: "weatherDB"
+};
+
+// define the query
+let query = (res, query) => {
+    
+};
 
 // -------------API------------ //
 
 // Middleware: will validate and format data
 app.use((req, res, next) => {
-    console.log(req.body);
+    
     res.send(req.body);
     next(); // ensures we don't stop here
 });

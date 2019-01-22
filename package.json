@@ -27,6 +27,7 @@
     "extract-text-webpack-plugin": "3.0.0",
     "history": "4.7.2",
     "moment": "2.19.3",
+    "mssql": "^4.3.0",
     "node-sass": "^4.11.0",
     "normalize.css": "7.0.0",
     "numeral": "2.0.6",
