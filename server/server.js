@@ -7,11 +7,11 @@ const sql = require('mssql');
 const port = process.env.PORT || 3000;
 // Create an instance of express
 const app = express();
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const publicPath = path.join(__dirname, '..', 'public');
-// Take the return value (a function) and pass it into app.use
+
 // This serves up all assets from the public folder
 app.use(express.static(publicPath));
 
@@ -25,23 +25,24 @@ const dbConfig = {
 };
 
 // define the query
-let query = (res, query) => {
-    
-};
+//let query = (res, query) => {};
 
 // -------------API------------ //
 
 // Middleware: will validate and format data
 app.use((req, res, next) => {
-    
-    res.send(req.body);
-    next(); // ensures we don't stop here
+    if(!(isNaN(parseFloat(req.body.Temp)) && isNaN(parseFloat(req.body.Hum)) && isNaN(parseFloat(req.body.Baro)))) {
+        // if any are not a number, do something
+    }
+    next() // ensures we don't stop here
 });
 
 // POST request handler (arduino data is sent here)
 // Sends validated and formatted data to database
 app.post('/api/POST', (req, res) => {
-    res.json({ message: 'POST response from the Express Server' });
+    console.log(req.body.Temp);
+    res.send(req.body.Humidity);
+    //res.json({ message: 'POST response from the Express Server' });
 });
 
 // First arg: path (the * matches all unmatched routes)
