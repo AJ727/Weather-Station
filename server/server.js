@@ -32,7 +32,8 @@ const dbConfig = {
 // Middleware: will validate and format data
 app.use((req, res, next) => {
     if(!(isNaN(parseFloat(req.body.Temp)) && isNaN(parseFloat(req.body.Hum)) && isNaN(parseFloat(req.body.Baro)))) {
-        // if any are not a number, do something
+        // if any are not a number, send a 500 error
+        res.status(500).render({error: 'invalid data'});
     }
     next() // ensures we don't stop here
 });
