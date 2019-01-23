@@ -30,19 +30,20 @@ const dbConfig = {
 // -------------API------------ //
 
 // Middleware: will validate and format data
-app.use((req, res, next) => {
-    if(!(isNaN(parseFloat(req.body.Temp)) && isNaN(parseFloat(req.body.Hum)) && isNaN(parseFloat(req.body.Baro)))) {
-        // if any are not a number, send a 500 error
-        res.status(500).render({error: 'invalid data'});
-    }
-    next() // ensures we don't stop here
-});
+// app.use((req, res, next) => {
+//     if(!(isNaN(parseFloat(req.body.Temp)) && isNaN(parseFloat(req.body.Hum)) && isNaN(parseFloat(req.body.Baro)))) {
+//         // if any are not a number, send a 500 error
+//         console.log(req.body.Temp);
+//         res.status(500).send({error: 'invalid data'});
+//     }
+//     next() // ensures we don't stop here
+// });
 
 // POST request handler (arduino data is sent here)
 // Sends validated and formatted data to database
 app.post('/api/POST', (req, res) => {
-    console.log(req.body.Temp);
-    res.send(req.body.Humidity);
+    console.log(req.body);
+    res.send(req.body.Hum);
     //res.json({ message: 'POST response from the Express Server' });
 });
 
