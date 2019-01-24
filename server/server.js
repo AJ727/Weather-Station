@@ -1,7 +1,6 @@
 // NODE.JS AND EXPRESS.JS
 const path = require('path');
 const express = require('express');
-const sql = require('mssql');
 
 const Connection = require('tedious').Connection;
 const Request = require('tedious').Request;
@@ -29,31 +28,6 @@ const dbConfig = {
 };
 
 
-// ----------MSSQL-----------
-// let execQuery = (req, query) => {
-//     sql.connect(dbConfig, (err) => {
-//         if (err) {
-//             console.log(err);
-//         }
-//         else {
-//             let request = new sql.Request();
-//             request.query(query, (err, rs) => {
-//                 if(err) {
-//                     console.log("Error while querying database: - " + err);
-//                     res.send(err);
-//                 }
-//                 else {
-//                     console.log("EXEC RESPONSE: " + res);
-//                     res.send(rs);
-//                 }
-//             });
-//         }
-//     });
-// };
-
-
-
-
 // -------------API------------ //
 
 // POST request handler (arduino data is sent here)
@@ -68,18 +42,17 @@ app.post('/api/POST', (req, res) => {
         else{
             console.log('CONNECTED');
             execute(req, connection);
-            console.log('Written');
+            console.log('WRITTEN TO DB');
         }
     })
     
     res.send(req.body.Temp);
-    //sql.close();
 });
 
 let execute = (req, connection) => {
     let date_time = new Date();
     console.log(date_time);
-    request = new Request("INSERT INTO Readings (time_stamp, ExtTemp, Humidity, Pressure) VALUES (@time_stamp, @ExtTemp, @Humidity, @Pressure);", (err) => {
+    request = new Request("USE weatherDB; INSERT Readings (time_stamp, ExtTemp, Humidity, Pressure) VALUES (@time_stamp, @ExtTemp, @Humidity, @Pressure);", (err) => {
         if(err){
             console.log(err);
         }
@@ -104,7 +77,6 @@ app.get('*', (req, res) => {
 app.listen(port, () => {
     console.log('server is up at port: ' + port);
 });
-
 
 
 // Middleware: will validate and format data
