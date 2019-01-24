@@ -24,7 +24,7 @@ app.use(express.static(publicPath));
 const dbConfig = {
     userName: 'weather',
     password: 'We@ther304',
-    server: '3.84.83.193',
+    server: '3.86.58.142',
     database: 'weatherDB'
 };
 
@@ -78,19 +78,20 @@ app.post('/api/POST', (req, res) => {
 
 let execute = (req, connection) => {
     let date_time = new Date();
-    console.log(datetime);
-    request = new Request("INSERT Readings VALUES (Timestamp, ExtTemp, Humidity, Pressure)", (err) => {
+    console.log(date_time);
+    request = new Request("INSERT Readings VALUES (time_stamp, ExtTemp, Humidity, Pressure);", (err) => {
         if(err){
             console.log(err);
         }
     });
-    request.addParameter('Timestamp', TYPES.DateTime, date_time)
+    request.addParameter('time_stamp', TYPES.DateTime, date_time)
     request.addParameter('ExtTemp', TYPES.Float, req.body.Temp);
     request.addParameter('Humidity', TYPES.Float, req.body.Hum);
     request.addParameter('Pressure', TYPES.Float, req.body.Press);
     //console.log(request);
+    console.log(request);
     connection.execSql(request);
-    console.log('succes????');
+    
 };
 
 // First arg: path (the * matches all unmatched routes)
