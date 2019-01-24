@@ -72,23 +72,22 @@ app.post('/api/POST', (req, res) => {
         }
     })
     
-    res.send(req.body.Hum);
+    res.send(req.body.Temp);
     //sql.close();
 });
 
 let execute = (req, connection) => {
     let date_time = new Date();
     console.log(date_time);
-    request = new Request("INSERT Readings VALUES (time_stamp, ExtTemp, Humidity, Pressure);", (err) => {
+    request = new Request("INSERT INTO Readings (time_stamp, ExtTemp, Humidity, Pressure) VALUES (@time_stamp, @ExtTemp, @Humidity, @Pressure);", (err) => {
         if(err){
             console.log(err);
         }
     });
-    request.addParameter('time_stamp', TYPES.DateTime, date_time)
+    request.addParameter('time_stamp', TYPES.DateTime, date_time);
     request.addParameter('ExtTemp', TYPES.Float, req.body.Temp);
     request.addParameter('Humidity', TYPES.Float, req.body.Hum);
     request.addParameter('Pressure', TYPES.Float, req.body.Press);
-    //console.log(request);
     console.log(request);
     connection.execSql(request);
     
