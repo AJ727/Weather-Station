@@ -22,46 +22,76 @@ app.use(express.static(publicPath));
 // -----------DB Config----------//
 
 const dbConfig = {
-    userName: "weather",
-    password: "We@ther304",
-    server: "3.84.83.193\EC2AMAZ-JRSH35R\SQLEXPRESS,4600",
-    options: {
-        encrypt: false,
-        database: "weatherDB"
-    }
+    userName: 'weather',
+    password: 'We@ther304',
+    server: '3.84.83.193',
+    database: 'weatherDB'
 };
 
-const connection = new Connection(dbConfig);
 
-// define the query
-let execute = () => {
-    request = new Request("INSERT Readings VALUES (ExtTemp, Humidity, Pressure)", (err) => {
-        if(err){
-            console.log(err);
-        }
-    });
-    request.addParameter('ExtTemp', TYPES.Float);
-    request.addParameter('Humidity', TYPES.Float);
-    request.addParameter('Pressure', TYPES.Float);
-    
-};
+// ----------MSSQL-----------
+// let execQuery = (req, query) => {
+//     sql.connect(dbConfig, (err) => {
+//         if (err) {
+//             console.log(err);
+//         }
+//         else {
+//             let request = new sql.Request();
+//             request.query(query, (err, rs) => {
+//                 if(err) {
+//                     console.log("Error while querying database: - " + err);
+//                     res.send(err);
+//                 }
+//                 else {
+//                     console.log("EXEC RESPONSE: " + res);
+//                     res.send(rs);
+//                 }
+//             });
+//         }
+//     });
+// };
+
+
+
 
 // -------------API------------ //
 
 // POST request handler (arduino data is sent here)
 // Sends validated and formatted data to database
 app.post('/api/POST', (req, res) => {
-    connection.once('connect', (err) => {
-        if(err) {
+    //let query = "INSERT INTO Readings (ExtTemp, Humidity, Pressure) VALUES (req.body.Temp, req.body.Hum, req.body.Press)";
+    let connection = new Connection(dbConfig);
+    connection.on('connect', (err) => {
+        if(err){
             console.log(err);
         }
-        else {
-            execute();
+        else{
+            console.log('CONNECTED');
+            execute(req, connection);
+            console.log('Written');
         }
     })
-    res.send(req.body.Hum);
     
+    res.send(req.body.Hum);
+    //sql.close();
 });
+
+let execute = (req, connection) => {
+    let date_time = new Date();
+    console.log(datetime);
+    request = new Request("INSERT Readings VALUES (Timestamp, ExtTemp, Humidity, Pressure)", (err) => {
+        if(err){
+            console.log(err);
+        }
+    });
+    request.addParameter('Timestamp', TYPES.DateTime, date_time)
+    request.addParameter('ExtTemp', TYPES.Float, req.body.Temp);
+    request.addParameter('Humidity', TYPES.Float, req.body.Hum);
+    request.addParameter('Pressure', TYPES.Float, req.body.Press);
+    //console.log(request);
+    connection.execSql(request);
+    console.log('succes????');
+};
 
 // First arg: path (the * matches all unmatched routes)
 // Second arg: function that handles the unmatched requests
@@ -74,11 +104,6 @@ app.get('*', (req, res) => {
 app.listen(port, () => {
     console.log('server is up at port: ' + port);
 });
-
-
-
-
-
 
 
 
