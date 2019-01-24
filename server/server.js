@@ -3,6 +3,10 @@ const path = require('path');
 const express = require('express');
 const sql = require('mssql');
 
+const Connection = require('tedious').Connection;
+const Request = require('tedious').Request;
+const TYPES = require('tedious').TYPES;
+
 // If the heroku env variable exists, use it, if not, use 3000
 const port = process.env.PORT || 3000;
 // Create an instance of express
@@ -24,25 +28,34 @@ const dbConfig = {
     database: "weatherDB"
 };
 
+const connection = new Connection(dbConfig);
+
 // define the query
-//let query = (res, query) => {};
+let execute = () => {
+    request = new Request("INSERT Readings VALUES (ExtTemp, Humidity, Pressure)", (err) => {
+        if(err){
+            console.log(err);
+        }
+    });
+    request.addParameter('ExtTemp', TYPES.Float);
+    request.addParameter('Humidity', TYPES.Float);
+    request.addParameter('Pressure', TYPES.Float);
+    
+};
 
 // -------------API------------ //
-
-// Middleware: will validate and format data
-// app.use((req, res, next) => {
-//     if(!(isNaN(parseFloat(req.body.Temp)) && isNaN(parseFloat(req.body.Hum)) && isNaN(parseFloat(req.body.Baro)))) {
-//         // if any are not a number, send a 500 error
-//         console.log(req.body.Temp);
-//         res.status(500).send({error: 'invalid data'});
-//     }
-//     next() // ensures we don't stop here
-// });
 
 // POST request handler (arduino data is sent here)
 // Sends validated and formatted data to database
 app.post('/api/POST', (req, res) => {
-    console.log(req.body);
+    connection.on('connect', (err) => {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            execute();
+        }
+    })
     res.send(req.body.Hum);
     //res.json({ message: 'POST response from the Express Server' });
 });
@@ -58,3 +71,20 @@ app.get('*', (req, res) => {
 app.listen(port, () => {
     console.log('server is up at port: ' + port);
 });
+
+
+
+
+
+
+
+
+// Middleware: will validate and format data
+// app.use((req, res, next) => {
+//     if(!(isNaN(parseFloat(req.body.Temp)) && isNaN(parseFloat(req.body.Hum)) && isNaN(parseFloat(req.body.Baro)))) {
+//         // if any are not a number, send a 500 error
+//         console.log(req.body.Temp);
+//         res.status(500).send({error: 'invalid data'});
+//     }
+//     next() // ensures we don't stop here
+// });
