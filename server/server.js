@@ -22,10 +22,13 @@ app.use(express.static(publicPath));
 // -----------DB Config----------//
 
 const dbConfig = {
-    user: "weather",
+    userName: "weather",
     password: "We@ther304",
-    server: "54.174.128.184\EC2AMAZ-JRSH35R\SQLEXPRESS,4600",
-    database: "weatherDB"
+    server: "3.84.83.193\EC2AMAZ-JRSH35R\SQLEXPRESS,4600",
+    options: {
+        encrypt: false,
+        database: "weatherDB"
+    }
 };
 
 const connection = new Connection(dbConfig);
@@ -48,7 +51,7 @@ let execute = () => {
 // POST request handler (arduino data is sent here)
 // Sends validated and formatted data to database
 app.post('/api/POST', (req, res) => {
-    connection.on('connect', (err) => {
+    connection.once('connect', (err) => {
         if(err) {
             console.log(err);
         }
@@ -57,7 +60,7 @@ app.post('/api/POST', (req, res) => {
         }
     })
     res.send(req.body.Hum);
-    //res.json({ message: 'POST response from the Express Server' });
+    
 });
 
 // First arg: path (the * matches all unmatched routes)
