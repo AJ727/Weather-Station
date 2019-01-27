@@ -1,1 +1,1 @@
-BOILERPLATE
+This is the REPO for our senior project. It will feature a weatherstation comprising of sensors that read: Temperature, Humidity, Barometric Pressure, Wind direction, and Wind speed. This will all be read into an arduino, which will then format and package it up to be sent by a C++/C script on the arduino itself. It will send this data in POST format to an API, which parses and formats the data into SQL queries, that store the data in an AWS cloud SQL Server. From here, the React website will request data to populate graphs in real time.
