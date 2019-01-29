@@ -10,7 +10,10 @@ export const Header = () => (
             <Link className="header__title" to="/dashboard">
                 <h1>WEATHER STATION</h1>
             </Link>
-            <button className="button button--link" >Logout</button>
+            <button className="button button--link" >Temperature</button>
+            <button className="button button--link" >Humidity</button>
+            <button className="button button--link" >Pressure</button>
+            <button className="button button--link" >Wind Direction</button>
         </div>
     </div>
     </header>
@@ -18,4 +21,4 @@ export const Header = () => (
 
 
 
-export default connect()(Header);
+export default Header;
