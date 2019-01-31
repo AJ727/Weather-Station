@@ -64,6 +64,7 @@ let execSendToDb = (req, connection) => {
     // let date_time = new Date().toLocaleString('en-us', {
     //     timeZone: 'America/New_York'
     // });
+    let date_time = new Date();
     let date_time = Date();
     let date = today.getFullYear() + '-' + today.getMonth() + '-' + today.getDate();
     let time = (today.getHours() - 5) + ":" + today.getMinutes() + ":" + today.getSeconds();
