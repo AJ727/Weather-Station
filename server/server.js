@@ -1,7 +1,6 @@
 // EXPRESSJS (Nodejs framework)
 const path = require('path');
 const express = require('express');
-const moment = require('moment');
 
 // tedious module
 const Connection = require('tedious').Connection;
@@ -11,6 +10,7 @@ const TYPES = require('tedious').TYPES;
 
 // If the heroku env variable exists, use it, if not, use 3000
 const port = process.env.PORT || 3000;
+process.env.TZ = 'America/New_York';
 
 // Create an instance of express
 const app = express();
@@ -62,7 +62,9 @@ app.post('/api/POST', (req, res) => {
 
 // Creates SQL query that sends data to SQL Server
 let execSendToDb = (req, connection) => {
-    let date_time = moment().format("YYYY-MM-DD hh:mm:ss.sss");
+    let date_time = new Date().toLocaleString('en-us', {
+        timeZone: 'America/New_York'
+    });
     console.log(date_time);
     request = new Request("USE weatherDB; INSERT Readings (time_stamp, ExtTemp, Humidity, Pressure, WindDir) VALUES (@time_stamp, @ExtTemp, @Humidity, @Pressure, @WindDir);", (err) => {
         if(err){
