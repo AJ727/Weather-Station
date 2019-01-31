@@ -65,6 +65,9 @@ let execSendToDb = (req, connection) => {
     //     timeZone: 'America/New_York'
     // });
     let date_time = Date();
+    let date = today.getFullYear() + '-' + today.getMonth() + '-' + today.getDate();
+    let time = (today.getHours() - 5) + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let date_time = date + ' ' + time;
     console.log(date_time);
     request = new Request("USE weatherDB; INSERT Readings (time_stamp, ExtTemp, Humidity, Pressure, WindDir) VALUES (@time_stamp, @ExtTemp, @Humidity, @Pressure, @WindDir);", (err) => {
         if(err){
