@@ -53,8 +53,9 @@ app.post('/api/POST', (req, res) => {
     res.send(req.body);
 });
 
-app.get('/api/GET_DATA', (req, res) => {
-
+app.get('/api/retrieve-data', (req, res) => {
+    console.log(req.query);
+    const baseURL = "";
 });
 
 // Creates SQL query that sends data to SQL Server
