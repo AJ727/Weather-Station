@@ -69,7 +69,7 @@ let execSendToDb = (req, connection) => {
     request.addParameter('ExtTemp', TYPES.Float, req.body.Temp);
     request.addParameter('Humidity', TYPES.Float, req.body.Hum);
     request.addParameter('Pressure', TYPES.Float, req.body.Press);
-    request.addParameter('WindDir', TYPES.VarChar, req.body.Wind);
+    request.addParameter('WindDir', TYPES.VarChar, req.body.WindDir);
     console.log(request);
     connection.execSql(request);
 };
