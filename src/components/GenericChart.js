@@ -11,14 +11,14 @@ export class GenericChart extends React.Component {
             {}
         ]
     };
-    componentDidMount() {
-        fetch('https://kaar-weather.herokuapp.com/api/GET_DATA?results=10')
-        .then(results => {
-            return results.json();
-        }).then(data => {
-            console.log(data);
-        })
-    }
+    // componentDidMount() {
+    //     fetch('https://kaar-weather.herokuapp.com/api/GET_DATA?results=10')
+    //     .then(results => {
+    //         return results.json();
+    //     }).then(data => {
+    //         console.log(data);
+    //     })
+    // }
     render(){
         return(
             <div>

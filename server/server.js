@@ -60,7 +60,7 @@ app.get('/api/retrieve-data', (req, res) => {
 
 // Creates SQL query that sends data to SQL Server
 let execSendToDb = (req, connection) => {
-    let date_time = new Date();
+    let date_time = new Date(new Date().getTime() - 4*60*60*1000);
     console.log(date_time);
     request = new Request("USE weatherDB; INSERT Readings (time_stamp, ExtTemp, Humidity, Pressure, WindDir) VALUES (@time_stamp, @ExtTemp, @Humidity, @Pressure, @WindDir);", (err) => {
         if(err){
