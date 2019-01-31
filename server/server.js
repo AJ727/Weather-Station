@@ -54,17 +54,12 @@ app.post('/api/POST', (req, res) => {
     res.send(req.body);
 });
 
-// app.get('/api/retrieve-data', (req, res) => {
-//     console.log(req.query);
-//     const baseURL = "";
-// });
-
 // Creates SQL query that sends data to SQL Server
 let execSendToDb = (req, connection) => {
     // let date_time = new Date().toLocaleString('en-us', {
     //     timeZone: 'America/New_York'
     // });
-    let date_time = Date();
+    let date_time = new Date();
     console.log(date_time);
     request = new Request("USE weatherDB; INSERT Readings (time_stamp, ExtTemp, Humidity, Pressure, WindDir) VALUES (@time_stamp, @ExtTemp, @Humidity, @Pressure, @WindDir);", (err) => {
         if(err){
