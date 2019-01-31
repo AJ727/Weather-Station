@@ -10,7 +10,6 @@ const TYPES = require('tedious').TYPES;
 
 // If the heroku env variable exists, use it, if not, use 3000
 const port = process.env.PORT || 3000;
-process.env.TZ = 'America/New_York';
 
 // Create an instance of express
 const app = express();

@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 //var LineChart = require('react-chartjs').Line;
 
 // This components purpose is to be imported by actual
