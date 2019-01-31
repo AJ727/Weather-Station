@@ -19,7 +19,7 @@ export class GenericChart extends React.Component {
     render(){
         return(
             <div>
-                {//console.log(new Date())}
+                
                 <h1>GRAPHS ARE GOING TO BE HERE</h1>
             </div>
         )
