@@ -57,7 +57,7 @@ app.post('/api/POST', (req, res) => {
 let execSendToDb = (req, connection) => {
     let date_time = new Date();
     console.log(date_time);
-    request = new Request("USE weatherDB; INSERT Readings (time_stamp, ExtTemp, Humidity, Pressure) VALUES (@time_stamp, @ExtTemp, @Humidity, @Pressure);", (err) => {
+    request = new Request("USE weatherDB; INSERT Readings (time_stamp, ExtTemp, Humidity, Pressure, Wind) VALUES (@time_stamp, @ExtTemp, @Humidity, @Pressure, @Wind);", (err) => {
         if(err){
             console.log(err);
         }
@@ -69,6 +69,7 @@ let execSendToDb = (req, connection) => {
     request.addParameter('ExtTemp', TYPES.Float, req.body.Temp);
     request.addParameter('Humidity', TYPES.Float, req.body.Hum);
     request.addParameter('Pressure', TYPES.Float, req.body.Press);
+    request.addParameter('Wind', TYPES.VarChar, req.body.Wind);
     console.log(request);
     connection.execSql(request);
 };
