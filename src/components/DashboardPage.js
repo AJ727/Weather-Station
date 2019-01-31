@@ -5,7 +5,7 @@ import GenChart from './GenericChart';
 const DashboardPage = () => (
     <div>
         <Header />
-        <GenChart />
+        
     </div>
 );
 
