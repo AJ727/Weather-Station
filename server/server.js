@@ -66,7 +66,7 @@ let execSendToDb = (req, connection) => {
     // @params - 1st is what variable is being replaced
     // @params - 2nd is the data type of the variable
     // @params - 3rd is the value to be passed in 
-    request.addParameter('time_stamp', TYPES.DateTime, date_time);
+    request.addParameter('time_stamp', TYPES.VarChar, date_time);
     request.addParameter('ExtTemp', TYPES.Float, req.body.Temp);
     request.addParameter('Humidity', TYPES.Float, req.body.Hum);
     request.addParameter('Pressure', TYPES.Float, req.body.Press);
