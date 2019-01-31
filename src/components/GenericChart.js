@@ -8,9 +8,6 @@ import moment from 'moment';
 
 export class GenericChart extends React.Component {
     state = {
-        data: [
-            {}
-        ]
     };
     // componentDidMount() {
     //     fetch('https://kaar-weather.herokuapp.com/api/GET_DATA?results=10')
@@ -23,8 +20,7 @@ export class GenericChart extends React.Component {
     render(){
         return(
             <div>
-                {console.log(moment().format("YYYY-MM-DD hh:mm:ss.sss"))}
-                <h1>THIS IS SOME YUNG DATA</h1>
+                <h1>GRAPHS ARE GOING TO BE HERE</h1>
             </div>
         )
     }
