@@ -53,6 +53,10 @@ app.post('/api/POST', (req, res) => {
     res.send(req.body);
 });
 
+app.get('/api/GET_DATA', (req, res) => {
+
+});
+
 // Creates SQL query that sends data to SQL Server
 let execSendToDb = (req, connection) => {
     let date_time = new Date();
