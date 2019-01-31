@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 //var LineChart = require('react-chartjs').Line;
 
 // This components purpose is to be imported by actual
@@ -22,6 +23,7 @@ export class GenericChart extends React.Component {
     render(){
         return(
             <div>
+                {console.log(moment().format("YYYY-MM-DD hh:mm:ss.sss"))}
                 <h1>THIS IS SOME YUNG DATA</h1>
             </div>
         )
