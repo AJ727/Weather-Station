@@ -6,7 +6,7 @@ const express = require('express');
 const Connection = require('tedious').Connection;
 const Request = require('tedious').Request;
 const TYPES = require('tedious').TYPES;
-
+const moment = require('moment');
 
 // If the heroku env variable exists, use it, if not, use 3000
 const port = process.env.PORT || 3000;
@@ -61,13 +61,7 @@ app.post('/api/POST', (req, res) => {
 
 // Creates SQL query that sends data to SQL Server
 let execSendToDb = (req, connection) => {
-    // let date_time = new Date().toLocaleString('en-us', {
-    //     timeZone: 'America/New_York'
-    // });
-    let date_time = new Date();
-    let date = today.getFullYear() + '-' + today.getMonth() + '-' + today.getDate();
-    let time = (today.getHours() - 5) + ":" + today.getMinutes() + ":" + today.getSeconds();
-    let date_time = date + ' ' + time;
+    let date_time = new moment();
     console.log(date_time);
     request = new Request("USE weatherDB; INSERT Readings (time_stamp, ExtTemp, Humidity, Pressure, WindDir) VALUES (@time_stamp, @ExtTemp, @Humidity, @Pressure, @WindDir);", (err) => {
         if(err){
