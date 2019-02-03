@@ -9,6 +9,7 @@ import TempChart from './TempChart';
 export class GenericChart extends React.Component {
     // state should store data, then pass into components through props
     state = {
+        data: []
     };
     componentDidMount() {
         this.loadData();
