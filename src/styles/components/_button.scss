@@ -8,6 +8,10 @@
     line-height: 1;
     padding: $s-size;
     text-decoration: none;
+    -webkit-transition: 0.4s ease;
+    transition: 0.4s ease;
+    text-decoration: none;
+    border-bottom: transparent 1px solid;
 }
 
 .button--secondary {
@@ -16,4 +20,9 @@
 
 .button--link {
     background: none;
+    &:hover {
+        border-bottom: #fff 1px solid;
+        -webkit-transition: 0.4s ease;
+        transition: 0.4s ease;
+    }
 }
