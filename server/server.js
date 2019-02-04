@@ -6,7 +6,6 @@ const express = require('express');
 const Connection = require('tedious').Connection;
 const Request = require('tedious').Request;
 const TYPES = require('tedious').TYPES;
-const moment = require('moment');
 
 // If the heroku env variable exists, use it, if not, use 3000
 const port = process.env.PORT || 3000;
@@ -78,9 +77,7 @@ app.post('/api/POST', (req, res) => {
 
 // Creates SQL query that sends data to SQL Server
 let execSendToDb = (req, connection) => {
-    let date_time = new moment();
-    console.log(date_time);
-    request = new Request("USE weatherDB; INSERT Readings (time_stamp, ExtTemp, Humidity, Pressure, WindDir) VALUES (@time_stamp, @ExtTemp, @Humidity, @Pressure, @WindDir);", (err) => {
+    request = new Request("USE weatherDB; INSERT Readings (time_stamp, ExtTemp, Humidity, Pressure, WindDir) VALUES (GETDATE(), @ExtTemp, @Humidity, @Pressure, @WindDir);", (err) => {
         if(err){
             console.log(err);
         }
@@ -88,7 +85,6 @@ let execSendToDb = (req, connection) => {
     // @params - 1st is what variable is being replaced
     // @params - 2nd is the data type of the variable
     // @params - 3rd is the value to be passed in 
-    request.addParameter('time_stamp', TYPES.DateTime, date_time);
     request.addParameter('ExtTemp', TYPES.Float, req.body.Temp);
     request.addParameter('Humidity', TYPES.Float, req.body.Hum);
     request.addParameter('Pressure', TYPES.Float, req.body.Press);
