@@ -6,35 +6,52 @@ import TempChart from './TempChart';
 // components such as Humidity, Pressure, etc
 // and pass in the data specific to each type
 
-export class GenericChart extends React.Component {
-    // state should store data, then pass into components through props
-    state = {
-        data: []
-    };
+class GenericChart extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            error: null,
+            data: []
+        };
+    }
     componentDidMount() {
         this.loadData();
         setInterval(this.loadData, 10000);
     }
-    async loadData() {
-        try {
-            fetch('/api')
-            .then(res => res.json())
-            .then((result) => this.setState({
-                data: result.Readings
-            }))
-            .catch((err) => console.log('Error ' + err));
-        }
-        catch(e) {
-            console.log(e + " THIS IS THE EXCEPTION HANDLER IN GENCHART #3");
-        }
+    async loadData() { 
+        fetch('/api')
+        .then(res => res.json())
+        .then(
+            (result) => {
+                this.setState({
+            data: result.Readings
+            });
+        },
+            (error) => {
+                this.setState({
+                    error
+                })
+            });
     }
     render(){
-        return(
-            <div>
-                <TempChart />
-                {console.log(this.state.readings)}
-            </div>
-        )
+            const {error, data} = this.state;
+            if(error){
+                return <div>Error: {error.message}</div>
+            }
+            else if (!isLoaded) {
+                return <div>Loading...</div>
+            }
+            else {
+                return (
+                    <ul>
+                        {data.map(item => (
+                            <li key={item.time_stamp}>
+                                {item.ExtTemp}
+                            </li>
+                        ))}
+                    </ul>
+                )
+            }
     }
 }
 
