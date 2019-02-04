@@ -50,7 +50,7 @@ class GenericChart extends React.Component {
                     <ul>
                         {data.map(item => (
                             <li key={item.time_stamp}>
-                                {item.ExtTemp}
+                                {item.ExtTemp} {item.Humidity} {item.Pressure} {item.WindDir}
                             </li>
                         ))}
                     </ul>
