@@ -37,7 +37,7 @@ class GenericChart extends React.Component {
             });
     }
     render(){
-            const {error, data} = this.state;
+            const {error, data, isLoaded} = this.state;
             if(error){
                 return <div>Error: {error.message}</div>
             }
