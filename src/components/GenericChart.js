@@ -23,7 +23,7 @@ export class GenericChart extends React.Component {
                     "Content-Type": "application/json"
                 }
             })
-            .then(async res => console.log(res))
+            .then(async res => console.log(res.body))
             .catch((err) => console.log('Error ' + err));
         }
         catch(e) {
