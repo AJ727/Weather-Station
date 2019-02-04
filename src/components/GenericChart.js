@@ -9,7 +9,7 @@ import TempChart from './TempChart';
 export class GenericChart extends React.Component {
     // state should store data, then pass into components through props
     state = {
-        readings: null
+        data: []
     };
     componentDidMount() {
         this.loadData();
@@ -17,13 +17,11 @@ export class GenericChart extends React.Component {
     }
     async loadData() {
         try {
-            fetch('/api', {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-            .then(async res => console.log(res.body))
+            fetch('/api')
+            .then(res => res.json())
+            .then((result) => this.setState({
+                data: result.Readings
+            }))
             .catch((err) => console.log('Error ' + err));
         }
         catch(e) {
