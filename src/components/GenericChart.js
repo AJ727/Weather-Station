@@ -11,6 +11,7 @@ class GenericChart extends React.Component {
         super(props);
         this.state = {
             error: null,
+            isLoaded: false,
             data: []
         };
     }
@@ -24,11 +25,13 @@ class GenericChart extends React.Component {
         .then(
             (result) => {
                 this.setState({
-            data: result.Readings
+                    isLoaded: true,
+                    data: result.Readings
             });
         },
             (error) => {
                 this.setState({
+                    isLoaded: true,
                     error
                 })
             });
