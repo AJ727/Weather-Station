@@ -34,7 +34,7 @@ export class GenericChart extends React.Component {
         return(
             <div>
                 <TempChart />
-                {console.log(readings)}
+                {console.log(this.state.readings)}
             </div>
         )
     }
