@@ -39,7 +39,7 @@ byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xCD };
 byte server[] = { 192, 168, 1, 168 }; //testing server
 
 //IP address used when DHCP is not enabled
-IPAddress ip(192, 168, 1, 150);
+IPAddress ip(192, 168, 137, 150);
 
 //Client initialization
 EthernetClient client;
@@ -112,7 +112,7 @@ void loop() {
   hum_act = (double)hum_cal / 1024.0;
   
       
-  delay(900000);
+  delay(60000);
   
     //Connection to the API initiated
     int connection = client.connect("kaar-weather.herokuapp.com", 80);
@@ -130,12 +130,12 @@ void loop() {
     data += hum_act; 
     data += "\",\r\n    \"Press\":\""; 
     data += press_act;
-    data += "\",\r\n    \"Wind\":\"";
+    data += "\",\r\n    \"WindDir\":\"";
     data += wind;
     data += "\"\r\n}";
     int datalen = data.length();
     // POST Packet to be sent to the API is constructed including the sensor data in JSON format
-    String packet = "POST /api/POST HTTP/1.1";
+    String packet = "POST /api HTTP/1.1";
     packet += "\r\nContent-Type: application/json";
     packet += "\r\ncache-control: no-cache";
     packet += "\r\nUser-Agent: Arduino/1.8.8";
@@ -245,9 +245,7 @@ void readData()
 /* 
 NOTES:
 x >> y means to shift the bits of x by y places to the right (<< to the left).
-
 OR operator: x | y means to compare the bits of x and y, putting a 1 in each bit if either x or y has a 1 in that position.
-
 AND operator: x & y is the same as |, except that the result is 1 if BOTH x and y have a 1.
 */
 
