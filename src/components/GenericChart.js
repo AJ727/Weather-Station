@@ -22,12 +22,13 @@ export class GenericChart extends React.Component {
                     console.log("Error in GenChart fetch #1");
                     return results.json();
             }).then(data => {
-                console.log(data);
-                this.setState({ data });
+                console.log(data + " from GenChart #2");
+                this.setState(() => ({ data }));
+                console.log(this.state.data + " this is the state from GenChart");
             })
         }
         catch(e) {
-            console.log(e);
+            console.log(e + " <-- THIS IS THE EXCEPTION HANDLER IN GENCHART #3");
         }
     }
     render(){
