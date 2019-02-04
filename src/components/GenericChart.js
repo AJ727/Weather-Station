@@ -18,7 +18,7 @@ class GenericChart extends React.Component {
     }
     componentDidMount() {
         this.loadData();
-        setInterval(this.loadData, 10000);
+        setInterval(this.loadData, 60000);
     }
     loadData() { 
         fetch('/api')
@@ -47,13 +47,16 @@ class GenericChart extends React.Component {
             }
             else {
                 return (
-                    <ul>
+                    <div>
                         {data.map(item => (
-                            <li key={item.time_stamp}>
-                                {item.ExtTemp} {item.Humidity} {item.Pressure} {item.WindDir}
-                            </li>
+                            <ol key={item.time_stamp}>
+                                <li>{"Temperature: " + item.ExtTemp}</li> 
+                                <li>{"Humidity: " + item.Humidity}</li> 
+                                <li>{"Pressure: " + item.Pressure}</li> 
+                                <li>{"Wind Direction" + item.WindDir}</li>
+                            </ol>
                         ))}
-                    </ul>
+                    </div>
                 )
             }
     }
