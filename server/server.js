@@ -37,25 +37,25 @@ const dbConfig = {
 
 // GET request handler
 // React -> this function -> DB -> this function -> React
-app.get('/api/FETCH', (req, res) => {
-    let connection = new Connection(dbConfig);
-    const reqQuery = "USE weatherDB; SELECT TOP 1 FROM Readings;";
-    connection.on('connect', (err) => {
-        if(err){
-            console.log(err + " at /api/FETCH #1");
-        }
-        else{
-            console.log('CONNECTED');      
-            request = new Request(reqQuery, (err, rowCount, rows) => {
-                console.log("Rows: ", rows);
-                res.send(rows);
-            });
-            connection.execSql(request);
-            console.log('RETRIEVED');
-        }
-    })
+// app.get('/api/FETCH', (req, res) => {
+//     let connection = new Connection(dbConfig);
+//     const reqQuery = "USE weatherDB; SELECT TOP 1 FROM Readings;";
+//     connection.on('connect', (err) => {
+//         if(err){
+//             console.log(err + " at /api/FETCH #1");
+//         }
+//         else{
+//             console.log('CONNECTED');      
+//             request = new Request(reqQuery, (err, rowCount, rows) => {
+//                 console.log("Rows: ", rows);
+//                 res.send(rows);
+//             });
+//             connection.execSql(request);
+//             console.log('RETRIEVED');
+//         }
+//     })
 
-});
+// });
 
 // POST request handler (arduino data is sent here)
 // Sends validated and formatted data to database

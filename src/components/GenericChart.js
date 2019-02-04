@@ -11,26 +11,26 @@ export class GenericChart extends React.Component {
     state = {
         data: null
     };
-    componentDidMount() {
-        this.loadData();
-        setInterval(this.loadData, 10000);
-    }
-    async loadData() {
-        try {
-            fetch('https://kaar-weather.herokuapp.com/api/FETCH')
-                .then(results => {
-                    console.log("Error in GenChart fetch #1");
-                    return results.json();
-            }).then(data => {
-                console.log(data + " from GenChart #2");
-                this.setState(() => ({ data }));
-                console.log(this.state.data + " this is the state from GenChart");
-            })
-        }
-        catch(e) {
-            console.log(e + " <-- THIS IS THE EXCEPTION HANDLER IN GENCHART #3");
-        }
-    }
+    // componentDidMount() {
+    //     this.loadData();
+    //     setInterval(this.loadData, 10000);
+    // }
+    // async loadData() {
+    //     try {
+    //         fetch('https://kaar-weather.herokuapp.com/api/FETCH')
+    //             .then(results => {
+    //                 console.log("Error in GenChart fetch #1");
+    //                 return results.json();
+    //         }).then(data => {
+    //             console.log(data + " from GenChart #2");
+    //             this.setState(() => ({ data }));
+    //             console.log(this.state.data + " this is the state from GenChart");
+    //         })
+    //     }
+    //     catch(e) {
+    //         console.log(e + " <-- THIS IS THE EXCEPTION HANDLER IN GENCHART #3");
+    //     }
+    // }
     render(){
         return(
             <div>
