@@ -2,7 +2,7 @@ import React from 'react';
 
 export const TempChart = () => (
     <div>
-        TEMP CHART HERE
+        ---TEMP CHART HERE---
     </div>
 )
 

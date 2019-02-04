@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 
 // Create an instance of express
 const app = express();
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const publicPath = path.join(__dirname, '..', 'public');
@@ -34,66 +34,42 @@ const dbConfig = {
 
 // ----------------API---------------- //
 
-// GET request handler
-// React -> this function -> DB -> this function -> React
-// app.get('/api/FETCH', (req, res) => {
+// app.get('/api', (req, res) => {
 //     let connection = new Connection(dbConfig);
-//     const reqQuery = "USE weatherDB; SELECT TOP 1 FROM Readings;";
 //     connection.on('connect', (err) => {
 //         if(err){
-//             console.log(err + " at /api/FETCH #1");
+//             console.log(err);
 //         }
-//         else{
-//             console.log('CONNECTED');      
-//             request = new Request(reqQuery, (err, rowCount, rows) => {
-//                 console.log("Rows: ", rows);
-//                 res.send(rows);
+//         else {
+//             request = new Request("USE weatherDB; SELECT TOP(1) \
+//             time_stamp, \
+//             CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
+//             CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
+//             CONVERT(DECIMAL(10,2), Pressure) AS Pressure, \
+//             WindDir \
+//             FROM Readings FOR JSON AUTO;"
+//             , (err, rowCount) => {
+//                 if(err){
+//                     console.log(err);
+//                 }
+//                 else{
+//                     console.log(rowCount + ' rows');
+//                 }
+//             }); 
+
+//             let data = '';
+//             request.on('row', (columns) => {
+//                 columns.forEach((column) => data += column.value);
+//                 res.json(JSON.stringify(data));
 //             });
 //             connection.execSql(request);
-//             console.log('RETRIEVED');
 //         }
 //     })
-
 // });
-
-app.get('/api', (req, res) => {
-    let connection = new Connection(dbConfig);
-    connection.on('connect', (err) => {
-        if(err){
-            console.log(err);
-        }
-        else {
-            request = new Request("USE weatherDB; SELECT TOP(1) \
-            time_stamp, \
-            CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
-            CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
-            CONVERT(DECIMAL(10,2), Pressure) AS Pressure, \
-            WindDir \
-            FROM Readings FOR JSON PATH;"
-            , (err, rowCount) => {
-                if(err){
-                    console.log(err);
-                }
-                else{
-                    console.log(rowCount + ' rows');
-                }
-            }); 
-
-            let data = '';
-            request.on('row', (columns) => {
-                columns.forEach((column) => data += column.value);
-                res.send(data);
-            });
-            connection.execSql(request);
-        }
-    })
-});
-
-//let execTest = (res) => {}
 
 // POST request handler (arduino data is sent here)
 // Sends validated and formatted data to database
-app.post('/api', (req, res) => {
+app.post('/api/POST', (req, res) => {
     let connection = new Connection(dbConfig);
     // upon successful connection, execute if-else block
     connection.on('connect', (err) => {
@@ -102,7 +78,7 @@ app.post('/api', (req, res) => {
         }
         else{
             console.log('CONNECTED');
-            execSendToDb(req, connection);
+            //execSendToDb(req, connection);
             console.log('WRITTEN TO DB');
         }
     })
@@ -149,4 +125,26 @@ app.listen(port, () => {
 //         res.status(500).send({error: 'invalid data'});
 //     }
 //     next() // ensures we don't stop here
+// });
+
+// GET request handler
+// React -> this function -> DB -> this function -> React
+// app.get('/api/FETCH', (req, res) => {
+//     let connection = new Connection(dbConfig);
+//     const reqQuery = "USE weatherDB; SELECT TOP 1 FROM Readings;";
+//     connection.on('connect', (err) => {
+//         if(err){
+//             console.log(err + " at /api/FETCH #1");
+//         }
+//         else{
+//             console.log('CONNECTED');      
+//             request = new Request(reqQuery, (err, rowCount, rows) => {
+//                 console.log("Rows: ", rows);
+//                 res.send(rows);
+//             });
+//             connection.execSql(request);
+//             console.log('RETRIEVED');
+//         }
+//     })
+
 // });
