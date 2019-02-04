@@ -48,12 +48,13 @@ class GenericChart extends React.Component {
             else {
                 return (
                     <div>
+                        <h1>READINGS</h1>
                         {data.map(item => (
                             <ol key={item.time_stamp}>
                                 <li>{"Temperature: " + item.ExtTemp}</li> 
                                 <li>{"Humidity: " + item.Humidity}</li> 
                                 <li>{"Pressure: " + item.Pressure}</li> 
-                                <li>{"Wind Direction" + item.WindDir}</li>
+                                <li>{"Wind Direction: " + item.WindDir}</li>
                             </ol>
                         ))}
                     </div>
