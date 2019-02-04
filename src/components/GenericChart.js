@@ -14,9 +14,13 @@ class GenericChart extends React.Component {
             isLoaded: false,
             data: []
         };
+        this.loadData = this.loadData.bind(this);
     }
     componentDidMount() {
-        //this.loadData();
+        this.loadData();
+        setInterval(this.loadData, 10000);
+    }
+    loadData() { 
         fetch('/api')
         .then(res => res.json())
         .then(
@@ -32,11 +36,7 @@ class GenericChart extends React.Component {
                     error
                 })
             });
-        //setInterval();
     }
-    //loadData() { 
-        
-    //}
     render(){
             const {error, data, isLoaded} = this.state;
             if(error){
