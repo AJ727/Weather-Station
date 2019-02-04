@@ -11,30 +11,30 @@ export class GenericChart extends React.Component {
     state = {
         readings: null
     };
-    // componentDidMount() {
-    //     this.loadData();
-    //     setInterval(this.loadData, 10000);
-    // }
-    // async loadData() {
-    //     try {
-    //         fetch('/api', {
-    //             method: "GET",
-    //             headers: {
-    //                 "Content-Type": "application/json"
-    //             }
-    //         })
-    //             .then(async res => res.json())
-    //             .then(data => this.setState({ readings: data}))
-    //         .catch((err) => console.log('Error ' + err));
-    //     }
-    //     catch(e) {
-    //         console.log(e + " THIS IS THE EXCEPTION HANDLER IN GENCHART #3");
-    //     }
-    // }
+    componentDidMount() {
+        this.loadData();
+        setInterval(this.loadData, 10000);
+    }
+    async loadData() {
+        try {
+            fetch('/api', {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+                .then(async res => this.setState({ readings: res}))
+            .catch((err) => console.log('Error ' + err));
+        }
+        catch(e) {
+            console.log(e + " THIS IS THE EXCEPTION HANDLER IN GENCHART #3");
+        }
+    }
     render(){
         return(
             <div>
                 <TempChart />
+                {console.log(readings)}
             </div>
         )
     }

@@ -34,42 +34,42 @@ const dbConfig = {
 
 // ----------------API---------------- //
 
-// app.get('/api', (req, res) => {
-//     let connection = new Connection(dbConfig);
-//     connection.on('connect', (err) => {
-//         if(err){
-//             console.log(err);
-//         }
-//         else {
-//             request = new Request("USE weatherDB; SELECT TOP(1) \
-//             time_stamp, \
-//             CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
-//             CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
-//             CONVERT(DECIMAL(10,2), Pressure) AS Pressure, \
-//             WindDir \
-//             FROM Readings FOR JSON AUTO;"
-//             , (err, rowCount) => {
-//                 if(err){
-//                     console.log(err);
-//                 }
-//                 else{
-//                     console.log(rowCount + ' rows');
-//                 }
-//             }); 
+app.get('/api', (req, res) => {
+    let connection = new Connection(dbConfig);
+    connection.on('connect', (err) => {
+        if(err){
+            console.log(err);
+        }
+        else {
+            request = new Request("USE weatherDB; SELECT TOP(1) \
+            time_stamp, \
+            CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
+            CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
+            CONVERT(DECIMAL(10,2), Pressure) AS Pressure, \
+            WindDir \
+            FROM Readings FOR JSON AUTO;"
+            , (err, rowCount) => {
+                if(err){
+                    console.log(err);
+                }
+                else{
+                    console.log(rowCount + ' rows');
+                }
+            }); 
 
-//             let data = '';
-//             request.on('row', (columns) => {
-//                 columns.forEach((column) => data += column.value);
-//                 res.json(JSON.stringify(data));
-//             });
-//             connection.execSql(request);
-//         }
-//     })
-// });
+            let data = '';
+            request.on('row', (columns) => {
+                columns.forEach((column) => data += column.value);
+                res.json(JSON.parse(data));
+            });
+            connection.execSql(request);
+        }
+    })
+});
 
 // POST request handler (arduino data is sent here)
 // Sends validated and formatted data to database
-app.post('/api/POST', (req, res) => {
+app.post('/api', (req, res) => {
     let connection = new Connection(dbConfig);
     // upon successful connection, execute if-else block
     connection.on('connect', (err) => {
@@ -78,7 +78,7 @@ app.post('/api/POST', (req, res) => {
         }
         else{
             console.log('CONNECTED');
-            //execSendToDb(req, connection);
+            execSendToDb(req, connection);
             console.log('WRITTEN TO DB');
         }
     })
