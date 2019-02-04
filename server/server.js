@@ -42,7 +42,7 @@ app.get('/api/FETCH', (req, res) => {
     const reqQuery = "USE weatherDB; SELECT TOP 1 FROM Readings;";
     connection.on('connect', (err) => {
         if(err){
-            console.log(err);
+            console.log(err + " at /api/FETCH #1");
         }
         else{
             console.log('CONNECTED');      

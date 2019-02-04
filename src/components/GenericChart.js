@@ -9,7 +9,7 @@ import TempChart from './TempChart';
 export class GenericChart extends React.Component {
     // state should store data, then pass into components through props
     state = {
-        data: []
+        data: null
     };
     componentDidMount() {
         this.loadData();
@@ -19,6 +19,7 @@ export class GenericChart extends React.Component {
         try {
             fetch('https://kaar-weather.herokuapp.com/api/FETCH')
                 .then(results => {
+                    console.log("Error in GenChart fetch #1");
                     return results.json();
             }).then(data => {
                 console.log(data);
