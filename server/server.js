@@ -47,7 +47,8 @@ app.get('/api', (req, res) => {
             CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
             CONVERT(DECIMAL(10,2), Pressure) AS Pressure, \
             WindDir \
-            FROM Readings FOR JSON PATH, ROOT('Readings');"
+            FROM Readings ORDER BY time_stamp \
+            FOR JSON PATH, ROOT('Readings');"
             , (err, rowCount) => {
                 if(err){
                     console.log(err);

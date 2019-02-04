@@ -32,7 +32,7 @@ class GenericChart extends React.Component {
                     error
                 })
             });
-        //setInterval(10000);
+        //setInterval();
     }
     //loadData() { 
         
