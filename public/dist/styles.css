@@ -438,16 +438,24 @@ button:disabled {
   font-weight: 300;
   line-height: 1;
   padding: 1.2rem;
-  text-decoration: none; }
+  text-decoration: none;
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+  text-decoration: none;
+  border-bottom: transparent 1px solid; }
 
 .button--secondary {
   background-color: #888; }
 
 .button--link {
   background: none; }
+  .button--link:hover {
+    border-bottom: #fff 1px solid;
+    -webkit-transition: 0.4s ease;
+    transition: 0.4s ease; }
 
 .header {
-  background: #364051; }
+  background: #0b2450; }
 
 .header__content {
   align-items: center;
@@ -467,7 +475,7 @@ button:disabled {
   max-width: 80rem; }
 
 .page-header {
-  background: #f7f7f7;
+  background: #dad8d8;
   margin-bottom: 3.2rem;
   padding: 3.2rem 0; }
 
@@ -524,8 +532,8 @@ button:disabled {
     display: none; } }
 
 .list-header {
-  background: #f7f7f7;
-  border: 1px solid #e5e5e5;
+  background: #dad8d8;
+  border: 1px solid #c9c6c6;
   color: #666;
   display: flex;
   justify-content: space-between;
@@ -538,7 +546,7 @@ button:disabled {
       margin-bottom: 3.2rem; } }
 
 .list-item {
-  border: 1px solid #e5e5e5;
+  border: 1px solid #c9c6c6;
   border-top: none;
   color: #333333;
   display: flex;
@@ -547,7 +555,7 @@ button:disabled {
   text-decoration: none;
   transition: background .3 ease; }
   .list-item:hover {
-    background: #f7f7f7; }
+    background: #dad8d8; }
   @media (min-width: 45rem) {
     .list-item {
       align-items: center;

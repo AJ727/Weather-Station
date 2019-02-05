@@ -83,8 +83,7 @@ app.post('/api', (req, res) => {
             console.log('WRITTEN TO DB');
         }
     })
-    
-    res.send(req.body);
+    res.json(req.body);
 });
 
 // Creates SQL query that sends data to SQL Server
