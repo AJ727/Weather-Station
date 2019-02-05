@@ -1,8 +1,15 @@
 import React from 'react';
+import { VictoryLine, VictoryChart } from 'victory';
 
-export const TempChart = () => (
+const TempChart = (props) => (
     <div>
-        ---TEMP CHART HERE---
+        <VictoryChart>
+            <VictoryLine 
+                data={props.data}
+                x="x-axis"
+                y="y-axis" 
+            />
+        </VictoryChart>    
     </div>
 )
 

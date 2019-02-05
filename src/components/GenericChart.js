@@ -57,6 +57,7 @@ class GenericChart extends React.Component {
                                 <li>{"Wind Direction: " + item.WindDir}</li>
                             </ol>
                         ))}
+                        <TempChart data={data} />>
                     </div>
                 )
             }
