@@ -5,9 +5,7 @@ const TempChart = (props) => (
     <div>
         <VictoryChart>
             <VictoryLine 
-                data={props.data}
-                x="x-axis"
-                y="y-axis" 
+                data={props.data.ExtTemp}      
             />
         </VictoryChart>    
     </div>

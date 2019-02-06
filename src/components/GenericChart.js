@@ -48,6 +48,7 @@ class GenericChart extends React.Component {
             else {
                 return (
                     <div>
+                    {console.log(data)}
                         <h1>READINGS</h1>
                         {data.map(item => (
                             <ol key={item.time_stamp}>
@@ -57,7 +58,11 @@ class GenericChart extends React.Component {
                                 <li>{"Wind Direction: " + item.WindDir}</li>
                             </ol>
                         ))}
-                        <TempChart data={data} />>
+
+                        <div style={ {width: 500, height: 600, padding: 50} }>
+                            <TempChart style={ {padding:50} } data={data} />
+                        </div>
+                        
                     </div>
                 )
             }

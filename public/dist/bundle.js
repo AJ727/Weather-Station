@@ -58093,8 +58093,16 @@ var GenericChart = function (_React$Component) {
                             )
                         );
                     }),
-                    _react2.default.createElement(_TempChart2.default, null),
-                    '>'
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        console.log(data)
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { style: { width: 500, height: 600, padding: 50 } },
+                        _react2.default.createElement(_TempChart2.default, { style: { padding: 50 }, data: data })
+                    )
                 );
             }
         }
@@ -58124,11 +58132,18 @@ var _victory = __webpack_require__(681);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TempChart = function TempChart() {
+var TempChart = function TempChart(props) {
     return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_victory.VictoryLine, null)
+        _react2.default.createElement(
+            _victory.VictoryChart,
+            null,
+            _react2.default.createElement(_victory.VictoryLine, {
+                data: props.data.ExtTemp
+
+            })
+        )
     );
 };
 
