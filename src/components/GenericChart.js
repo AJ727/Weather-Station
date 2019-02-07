@@ -1,29 +1,32 @@
 import React from 'react';
 import TempChart from './TempChart';
-//var LineChart = require('react-chartjs').Line;
 
 // This components purpose is to be imported by actual
 // components such as Humidity, Pressure, etc
 // and pass in the data specific to each type
 
 class GenericChart extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor(props) { // pass in properties upon being instantiated
+        super(props); // pass the properties upwards
         this.state = {
             error: null,
             isLoaded: false,
             data: []
         };
-        this.loadData = this.loadData.bind(this);
+        // arrow functions usually solve the "this" binding problem,
+        // but in this instance it must be manually bound
+        this.loadData = this.loadData.bind(this); 
     }
+    // call loadData every minute
     componentDidMount() {
         this.loadData();
         setInterval(this.loadData, 60000);
     }
     loadData() { 
+        // GET from the local api endpoint
         fetch('/api')
-        .then(res => res.json())
-        .then(
+        .then(res => res.json())  // convert to json
+        .then(                    // change the local state
             (result) => {
                 this.setState({
                     isLoaded: true,
