@@ -66,7 +66,7 @@ app.get('/api', (req, res) => {
 });
 
 // POST request handler (arduino data is sent here)
-// Sends validated and formatted data to database
+// Sends validated and formatted data to SQL Server AWS Instance
 app.post('/api', (req, res) => {
     let connection = new Connection(dbConfig);
     // upon successful connection, execute if-else block
@@ -113,7 +113,7 @@ app.listen(port, () => {
     console.log('server is up at port: ' + port);
 });
 
-
+// TODO: Validation -------------------------------------
 // Middleware: will validate and format data
 // app.use((req, res, next) => {
 //     if(!(isNaN(parseFloat(req.body.Temp)) && isNaN(parseFloat(req.body.Hum)) && isNaN(parseFloat(req.body.Baro)))) {
