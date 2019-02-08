@@ -22,15 +22,12 @@ app.use(express.static(publicPath));
 
 // --------------DB Config-------------//
 
-// TODO: Is it possible to use a variable, instead of
-// staticly typing in the server IP?
 const dbConfig = {
     userName: 'weather',
     password: 'We@ther304',
     server: '3.86.58.142',
     database: 'weatherDB'
 };
-
 
 // ----------------API---------------- //
 
@@ -125,26 +122,4 @@ app.listen(port, () => {
 //         res.status(500).send({error: 'invalid data'});
 //     }
 //     next() // ensures we don't stop here
-// });
-
-// GET request handler
-// React -> this function -> DB -> this function -> React
-// app.get('/api/FETCH', (req, res) => {
-//     let connection = new Connection(dbConfig);
-//     const reqQuery = "USE weatherDB; SELECT TOP 1 FROM Readings;";
-//     connection.on('connect', (err) => {
-//         if(err){
-//             console.log(err + " at /api/FETCH #1");
-//         }
-//         else{
-//             console.log('CONNECTED');      
-//             request = new Request(reqQuery, (err, rowCount, rows) => {
-//                 console.log("Rows: ", rows);
-//                 res.send(rows);
-//             });
-//             connection.execSql(request);
-//             console.log('RETRIEVED');
-//         }
-//     })
-
 // });

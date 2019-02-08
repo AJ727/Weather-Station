@@ -7,7 +7,7 @@ import TempChart from './TempChart';
 
 class GenericChart extends React.Component {
     constructor(props) { // pass in properties upon being instantiated
-        super(props); // pass the properties upwards
+        super(props);    // pass the properties upwards
         this.state = {
             error: null,
             isLoaded: false,
