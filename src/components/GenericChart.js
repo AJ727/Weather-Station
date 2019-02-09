@@ -1,5 +1,8 @@
 import React from 'react';
 import TempChart from './TempChart';
+import HumidChart from './HumidChart';
+import PressChart from './PressChart';
+import WindDirChart from './WindDirChart';
 
 // This components purpose is to be imported by actual
 // components such as Humidity, Pressure, etc
@@ -63,19 +66,23 @@ class GenericChart extends React.Component {
                         ))}
 
                         <div style={ {width: 500, height: 600, padding: 50} }>
-                            <TempChart style={ {padding:50} } data={data} />
+                            <h2>Temperature Readings</h2>
+                            <TempChart data={data} />
                         </div>
 
                         <div style={ {width: 500, height: 600, padding: 50} }>
-                            <HumidChart style={ {padding:50} } data={data} />
+                            <h2>Humidity Readings</h2>
+                            <HumidChart data={data} />
                         </div>
 
                         <div style={ {width: 500, height: 600, padding: 50} }>
-                            <PressChart style={ {padding:50} } data={data} />
+                            <h2>Pressure Readings</h2>
+                            <PressChart data={data} />
                         </div>
 
                         <div style={ {width: 500, height: 600, padding: 50} }>
-                            <WindDirChart style={ {padding:50} } data={data} />
+                            <h2>Wind Direction Readings</h2>
+                            <WindDirChart data={data} />
                         </div>
                         
                     </div>

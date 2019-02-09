@@ -13,10 +13,10 @@ const PressChart = (props) => (
                 // TODO: Change code so that data is saved, and just added on to, instead
                 // of replacing the state each time
                 data={[
-                    { x: 1, y: 4},
-                    { x: 2, y: 2},
-                    { x: 3, y: 9},
-                    { x: 4, y: 3}
+                    { x: 1, y: 2},
+                    { x: 2, y: 4},
+                    { x: 3, y: 5},
+                    { x: 4, y: 8}
                 ]}
             />
         </VictoryChart>    

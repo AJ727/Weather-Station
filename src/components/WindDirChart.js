@@ -13,9 +13,9 @@ const WindDirChart = (props) => (
                 // TODO: Change code so that data is saved, and just added on to, instead
                 // of replacing the state each time
                 data={[
-                    { x: 1, y: 4},
-                    { x: 2, y: 2},
-                    { x: 3, y: 9},
+                    { x: 1, y: 1},
+                    { x: 2, y: 8},
+                    { x: 3, y: 7},
                     { x: 4, y: 3}
                 ]}
             />
