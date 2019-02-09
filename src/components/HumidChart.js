@@ -4,7 +4,7 @@ import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel } from 'victory';
 const HumidChart = (props) => (
     <div>
         <VictoryChart theme={VictoryTheme.material}>
-            <VictoryLabel text="Humidity Readings" textAnchor="middle" x={225} y={30} />
+            <VictoryLabel text="Humidity Readings" textAnchor="middle" x={180} y={30} />
             <VictoryLine 
                 style={{
                     data: { stroke: "#c43f11" },

@@ -54,28 +54,29 @@ class GenericChart extends React.Component {
             else {
                 return (
                     <div className="wrapper">
-                    <div>
-                    {console.log(data)}
-                        <h1>READINGS</h1>
-                        {data.map(item => (
-                            <ol key={item.time_stamp}>
-                                <li>{"Temperature: " + item.ExtTemp}</li> 
-                                <li>{"Humidity: " + item.Humidity}</li> 
-                                <li>{"Pressure: " + item.Pressure}</li> 
-                                <li>{"Wind Direction: " + item.WindDir}</li>
-                            </ol>
-                        ))}
-                    </div>
-                        <div className="chart-wrapper">
-                        <div className="gen_charts" >
-                            <TempChart data={data} />
-                            <HumidChart data={data} />
+
+                        <div className="readings">
+                            <h1>READINGS</h1>
+                            {data.map(item => (
+                                <ul key={item.time_stamp}>
+                                    <li>{"Temperature: " + item.ExtTemp}</li> 
+                                    <li>{"Humidity: " + item.Humidity}</li> 
+                                    <li>{"Pressure: " + item.Pressure}</li> 
+                                    <li>{"Wind Direction: " + item.WindDir}</li>
+                                </ul>
+                            ))}
                         </div>
 
-                        <div className="gen_charts">
-                            <PressChart data={data} />         
-                            <WindDirChart data={data} />
-                        </div>
+                        <div>
+                            <div className="gen_charts" >
+                                <TempChart data={data} />
+                                <HumidChart data={data} />
+                            </div>
+
+                            <div className="gen_charts">
+                                <PressChart data={data} />         
+                                <WindDirChart data={data} />
+                            </div>
                         </div>
                     
                     </div>
