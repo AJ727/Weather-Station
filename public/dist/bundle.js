@@ -58224,50 +58224,58 @@ var GenericChart = function (_React$Component) {
             } else {
                 return _react2.default.createElement(
                     'div',
-                    { className: 'chart-wrapper' },
-                    console.log(data),
+                    { className: 'wrapper' },
                     _react2.default.createElement(
-                        'h1',
+                        'div',
                         null,
-                        'READINGS'
+                        console.log(data),
+                        _react2.default.createElement(
+                            'h1',
+                            null,
+                            'READINGS'
+                        ),
+                        data.map(function (item) {
+                            return _react2.default.createElement(
+                                'ol',
+                                { key: item.time_stamp },
+                                _react2.default.createElement(
+                                    'li',
+                                    null,
+                                    "Temperature: " + item.ExtTemp
+                                ),
+                                _react2.default.createElement(
+                                    'li',
+                                    null,
+                                    "Humidity: " + item.Humidity
+                                ),
+                                _react2.default.createElement(
+                                    'li',
+                                    null,
+                                    "Pressure: " + item.Pressure
+                                ),
+                                _react2.default.createElement(
+                                    'li',
+                                    null,
+                                    "Wind Direction: " + item.WindDir
+                                )
+                            );
+                        })
                     ),
-                    data.map(function (item) {
-                        return _react2.default.createElement(
-                            'ol',
-                            { key: item.time_stamp },
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                "Temperature: " + item.ExtTemp
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                "Humidity: " + item.Humidity
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                "Pressure: " + item.Pressure
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                "Wind Direction: " + item.WindDir
-                            )
-                        );
-                    }),
                     _react2.default.createElement(
                         'div',
-                        { className: 'gen_charts' },
-                        _react2.default.createElement(_TempChart2.default, { data: data }),
-                        _react2.default.createElement(_HumidChart2.default, { data: data })
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'gen_charts' },
-                        _react2.default.createElement(_PressChart2.default, { data: data }),
-                        _react2.default.createElement(_WindDirChart2.default, { data: data })
+                        { className: 'chart-wrapper' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'gen_charts' },
+                            _react2.default.createElement(_TempChart2.default, { data: data }),
+                            _react2.default.createElement(_HumidChart2.default, { data: data })
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'gen_charts' },
+                            _react2.default.createElement(_PressChart2.default, { data: data }),
+                            _react2.default.createElement(_WindDirChart2.default, { data: data })
+                        )
                     )
                 );
             }
