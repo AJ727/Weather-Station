@@ -3,7 +3,8 @@ import { VictoryLine, VictoryChart, VictoryTheme } from 'victory';
 
 const WindDirChart = (props) => (
     <div>
-        <VictoryChart theme={VictoryTheme.material}>
+        <VictoryChart theme={VictoryTheme.material}>\
+            <VictoryLabel text="Wind Direction Readings" textAnchor="middle" />
             <VictoryLine 
                 style={{
                     data: { stroke: "#c43f11" },

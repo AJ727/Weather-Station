@@ -58259,23 +58259,35 @@ var GenericChart = function (_React$Component) {
                     }),
                     _react2.default.createElement(
                         'div',
-                        { style: { width: 500, height: 600, padding: 50 } },
-                        _react2.default.createElement(_TempChart2.default, { style: { padding: 50 }, data: data })
+                        { className: 'gen_charts' },
+                        _react2.default.createElement(
+                            'h2',
+                            null,
+                            'Temperature Readings'
+                        ),
+                        _react2.default.createElement(_TempChart2.default, { className: 'gen_charts', data: data }),
+                        _react2.default.createElement(
+                            'h2',
+                            null,
+                            'Humidity Readings'
+                        ),
+                        _react2.default.createElement(_HumidChart2.default, { className: 'gen_charts', data: data })
                     ),
                     _react2.default.createElement(
                         'div',
-                        { style: { width: 500, height: 600, padding: 50 } },
-                        _react2.default.createElement(_HumidChart2.default, { style: { padding: 50 }, data: data })
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { style: { width: 500, height: 600, padding: 50 } },
-                        _react2.default.createElement(_PressChart2.default, { style: { padding: 50 }, data: data })
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { style: { width: 500, height: 600, padding: 50 } },
-                        _react2.default.createElement(_WindDirChart2.default, { style: { padding: 50 }, data: data })
+                        { className: 'gen_charts' },
+                        _react2.default.createElement(
+                            'h2',
+                            null,
+                            'Pressure Readings'
+                        ),
+                        _react2.default.createElement(_PressChart2.default, { className: 'gen_charts', data: data }),
+                        _react2.default.createElement(
+                            'h2',
+                            null,
+                            'Wind Direction Readings'
+                        ),
+                        _react2.default.createElement(_WindDirChart2.default, { className: 'gen_charts', data: data })
                     )
                 );
             }

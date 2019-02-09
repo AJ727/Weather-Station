@@ -64,28 +64,21 @@ class GenericChart extends React.Component {
                                 <li>{"Wind Direction: " + item.WindDir}</li>
                             </ol>
                         ))}
-
-                        <div style={ {width: 500, height: 600, padding: 50} }>
-                            <h2>Temperature Readings</h2>
-                            <TempChart data={data} />
-                        </div>
-
-                        <div style={ {width: 500, height: 600, padding: 50} }>
-                            <h2>Humidity Readings</h2>
-                            <HumidChart data={data} />
-                        </div>
-
-                        <div style={ {width: 500, height: 600, padding: 50} }>
-                            <h2>Pressure Readings</h2>
-                            <PressChart data={data} />
-                        </div>
-
-                        <div style={ {width: 500, height: 600, padding: 50} }>
-                            <h2>Wind Direction Readings</h2>
-                            <WindDirChart data={data} />
-                        </div>
                         
-                    </div>
+                        <div className="gen_charts" >
+                            <TempChart className="gen_charts" data={data} />
+
+                            <HumidChart className="gen_charts" data={data} />
+                        </div>
+
+                        <div className="gen_charts">
+                            <PressChart className="gen_charts" data={data} />
+                            
+                            <WindDirChart className="gen_charts" data={data} />
+                        </div>
+
+                        </div>
+                    
                 )
             }
     }
