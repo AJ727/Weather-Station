@@ -53,7 +53,7 @@ class GenericChart extends React.Component {
             }
             else {
                 return (
-                    <div>
+                    <div className="chart-wrapper">
                     {console.log(data)}
                         <h1>READINGS</h1>
                         {data.map(item => (
@@ -66,18 +66,16 @@ class GenericChart extends React.Component {
                         ))}
                         
                         <div className="gen_charts" >
-                            <TempChart className="gen_charts" data={data} />
-
-                            <HumidChart className="gen_charts" data={data} />
+                            <TempChart data={data} />
+                            <HumidChart data={data} />
                         </div>
 
                         <div className="gen_charts">
-                            <PressChart className="gen_charts" data={data} />
-                            
-                            <WindDirChart className="gen_charts" data={data} />
+                            <PressChart data={data} />         
+                            <WindDirChart data={data} />
                         </div>
 
-                        </div>
+                    </div>
                     
                 )
             }

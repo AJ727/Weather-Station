@@ -1,10 +1,10 @@
 import React from 'react';
-import { VictoryLine, VictoryChart, VictoryTheme } from 'victory';
+import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel } from 'victory';
 
 const PressChart = (props) => (
     <div>
         <VictoryChart theme={VictoryTheme.material}>
-            <VictoryLabel text="Pressure Readings" textAnchor="middle" />
+            <VictoryLabel text="Pressure Readings" x={225} y={30} textAnchor="middle" />
             <VictoryLine 
                 style={{
                     data: { stroke: "#c43f11" },

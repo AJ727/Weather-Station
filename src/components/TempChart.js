@@ -3,8 +3,8 @@ import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel } from 'victory';
 
 const TempChart = (props) => (
     <div>
-        <VictoryChart theme={VictoryTheme.material}>\
-            <VictoryLabel text="Temperature Readings" textAnchor="middle" />
+        <VictoryChart theme={VictoryTheme.material}>
+            <VictoryLabel text="Temperature Readings" x={225} y={30} textAnchor="middle" />
             <VictoryLine 
                 style={{
                     data: { stroke: "#c43f11" },

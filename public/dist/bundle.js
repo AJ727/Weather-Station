@@ -58224,7 +58224,7 @@ var GenericChart = function (_React$Component) {
             } else {
                 return _react2.default.createElement(
                     'div',
-                    null,
+                    { className: 'chart-wrapper' },
                     console.log(data),
                     _react2.default.createElement(
                         'h1',
@@ -58260,34 +58260,14 @@ var GenericChart = function (_React$Component) {
                     _react2.default.createElement(
                         'div',
                         { className: 'gen_charts' },
-                        _react2.default.createElement(
-                            'h2',
-                            null,
-                            'Temperature Readings'
-                        ),
-                        _react2.default.createElement(_TempChart2.default, { className: 'gen_charts', data: data }),
-                        _react2.default.createElement(
-                            'h2',
-                            null,
-                            'Humidity Readings'
-                        ),
-                        _react2.default.createElement(_HumidChart2.default, { className: 'gen_charts', data: data })
+                        _react2.default.createElement(_TempChart2.default, { data: data }),
+                        _react2.default.createElement(_HumidChart2.default, { data: data })
                     ),
                     _react2.default.createElement(
                         'div',
                         { className: 'gen_charts' },
-                        _react2.default.createElement(
-                            'h2',
-                            null,
-                            'Pressure Readings'
-                        ),
-                        _react2.default.createElement(_PressChart2.default, { className: 'gen_charts', data: data }),
-                        _react2.default.createElement(
-                            'h2',
-                            null,
-                            'Wind Direction Readings'
-                        ),
-                        _react2.default.createElement(_WindDirChart2.default, { className: 'gen_charts', data: data })
+                        _react2.default.createElement(_PressChart2.default, { data: data }),
+                        _react2.default.createElement(_WindDirChart2.default, { data: data })
                     )
                 );
             }
@@ -58325,6 +58305,7 @@ var TempChart = function TempChart(props) {
         _react2.default.createElement(
             _victory.VictoryChart,
             { theme: _victory.VictoryTheme.material },
+            _react2.default.createElement(_victory.VictoryLabel, { text: 'Temperature Readings', x: 225, y: 30, textAnchor: 'middle' }),
             _react2.default.createElement(_victory.VictoryLine, {
                 style: {
                     data: { stroke: "#c43f11" },
@@ -82296,6 +82277,7 @@ var HumidChart = function HumidChart(props) {
         _react2.default.createElement(
             _victory.VictoryChart,
             { theme: _victory.VictoryTheme.material },
+            _react2.default.createElement(_victory.VictoryLabel, { text: 'Humidity Readings', textAnchor: 'middle', x: 225, y: 30 }),
             _react2.default.createElement(_victory.VictoryLine, {
                 style: {
                     data: { stroke: "#c43f11" },
@@ -82338,6 +82320,7 @@ var PressChart = function PressChart(props) {
         _react2.default.createElement(
             _victory.VictoryChart,
             { theme: _victory.VictoryTheme.material },
+            _react2.default.createElement(_victory.VictoryLabel, { text: 'Pressure Readings', x: 225, y: 30, textAnchor: 'middle' }),
             _react2.default.createElement(_victory.VictoryLine, {
                 style: {
                     data: { stroke: "#c43f11" },
@@ -82380,6 +82363,7 @@ var WindDirChart = function WindDirChart(props) {
         _react2.default.createElement(
             _victory.VictoryChart,
             { theme: _victory.VictoryTheme.material },
+            _react2.default.createElement(_victory.VictoryLabel, { text: 'Wind Direction Readings', x: 225, y: 30, textAnchor: 'middle' }),
             _react2.default.createElement(_victory.VictoryLine, {
                 style: {
                     data: { stroke: "#c43f11" },
