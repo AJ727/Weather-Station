@@ -469,10 +469,13 @@ button:disabled {
   .header__title h1 {
     margin: 0; }
 
+.nav_buttons {
+  justify-content: space-between; }
+
 .content-container {
   margin: 0 auto;
   padding: 0 1.6rem;
-  max-width: 80rem; }
+  max-width: 100rem; }
 
 .page-header {
   background: #dad8d8;

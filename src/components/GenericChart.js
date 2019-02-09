@@ -65,6 +65,18 @@ class GenericChart extends React.Component {
                         <div style={ {width: 500, height: 600, padding: 50} }>
                             <TempChart style={ {padding:50} } data={data} />
                         </div>
+
+                        <div style={ {width: 500, height: 600, padding: 50} }>
+                            <HumidChart style={ {padding:50} } data={data} />
+                        </div>
+
+                        <div style={ {width: 500, height: 600, padding: 50} }>
+                            <PressChart style={ {padding:50} } data={data} />
+                        </div>
+
+                        <div style={ {width: 500, height: 600, padding: 50} }>
+                            <WindDirChart style={ {padding:50} } data={data} />
+                        </div>
                         
                     </div>
                 )

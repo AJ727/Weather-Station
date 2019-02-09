@@ -1673,7 +1673,7 @@ module.exports = keys;
 /* 33 */
 /***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.5.7' };
+var core = module.exports = { version: '2.6.2' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -5173,7 +5173,7 @@ var store = global[SHARED] || (global[SHARED] = {});
 })('versions', []).push({
   version: core.version,
   mode: __webpack_require__(53) ? 'pure' : 'global',
-  copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
+  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
 
 
@@ -56682,24 +56682,28 @@ var Header = exports.Header = function Header() {
                     )
                 ),
                 _react2.default.createElement(
-                    'button',
-                    { className: 'button button--link' },
-                    'Temperature'
-                ),
-                _react2.default.createElement(
-                    'button',
-                    { className: 'button button--link' },
-                    'Humidity'
-                ),
-                _react2.default.createElement(
-                    'button',
-                    { className: 'button button--link' },
-                    'Pressure'
-                ),
-                _react2.default.createElement(
-                    'button',
-                    { className: 'button button--link' },
-                    'Wind Direction'
+                    'div',
+                    { className: 'nav-buttons' },
+                    _react2.default.createElement(
+                        'button',
+                        { className: 'button button--link' },
+                        'Temperature'
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { className: 'button button--link' },
+                        'Humidity'
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { className: 'button button--link' },
+                        'Pressure'
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { className: 'button button--link' },
+                        'Wind Direction'
+                    )
                 )
             )
         )
@@ -57989,8 +57993,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-//var LineChart = require('react-chartjs').Line;
-
 // This components purpose is to be imported by actual
 // components such as Humidity, Pressure, etc
 // and pass in the data specific to each type
@@ -58001,16 +58003,22 @@ var GenericChart = function (_React$Component) {
     function GenericChart(props) {
         _classCallCheck(this, GenericChart);
 
-        var _this = _possibleConstructorReturn(this, (GenericChart.__proto__ || Object.getPrototypeOf(GenericChart)).call(this, props));
+        // pass the properties upwards
+        var _this = _possibleConstructorReturn(this, (GenericChart.__proto__ || Object.getPrototypeOf(GenericChart)).call(this, props)); // pass in properties upon being instantiated
+
 
         _this.state = {
             error: null,
             isLoaded: false,
             data: []
         };
+        // arrow functions usually solve the "this" binding problem,
+        // but in this instance it must be manually bound
         _this.loadData = _this.loadData.bind(_this);
         return _this;
     }
+    // call loadData every minute
+
 
     _createClass(GenericChart, [{
         key: 'componentDidMount',
@@ -58023,9 +58031,12 @@ var GenericChart = function (_React$Component) {
         value: function loadData() {
             var _this2 = this;
 
+            // GET from the local api endpoint
             fetch('/api').then(function (res) {
                 return res.json();
-            }).then(function (result) {
+            }) // convert to json
+            .then( // change the local state
+            function (result) {
                 _this2.setState({
                     isLoaded: true,
                     data: result.Readings
@@ -58062,6 +58073,7 @@ var GenericChart = function (_React$Component) {
                 return _react2.default.createElement(
                     'div',
                     null,
+                    console.log(data),
                     _react2.default.createElement(
                         'h1',
                         null,
@@ -58093,11 +58105,6 @@ var GenericChart = function (_React$Component) {
                             )
                         );
                     }),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        console.log(data)
-                    ),
                     _react2.default.createElement(
                         'div',
                         { style: { width: 500, height: 600, padding: 50 } },
@@ -58138,10 +58145,16 @@ var TempChart = function TempChart(props) {
         null,
         _react2.default.createElement(
             _victory.VictoryChart,
-            null,
+            { theme: _victory.VictoryTheme.material },
             _react2.default.createElement(_victory.VictoryLine, {
-                data: props.data.ExtTemp
-
+                style: {
+                    data: { stroke: "#c43f11" },
+                    parent: { border: "1px solid #ccc" }
+                }
+                // data={props.data.ExtTemp} <-- this is correct, but we need more data, so trying with dummy data
+                // TODO: Change code so that data is saved, and just added on to, instead
+                // of replacing the state each time
+                , data: [{ x: 1, y: 4 }, { x: 2, y: 2 }, { x: 3, y: 9 }, { x: 4, y: 3 }]
             })
         )
     );

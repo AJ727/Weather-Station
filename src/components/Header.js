@@ -10,10 +10,12 @@ export const Header = () => (
             <Link className="header__title" to="/dashboard">
                 <h1>WEATHER STATION</h1>
             </Link>
+            <div className="nav-buttons">
             <button className="button button--link" >Temperature</button>
             <button className="button button--link" >Humidity</button>
             <button className="button button--link" >Pressure</button>
             <button className="button button--link" >Wind Direction</button>
+            </div>
         </div>
     </div>
     </header>
