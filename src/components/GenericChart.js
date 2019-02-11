@@ -14,7 +14,7 @@ class GenericChart extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            data: []
+            weatherData: []
         };
         // arrow functions usually solve the "this" binding problem,
         // but in this instance it must be manually bound
@@ -27,13 +27,13 @@ class GenericChart extends React.Component {
     }
     loadData() { 
         // GET from the local api endpoint
-        fetch('/api')
+        fetch('/api/all')
         .then(res => res.json())  // convert to json
         .then(                    // change the local state
             (result) => {
                 this.setState({
                     isLoaded: true,
-                    data: result.Readings
+                    weatherData: result.Readings
             });
         },
             (error) => {
@@ -44,7 +44,7 @@ class GenericChart extends React.Component {
             });
     }
     render(){
-            const {error, data, isLoaded} = this.state;
+            const {error, weatherData, isLoaded} = this.state;
             if(error){
                 return <div>Error: {error.message}</div>
             }
@@ -54,11 +54,12 @@ class GenericChart extends React.Component {
             else {
                 return (
                     <div className="wrapper">
-
+                        {console.log("genchart1: " + weatherData)}
                         <div className="readings">
                             <h1>READINGS</h1>
-                            {data.map(item => (
+                            {weatherData.map(item => (
                                 <ul key={item.time_stamp}>
+                                    <li>{"Date: " + item.time_stamp}</li>
                                     <li>{"Temperature: " + item.ExtTemp}</li> 
                                     <li>{"Humidity: " + item.Humidity}</li> 
                                     <li>{"Pressure: " + item.Pressure}</li> 
@@ -69,13 +70,13 @@ class GenericChart extends React.Component {
 
                         <div>
                             <div className="gen_charts" >
-                                <TempChart data={data} />
-                                <HumidChart data={data} />
+                                <TempChart weatherData={weatherData} />
+                                <HumidChart weatherData={weatherData} />
                             </div>
 
                             <div className="gen_charts">
-                                <PressChart data={data} />         
-                                <WindDirChart data={data} />
+                                <PressChart weatherData={weatherData} />         
+                                <WindDirChart weatherData={weatherData} />
                             </div>
                         </div>
                     

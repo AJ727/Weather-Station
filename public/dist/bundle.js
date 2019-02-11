@@ -1673,7 +1673,7 @@ module.exports = keys;
 /* 33 */
 /***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.5.7' };
+var core = module.exports = { version: '2.6.2' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -5173,7 +5173,7 @@ var store = global[SHARED] || (global[SHARED] = {});
 })('versions', []).push({
   version: core.version,
   mode: __webpack_require__(53) ? 'pure' : 'global',
-  copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
+  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
 
 
@@ -58162,7 +58162,7 @@ var GenericChart = function (_React$Component) {
         _this.state = {
             error: null,
             isLoaded: false,
-            data: []
+            weatherData: []
         };
         // arrow functions usually solve the "this" binding problem,
         // but in this instance it must be manually bound
@@ -58184,14 +58184,14 @@ var GenericChart = function (_React$Component) {
             var _this2 = this;
 
             // GET from the local api endpoint
-            fetch('/api').then(function (res) {
+            fetch('/api/all').then(function (res) {
                 return res.json();
             }) // convert to json
             .then( // change the local state
             function (result) {
                 _this2.setState({
                     isLoaded: true,
-                    data: result.Readings
+                    weatherData: result.Readings
                 });
             }, function (error) {
                 _this2.setState({
@@ -58205,7 +58205,7 @@ var GenericChart = function (_React$Component) {
         value: function render() {
             var _state = this.state,
                 error = _state.error,
-                data = _state.data,
+                weatherData = _state.weatherData,
                 isLoaded = _state.isLoaded;
 
             if (error) {
@@ -58225,6 +58225,7 @@ var GenericChart = function (_React$Component) {
                 return _react2.default.createElement(
                     'div',
                     { className: 'wrapper' },
+                    console.log("genchart1: " + weatherData),
                     _react2.default.createElement(
                         'div',
                         { className: 'readings' },
@@ -58233,10 +58234,15 @@ var GenericChart = function (_React$Component) {
                             null,
                             'READINGS'
                         ),
-                        data.map(function (item) {
+                        weatherData.map(function (item) {
                             return _react2.default.createElement(
                                 'ul',
                                 { key: item.time_stamp },
+                                _react2.default.createElement(
+                                    'li',
+                                    null,
+                                    "Date: " + item.time_stamp
+                                ),
                                 _react2.default.createElement(
                                     'li',
                                     null,
@@ -58266,14 +58272,14 @@ var GenericChart = function (_React$Component) {
                         _react2.default.createElement(
                             'div',
                             { className: 'gen_charts' },
-                            _react2.default.createElement(_TempChart2.default, { data: data }),
-                            _react2.default.createElement(_HumidChart2.default, { data: data })
+                            _react2.default.createElement(_TempChart2.default, { weatherData: weatherData }),
+                            _react2.default.createElement(_HumidChart2.default, { weatherData: weatherData })
                         ),
                         _react2.default.createElement(
                             'div',
                             { className: 'gen_charts' },
-                            _react2.default.createElement(_PressChart2.default, { data: data }),
-                            _react2.default.createElement(_WindDirChart2.default, { data: data })
+                            _react2.default.createElement(_PressChart2.default, { weatherData: weatherData }),
+                            _react2.default.createElement(_WindDirChart2.default, { weatherData: weatherData })
                         )
                     )
                 );
@@ -58305,10 +58311,12 @@ var _victory = __webpack_require__(126);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TempChart = function TempChart(props) {
+var TempChart = function TempChart(_ref) {
+    var weatherData = _ref.weatherData;
     return _react2.default.createElement(
         'div',
         null,
+        console.log(props),
         _react2.default.createElement(
             _victory.VictoryChart,
             { theme: _victory.VictoryTheme.material },
@@ -58317,11 +58325,8 @@ var TempChart = function TempChart(props) {
                 style: {
                     data: { stroke: "#c43f11" },
                     parent: { border: "1px solid #ccc" }
-                }
-                // data={props.data.ExtTemp} <-- this is correct, but we need more data, so trying with dummy data
-                // TODO: Change code so that data is saved, and just added on to, instead
-                // of replacing the state each time
-                , data: [{ x: 1, y: 4 }, { x: 2, y: 2 }, { x: 3, y: 9 }, { x: 4, y: 3 }]
+                },
+                data: [{ x: 1, y: weatherData[0].ExtTemp }, { x: 2, y: weatherData[1].ExtTemp }, { x: 3, y: weatherData[2].ExtTemp }, { x: 4, y: weatherData[3].ExtTemp }, { x: 5, y: weatherData[4].ExtTemp }]
             })
         )
     );
