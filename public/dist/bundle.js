@@ -58193,6 +58193,7 @@ var GenericChart = function (_React$Component) {
             }) // convert to json
             .then( // change the local state
             function (result) {
+                console.log(result);
                 _this2.setState({
                     isLoaded: true,
                     weatherData: result.Readings
@@ -58229,7 +58230,6 @@ var GenericChart = function (_React$Component) {
                 return _react2.default.createElement(
                     'div',
                     { className: 'wrapper' },
-                    console.log("genchart1: " + weatherData),
                     _react2.default.createElement(
                         'div',
                         { className: 'readings' },
@@ -82378,7 +82378,6 @@ var WindSpdChart = function WindSpdChart(_ref) {
     return _react2.default.createElement(
         'div',
         null,
-        console.log("FROM WINDSPD CHART: " + weatherData),
         _react2.default.createElement(
             _victory.VictoryChart,
             { theme: _victory.VictoryTheme.material },

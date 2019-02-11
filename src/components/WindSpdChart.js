@@ -3,7 +3,6 @@ import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel } from 'victory';
 
 const WindSpdChart = ({ weatherData }) => (
     <div>
-        {console.log("FROM WINDSPD CHART: " + weatherData)}
         <VictoryChart theme={VictoryTheme.material}>
             <VictoryLabel text="Wind Speed Readings" textAnchor="middle" x={180} y={30} />
             <VictoryLine 

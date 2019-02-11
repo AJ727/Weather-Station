@@ -32,6 +32,7 @@ class GenericChart extends React.Component {
         .then(res => res.json())  // convert to json
         .then(                    // change the local state
             (result) => {
+                console.log(result);
                 this.setState({
                     isLoaded: true,
                     weatherData: result.Readings
@@ -55,7 +56,6 @@ class GenericChart extends React.Component {
             else {
                 return (
                     <div className="wrapper">
-                        {console.log("genchart1: " + weatherData)}
                         <div className="readings">
                             <h1>READINGS</h1>
                             {weatherData.map(item => (
