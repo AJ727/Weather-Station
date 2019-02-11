@@ -28,7 +28,7 @@ class GenericChart extends React.Component {
     }
     loadData() { 
         // GET from the local api endpoint
-        fetch('/api/all')
+        fetch('/api')
         .then(res => res.json())  // convert to json
         .then(                    // change the local state
             (result) => {
