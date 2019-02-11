@@ -58316,7 +58316,6 @@ var TempChart = function TempChart(_ref) {
     return _react2.default.createElement(
         'div',
         null,
-        console.log(props),
         _react2.default.createElement(
             _victory.VictoryChart,
             { theme: _victory.VictoryTheme.material },

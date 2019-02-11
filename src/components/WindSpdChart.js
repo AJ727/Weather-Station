@@ -1,25 +1,25 @@
 import React from 'react';
 import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel } from 'victory';
 
-const TempChart = ({ weatherData }) => (
+const WindSpdChart = ({ weatherData }) => (
     <div>
         <VictoryChart theme={VictoryTheme.material}>
-            <VictoryLabel text="Temperature Readings" x={180} y={30} textAnchor="middle" />
+            <VictoryLabel text="Wind Speed Readings" textAnchor="middle" x={180} y={30} />
             <VictoryLine 
                 style={{
                     data: { stroke: "#c43f11" },
                     parent: { border: "1px solid #ccc" }
                 }}
                 data={[
-                    { x: 1, y: weatherData[0].ExtTemp},
-                    { x: 2, y: weatherData[1].ExtTemp},
-                    { x: 3, y: weatherData[2].ExtTemp},
-                    { x: 4, y: weatherData[3].ExtTemp},
-                    { x: 5, y: weatherData[4].ExtTemp}
+                    { x: 1, y: weatherData[0].WindSpd},
+                    { x: 2, y: weatherData[1].WindSpd},
+                    { x: 3, y: weatherData[2].WindSpd},
+                    { x: 4, y: weatherData[3].WindSpd},
+                    { x: 5, y: weatherData[4].WindSpd}
                 ]}
             />
         </VictoryChart>    
     </div>
 )
 
-export default TempChart;
+export default WindSpdChart;

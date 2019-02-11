@@ -42,7 +42,8 @@ app.get('/api/all', (req, res) => {
             CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
             CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
             CONVERT(DECIMAL(10,2), Pressure) AS Pressure, \
-            WindDir \
+            WindDir, \
+            CONVERT(DECIMAL(10,2), WindSpd) AS WindSpd \
             FROM Readings ORDER BY time_stamp DESC \
             FOR JSON PATH, ROOT('Readings');"
             , (err, rowCount) => {
@@ -119,7 +120,7 @@ app.post('/api', (req, res) => {
 
 // Creates SQL query that sends data to SQL Server
 let execSendToDb = (req, connection) => {
-    request = new Request("USE weatherDB; INSERT Readings (time_stamp, ExtTemp, Humidity, Pressure, WindDir) VALUES (GETDATE(), @ExtTemp, @Humidity, @Pressure, @WindDir);", (err) => {
+    request = new Request("USE weatherDB; INSERT Readings (time_stamp, ExtTemp, Humidity, Pressure, WindDir, WindSpd) VALUES (GETDATE(), @ExtTemp, @Humidity, @Pressure, @WindDir, @WindSpd);", (err) => {
         if(err){
             console.log(err);
         }
@@ -131,6 +132,7 @@ let execSendToDb = (req, connection) => {
     request.addParameter('Humidity', TYPES.Float, req.body.Hum);
     request.addParameter('Pressure', TYPES.Float, req.body.Press);
     request.addParameter('WindDir', TYPES.VarChar, req.body.WindDir);
+    request.addParameter('WindSpd', TYPES.Float, req.body.WindSpd);
     console.log(request);
     connection.execSql(request);
 };
