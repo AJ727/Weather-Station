@@ -82282,7 +82282,8 @@ var _victory = __webpack_require__(126);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HumidChart = function HumidChart(props) {
+var HumidChart = function HumidChart(_ref) {
+    var weatherData = _ref.weatherData;
     return _react2.default.createElement(
         'div',
         null,
@@ -82294,11 +82295,8 @@ var HumidChart = function HumidChart(props) {
                 style: {
                     data: { stroke: "#c43f11" },
                     parent: { border: "1px solid #ccc" }
-                }
-                // data={props.data.ExtTemp} <-- this is correct, but we need more data, so trying with dummy data
-                // TODO: Change code so that data is saved, and just added on to, instead
-                // of replacing the state each time
-                , data: [{ x: 1, y: 9 }, { x: 2, y: 3.5 }, { x: 3, y: 3 }, { x: 4, y: 4 }]
+                },
+                data: [{ x: 1, y: weatherData[0].Humidity }, { x: 2, y: weatherData[1].Humidity }, { x: 3, y: weatherData[2].Humidity }, { x: 4, y: weatherData[3].Humidity }, { x: 5, y: weatherData[4].Humidity }]
             })
         )
     );
@@ -82325,7 +82323,8 @@ var _victory = __webpack_require__(126);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var PressChart = function PressChart(props) {
+var PressChart = function PressChart(_ref) {
+    var weatherData = _ref.weatherData;
     return _react2.default.createElement(
         'div',
         null,
@@ -82337,11 +82336,8 @@ var PressChart = function PressChart(props) {
                 style: {
                     data: { stroke: "#c43f11" },
                     parent: { border: "1px solid #ccc" }
-                }
-                // data={props.data.ExtTemp} <-- this is correct, but we need more data, so trying with dummy data
-                // TODO: Change code so that data is saved, and just added on to, instead
-                // of replacing the state each time
-                , data: [{ x: 1, y: 2 }, { x: 2, y: 4 }, { x: 3, y: 5 }, { x: 4, y: 8 }]
+                },
+                data: [{ x: 1, y: weatherData[0].Pressure }, { x: 2, y: weatherData[1].Pressure }, { x: 3, y: weatherData[2].Pressure }, { x: 4, y: weatherData[3].Pressure }, { x: 5, y: weatherData[4].Pressure }]
             })
         )
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel } from 'victory';
 
-const HumidChart = (props) => (
+const HumidChart = ({ weatherData }) => (
     <div>
         <VictoryChart theme={VictoryTheme.material}>
             <VictoryLabel text="Humidity Readings" textAnchor="middle" x={180} y={30} />
@@ -10,14 +10,12 @@ const HumidChart = (props) => (
                     data: { stroke: "#c43f11" },
                     parent: { border: "1px solid #ccc" }
                 }}
-                // data={props.data.ExtTemp} <-- this is correct, but we need more data, so trying with dummy data
-                // TODO: Change code so that data is saved, and just added on to, instead
-                // of replacing the state each time
                 data={[
-                    { x: 1, y: 9},
-                    { x: 2, y: 3.5},
-                    { x: 3, y: 3},
-                    { x: 4, y: 4}
+                    { x: 1, y: weatherData[0].Humidity},
+                    { x: 2, y: weatherData[1].Humidity},
+                    { x: 3, y: weatherData[2].Humidity},
+                    { x: 4, y: weatherData[3].Humidity},
+                    { x: 5, y: weatherData[4].Humidity}
                 ]}
             />
         </VictoryChart>    
