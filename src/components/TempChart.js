@@ -16,31 +16,4 @@ const TempChart = ({ tempData }) => (
     </div>
 )
 
-
-// class TempChart extends React.Component {
-//     constructor(props){
-//         super(props);
-//     }
-//     createArray(props){
-//         console.log(props);
-//         return []
-//     }
-//     render(){
-//         return(
-//             <div>
-//                 <VictoryChart theme={VictoryTheme.material}>
-//                     <VictoryLabel text="Temperature Readings" x={180} y={30} textAnchor="middle" />
-//                     <VictoryLine 
-//                         style={{
-//                             data: { stroke: "#c43f11" },
-//                             parent: { border: "1px solid #ccc" }
-//                         }}
-//                         data={this.createArray()}
-//                     />
-//                 </VictoryChart>    
-//             </div>
-//                 )
-//             }   
-// }
-
 export default TempChart;

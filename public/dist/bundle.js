@@ -58188,14 +58188,12 @@ var GenericChart = function (_React$Component) {
             switch (value) {
                 case 1:
                     return "this.state.weatherData[i].ExtTemp";
-                    break;
                 case 2:
                     return "this.state.weatherData[i].Humidity";
-                    break;
                 case 3:
-                    break;
+                    return "this.state.weatherData[i].Pressure";
                 case 4:
-                    break;
+                    return "this.state.weatherData[i].WindSpd";
             }
         }, _this.loadData = function () {
             // GET from the local api endpoint
@@ -58302,8 +58300,8 @@ var GenericChart = function (_React$Component) {
                         _react2.default.createElement(
                             'div',
                             { className: 'gen_charts' },
-                            _react2.default.createElement(_PressChart2.default, { weatherData: this.state.weatherData }),
-                            _react2.default.createElement(_WindSpdChart2.default, { weatherData: this.state.weatherData }),
+                            _react2.default.createElement(_PressChart2.default, { pressData: this.createArray(3) }),
+                            _react2.default.createElement(_WindSpdChart2.default, { spdData: this.createArray(4) }),
                             _react2.default.createElement(_WindDirChart2.default, { weatherData: this.state.weatherData })
                         )
                     )
@@ -58355,32 +58353,6 @@ var TempChart = function TempChart(_ref) {
         )
     );
 };
-
-// class TempChart extends React.Component {
-//     constructor(props){
-//         super(props);
-//     }
-//     createArray(props){
-//         console.log(props);
-//         return []
-//     }
-//     render(){
-//         return(
-//             <div>
-//                 <VictoryChart theme={VictoryTheme.material}>
-//                     <VictoryLabel text="Temperature Readings" x={180} y={30} textAnchor="middle" />
-//                     <VictoryLine 
-//                         style={{
-//                             data: { stroke: "#c43f11" },
-//                             parent: { border: "1px solid #ccc" }
-//                         }}
-//                         data={this.createArray()}
-//                     />
-//                 </VictoryChart>    
-//             </div>
-//                 )
-//             }   
-// }
 
 exports.default = TempChart;
 
@@ -82374,7 +82346,7 @@ var _victory = __webpack_require__(92);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PressChart = function PressChart(_ref) {
-    var weatherData = _ref.weatherData;
+    var pressData = _ref.pressData;
     return _react2.default.createElement(
         'div',
         null,
@@ -82387,7 +82359,7 @@ var PressChart = function PressChart(_ref) {
                     data: { stroke: "#c43f11" },
                     parent: { border: "1px solid #ccc" }
                 },
-                data: [{ x: 1, y: weatherData[0].Pressure }, { x: 2, y: weatherData[1].Pressure }, { x: 3, y: weatherData[2].Pressure }, { x: 4, y: weatherData[3].Pressure }, { x: 5, y: weatherData[4].Pressure }]
+                data: pressData
             })
         )
     );
@@ -82415,7 +82387,7 @@ var _victory = __webpack_require__(92);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var WindSpdChart = function WindSpdChart(_ref) {
-    var weatherData = _ref.weatherData;
+    var spdData = _ref.spdData;
     return _react2.default.createElement(
         'div',
         null,
@@ -82428,7 +82400,7 @@ var WindSpdChart = function WindSpdChart(_ref) {
                     data: { stroke: "#c43f11" },
                     parent: { border: "1px solid #ccc" }
                 },
-                data: [{ x: 1, y: weatherData[0].WindSpd ? weatherData[0].WindSpd : 10 }, { x: 2, y: weatherData[1].WindSpd ? weatherData[1].WindSpd : 10 }, { x: 3, y: weatherData[2].WindSpd ? weatherData[2].WindSpd : 10 }, { x: 4, y: weatherData[3].WindSpd ? weatherData[3].WindSpd : 10 }, { x: 5, y: weatherData[4].WindSpd ? weatherData[4].WindSpd : 10 }]
+                data: spdData
             })
         )
     );
