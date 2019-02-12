@@ -1673,7 +1673,7 @@ module.exports = keys;
 /* 33 */
 /***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.5.7' };
+var core = module.exports = { version: '2.6.2' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -5313,7 +5313,7 @@ var store = global[SHARED] || (global[SHARED] = {});
 })('versions', []).push({
   version: core.version,
   mode: __webpack_require__(53) ? 'pure' : 'global',
-  copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
+  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
 
 
@@ -56762,9 +56762,9 @@ var _Header = __webpack_require__(653);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _GenericChart = __webpack_require__(680);
+var _Chart = __webpack_require__(680);
 
-var _GenericChart2 = _interopRequireDefault(_GenericChart);
+var _Chart2 = _interopRequireDefault(_Chart);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -56773,7 +56773,7 @@ var DashboardPage = function DashboardPage() {
         'div',
         null,
         _react2.default.createElement(_Header2.default, null),
-        _react2.default.createElement(_GenericChart2.default, null)
+        _react2.default.createElement(_Chart2.default, null)
     );
 };
 
@@ -58154,27 +58154,34 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // It then passes in properties to the corresponding child chart
 // components, where the data will be displayed
 
-var GenericChart = function (_React$Component) {
-    _inherits(GenericChart, _React$Component);
+var Chart = function (_React$Component) {
+    _inherits(Chart, _React$Component);
 
-    function GenericChart() {
+    function Chart() {
         var _ref;
 
         var _temp, _this, _ret;
 
-        _classCallCheck(this, GenericChart);
+        _classCallCheck(this, Chart);
 
         for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = GenericChart.__proto__ || Object.getPrototypeOf(GenericChart)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Chart.__proto__ || Object.getPrototypeOf(Chart)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
             error: null,
             isLoaded: false,
-            weatherData: []
+            weatherData: [],
+            temps: [],
+            humidities: [],
+            pressures: [],
+            speeds: []
         }, _this.componentDidMount = function () {
             _this.loadData();
+            _this.arrayProcessing();
             setInterval(_this.loadData, 60000);
+        }, _this.arrayProcessing = function () {
+            console.log(_this.state);
         }, _this.createArray = function (typeNum) {
             var weatherArray = [];
             for (var i = 0; i < _this.state.weatherData.length; i++) {
@@ -58196,7 +58203,7 @@ var GenericChart = function (_React$Component) {
                     return "this.state.weatherData[i].WindSpd";
             }
         }, _this.loadData = function () {
-            // GET from the local api endpoint
+            // GET request to local api endpoint
             fetch('/api').then(function (res) {
                 return res.json();
             }) // convert to json
@@ -58223,7 +58230,7 @@ var GenericChart = function (_React$Component) {
     // call loadData every minute
 
 
-    _createClass(GenericChart, [{
+    _createClass(Chart, [{
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -58243,51 +58250,7 @@ var GenericChart = function (_React$Component) {
                 this.state.isLoaded && !this.state.error && _react2.default.createElement(
                     'div',
                     null,
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'readings' },
-                        _react2.default.createElement(
-                            'h1',
-                            null,
-                            'READINGS'
-                        ),
-                        this.state.weatherData.map(function (item) {
-                            return _react2.default.createElement(
-                                'ul',
-                                { key: item.time_stamp },
-                                _react2.default.createElement(
-                                    'li',
-                                    null,
-                                    "Date: " + item.time_stamp
-                                ),
-                                _react2.default.createElement(
-                                    'li',
-                                    null,
-                                    "Temperature: " + item.ExtTemp
-                                ),
-                                _react2.default.createElement(
-                                    'li',
-                                    null,
-                                    "Humidity: " + item.Humidity
-                                ),
-                                _react2.default.createElement(
-                                    'li',
-                                    null,
-                                    "Pressure: " + item.Pressure
-                                ),
-                                _react2.default.createElement(
-                                    'li',
-                                    null,
-                                    "Wind Direction: " + item.WindDir
-                                ),
-                                _react2.default.createElement(
-                                    'li',
-                                    null,
-                                    "Wind Speed: " + item.WindSpd
-                                )
-                            );
-                        })
-                    ),
+                    _react2.default.createElement('div', { className: 'readings' }),
                     _react2.default.createElement(
                         'div',
                         null,
@@ -58310,10 +58273,10 @@ var GenericChart = function (_React$Component) {
         }
     }]);
 
-    return GenericChart;
+    return Chart;
 }(_react2.default.Component);
 
-exports.default = GenericChart;
+exports.default = Chart;
 
 /***/ }),
 /* 681 */

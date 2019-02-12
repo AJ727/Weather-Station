@@ -14,12 +14,23 @@ class Chart extends React.Component {
     state = {
         error: null,
         isLoaded: false,
-        weatherData: []
+        weatherData: [],
+        temps: [],
+        humidities: [],
+        pressures: [],
+        speeds: []
     };
     // call loadData every minute
     componentDidMount = () => {
         this.loadData();
+        this.arrayProcessing();
         setInterval(this.loadData, 60000);
+
+    }
+    arrayProcessing = () => {
+        this.state.weatherData.map(object =>{
+
+        });
     }
     createArray = (typeNum) => {
         const weatherArray = [];
@@ -44,7 +55,7 @@ class Chart extends React.Component {
         }
     }
     loadData = () => { 
-        // GET from the local api endpoint
+        // GET request to local api endpoint
         fetch('/api')
         .then(res => res.json())  // convert to json
         .then(                    // change the local state
