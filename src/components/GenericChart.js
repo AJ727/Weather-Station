@@ -10,17 +10,6 @@ import WindDirChart from './WindDirChart';
 // and pass in the data specific to each type
 
 class GenericChart extends React.Component {
-    // constructor(props) { // pass in properties upon being instantiated
-    //     super(props);    // pass the properties upwards
-    //     this.state = {
-    //         error: null,
-    //         isLoaded: false,
-    //         weatherData: []
-    //     };
-    //     // arrow functions usually solve the "this" binding problem,
-    //     // but in this instance it must be manually bound
-    //     this.loadData = this.loadData.bind(this); 
-    // }
     state = {
         error: null,
         isLoaded: false,
@@ -32,6 +21,7 @@ class GenericChart extends React.Component {
         setInterval(this.loadData, 60000);
     }
     createArray = () => {
+        console.log("CREATEARRAY LOG: ");
         console.log(this.state.weatherData);
     }
     loadData = () => { 
@@ -82,7 +72,7 @@ class GenericChart extends React.Component {
 
                             <div>
                                 <div className="gen_charts" >
-                                    <TempChart weatherData={this.state.weatherData} />
+                                    <TempChart weatherData={this.createArray()} />
                                     <HumidChart weatherData={this.state.weatherData} />
                                 </div>
 
