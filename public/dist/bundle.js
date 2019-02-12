@@ -1673,7 +1673,7 @@ module.exports = keys;
 /* 33 */
 /***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.6.2' };
+var core = module.exports = { version: '2.5.7' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -5313,7 +5313,7 @@ var store = global[SHARED] || (global[SHARED] = {});
 })('versions', []).push({
   version: core.version,
   mode: __webpack_require__(53) ? 'pure' : 'global',
-  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
+  copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
 });
 
 
@@ -58149,9 +58149,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// This components purpose is to be imported by actual
-// components such as Humidity, Pressure, etc
-// and pass in the data specific to each type
+// This components purpose is to query the API every
+// X minutes, and store that data in a local state array
+// It then passes in properties to the corresponding child chart
+// components, where the data will be displayed
 
 var GenericChart = function (_React$Component) {
     _inherits(GenericChart, _React$Component);
@@ -58175,8 +58176,12 @@ var GenericChart = function (_React$Component) {
             _this.loadData();
             setInterval(_this.loadData, 60000);
         }, _this.createArray = function () {
-            console.log("CREATEARRAY LOG: ");
-            console.log(_this.state.weatherData);
+            var weatherArray = [];
+            for (var i = 0; i < _this.state.weatherData.length; i++) {
+                var dataString = JSON.parse('{"x": ' + (i + 1) + ', "y": ' + _this.state.weatherData[i].ExtTemp + '}');
+                weatherArray.push(dataString);
+            }
+            return weatherArray;
         }, _this.loadData = function () {
             // GET from the local api endpoint
             fetch('/api').then(function (res) {
@@ -58202,18 +58207,6 @@ var GenericChart = function (_React$Component) {
             });
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
-    // constructor(props) { // pass in properties upon being instantiated
-    //     super(props);    // pass the properties upwards
-    //     this.state = {
-    //         error: null,
-    //         isLoaded: false,
-    //         weatherData: []
-    //     };
-    //     // arrow functions usually solve the "this" binding problem,
-    //     // but in this instance it must be manually bound
-    //     this.loadData = this.loadData.bind(this); 
-    // }
-
     // call loadData every minute
 
 
@@ -58288,7 +58281,7 @@ var GenericChart = function (_React$Component) {
                         _react2.default.createElement(
                             'div',
                             { className: 'gen_charts' },
-                            _react2.default.createElement(_TempChart2.default, { weatherData: this.state.weatherData }),
+                            _react2.default.createElement(_TempChart2.default, { tempData: this.createArray() }),
                             _react2.default.createElement(_HumidChart2.default, { weatherData: this.state.weatherData })
                         ),
                         _react2.default.createElement(
@@ -58329,7 +58322,7 @@ var _victory = __webpack_require__(92);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var TempChart = function TempChart(_ref) {
-    var weatherData = _ref.weatherData;
+    var tempData = _ref.tempData;
     return _react2.default.createElement(
         'div',
         null,
@@ -58342,7 +58335,7 @@ var TempChart = function TempChart(_ref) {
                     data: { stroke: "#c43f11" },
                     parent: { border: "1px solid #ccc" }
                 },
-                data: [{ x: 1, y: weatherData[0].ExtTemp }, { x: 2, y: weatherData[1].ExtTemp }, { x: 3, y: weatherData[2].ExtTemp }, { x: 4, y: weatherData[3].ExtTemp }, { x: 5, y: weatherData[4].ExtTemp }]
+                data: tempData
             })
         )
     );

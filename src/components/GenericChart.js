@@ -22,8 +22,12 @@ class GenericChart extends React.Component {
         setInterval(this.loadData, 60000);
     }
     createArray = () => {
-        console.log("CREATEARRAY LOG: ");
-        console.log(this.state.weatherData);
+        const weatherArray = [];
+            for (let i = 0; i < this.state.weatherData.length; i++) {
+                let dataString = JSON.parse('{"x": ' + (i + 1) + ', "y": ' + this.state.weatherData[i].ExtTemp + '}');
+                weatherArray.push(dataString);
+            }
+            return weatherArray;
     }
     loadData = () => { 
         // GET from the local api endpoint
@@ -73,7 +77,7 @@ class GenericChart extends React.Component {
 
                             <div>
                                 <div className="gen_charts" >
-                                    <TempChart weatherData={this.state.weatherData} />
+                                    <TempChart tempData={this.createArray()} />
                                     <HumidChart weatherData={this.state.weatherData} />
                                 </div>
 
