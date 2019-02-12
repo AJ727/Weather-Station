@@ -10,7 +10,7 @@ import WindDirChart from './WindDirChart';
 // It then passes in properties to the corresponding child chart
 // components, where the data will be displayed
 
-class GenericChart extends React.Component {
+class Chart extends React.Component {
     state = {
         error: null,
         isLoaded: false,
@@ -109,4 +109,4 @@ class GenericChart extends React.Component {
         }
 }
 
-export default GenericChart;
+export default Chart;

@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from './Header';
-import GenChart from './GenericChart';
+import Chart from './Chart';
 
 const DashboardPage = () => (
     <div>
         <Header />
-        <GenChart />
+        <Chart />
     </div>
 );
 
