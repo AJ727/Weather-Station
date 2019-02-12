@@ -115,7 +115,6 @@ app.post('/api', (req, res) => {
             console.log('WRITTEN TO DB');
         }
     })
-    res.json(req.body);
 });
 
 // Creates SQL query that sends data to SQL Server
@@ -133,7 +132,7 @@ let execSendToDb = (req, connection) => {
     request.addParameter('Pressure', TYPES.Float, req.body.Press);
     request.addParameter('WindDir', TYPES.VarChar, req.body.WindDir);
     request.addParameter('WindSpd', TYPES.Float, req.body.WindSpd);
-    console.log(request);
+    //console.log(request);
     connection.execSql(request);
 };
 
