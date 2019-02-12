@@ -10,83 +10,96 @@ import WindDirChart from './WindDirChart';
 // and pass in the data specific to each type
 
 class GenericChart extends React.Component {
-    constructor(props) { // pass in properties upon being instantiated
-        super(props);    // pass the properties upwards
-        this.state = {
-            error: null,
-            isLoaded: false,
-            weatherData: []
-        };
-        // arrow functions usually solve the "this" binding problem,
-        // but in this instance it must be manually bound
-        this.loadData = this.loadData.bind(this); 
-    }
+    // constructor(props) { // pass in properties upon being instantiated
+    //     super(props);    // pass the properties upwards
+    //     this.state = {
+    //         error: null,
+    //         isLoaded: false,
+    //         weatherData: []
+    //     };
+    //     // arrow functions usually solve the "this" binding problem,
+    //     // but in this instance it must be manually bound
+    //     this.loadData = this.loadData.bind(this); 
+    // }
+    state = {
+        error: null,
+        isLoaded: false,
+        weatherData: []
+    };
     // call loadData every minute
-    componentDidMount() {
+    componentDidMount = () => {
         this.loadData();
         setInterval(this.loadData, 60000);
     }
-    loadData() { 
+    createArray = () => {
+        console.log(this.state.weatherData);
+    }
+    loadData = () => { 
         // GET from the local api endpoint
         fetch('/api')
         .then(res => res.json())  // convert to json
         .then(                    // change the local state
             (result) => {
+                console.log("FROM LOAD DATA: --- ")
                 console.log(result);
-                this.setState({
+                this.setState(() => ({
                     isLoaded: true,
                     weatherData: result.Readings
-            });
+            }))
         },
             (error) => {
-                this.setState({
+                this.setState(() => ({
                     isLoaded: true,
                     error
-                })
+                }))
             });
     }
     render(){
-            const {error, weatherData, isLoaded} = this.state;
-            if(error){
-                return <div>Error: {error.message}</div>
-            }
-            else if (!isLoaded) {
-                return <div>Loading...</div>
-            }
-            else {
-                return (
-                    <div className="wrapper">
-                        <div className="readings">
-                            <h1>READINGS</h1>
-                            {weatherData.map(item => (
-                                <ul key={item.time_stamp}>
-                                    <li>{"Date: " + item.time_stamp}</li>
-                                    <li>{"Temperature: " + item.ExtTemp}</li> 
-                                    <li>{"Humidity: " + item.Humidity}</li> 
-                                    <li>{"Pressure: " + item.Pressure}</li> 
-                                    <li>{"Wind Direction: " + item.WindDir}</li>
-                                    <li>{"Wind Speed: " + item.WindSpd}</li>
-                                </ul>
-                            ))}
-                        </div>
-
-                        <div>
-                            <div className="gen_charts" >
-                                <TempChart weatherData={weatherData} />
-                                <HumidChart weatherData={weatherData} />
-                            </div>
-
-                            <div className="gen_charts">
-                                <PressChart weatherData={weatherData} />         
-                                <WindSpdChart weatherData={weatherData} />
-                                <WindDirChart weatherData={weatherData} />
-                            </div>
-                        </div>
+            return (
+                <div className="wrapper">
+                    {/* If there's an error, print it */}
+                    {this.state.error && <div>Error: {error.message}</div>}
                     
-                    </div>
-                )
-            }
-    }
+                    {/* If the state isn't loaded, print loading */}
+                    {!(this.state.isLoaded) && <div>Loading...</div>}
+                    
+                    {/* If the state is loaded and there's no error, proceed. */}
+                    {this.state.isLoaded && !(this.state.error) &&
+                        <div>
+                            <div className="readings">
+                                <h1>READINGS</h1>
+                                {this.state.weatherData.map(item => (
+                                    <ul key={item.time_stamp}>
+                                        <li>{"Date: " + item.time_stamp}</li>
+                                        <li>{"Temperature: " + item.ExtTemp}</li> 
+                                        <li>{"Humidity: " + item.Humidity}</li> 
+                                        <li>{"Pressure: " + item.Pressure}</li> 
+                                        <li>{"Wind Direction: " + item.WindDir}</li>
+                                        <li>{"Wind Speed: " + item.WindSpd}</li>
+                                    </ul>
+                                ))}
+                            </div>
+
+                            <div>
+                                <div className="gen_charts" >
+                                    <TempChart weatherData={this.state.weatherData} />
+                                    <HumidChart weatherData={this.state.weatherData} />
+                                </div>
+
+                                <div className="gen_charts">
+                                    <PressChart weatherData={this.state.weatherData} />         
+                                    <WindSpdChart weatherData={this.state.weatherData} />
+                                    <WindDirChart weatherData={this.state.weatherData} />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                
+            )
+        }
 }
+
 
 export default GenericChart;
