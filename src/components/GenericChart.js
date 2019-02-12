@@ -76,8 +76,7 @@ class GenericChart extends React.Component {
                     {this.state.isLoaded && !(this.state.error) &&
                         <div>
                             <div className="readings">
-                                <h1>READINGS</h1>
-                                {this.state.weatherData.map(item => (
+                                {/*this.state.weatherData.map(item => (
                                     <ul key={item.time_stamp}>
                                         <li>{"Date: " + item.time_stamp}</li>
                                         <li>{"Temperature: " + item.ExtTemp}</li> 
@@ -86,7 +85,7 @@ class GenericChart extends React.Component {
                                         <li>{"Wind Direction: " + item.WindDir}</li>
                                         <li>{"Wind Speed: " + item.WindSpd}</li>
                                     </ul>
-                                ))}
+                                ))*/}
                             </div>
 
                             <div>
