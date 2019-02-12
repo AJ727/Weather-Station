@@ -21,13 +21,27 @@ class GenericChart extends React.Component {
         this.loadData();
         setInterval(this.loadData, 60000);
     }
-    createArray = () => {
+    createArray = (typeNum) => {
         const weatherArray = [];
             for (let i = 0; i < this.state.weatherData.length; i++) {
-                let dataString = JSON.parse('{"x": ' + (i + 1) + ', "y": ' + this.state.weatherData[i].ExtTemp + '}');
+                let readingType = eval(this.whichReading(typeNum));
+                console.log(readingType);
+                let dataString = JSON.parse('{"x": ' + (i + 1) + ', "y": ' + readingType ? readingType : 0 + '}');
                 weatherArray.push(dataString);
             }
             return weatherArray;
+    }
+    whichReading = (value) => {
+        switch(value){
+            case 1:
+                return "this.state.weatherData[i].ExtTemp";
+            case 2:
+                return "this.state.weatherData[i].Humidity";
+            case 3:
+                return "this.state.weatherData[i].Pressure";
+            case 4:
+                return "this.state.weatherData[i].WindSpd";
+        }
     }
     loadData = () => { 
         // GET from the local api endpoint
@@ -77,13 +91,13 @@ class GenericChart extends React.Component {
 
                             <div>
                                 <div className="gen_charts" >
-                                    <TempChart tempData={this.createArray()} />
-                                    <HumidChart weatherData={this.state.weatherData} />
+                                    <TempChart tempData={this.createArray(1)} />
+                                    <HumidChart humidData={this.createArray(2)} />
                                 </div>
 
                                 <div className="gen_charts">
-                                    <PressChart weatherData={this.state.weatherData} />         
-                                    <WindSpdChart weatherData={this.state.weatherData} />
+                                    <PressChart pressData={this.createArray(3)} />         
+                                    <WindSpdChart spdData={this.createArray(4)} />
                                     <WindDirChart weatherData={this.state.weatherData} />
                                 </div>
                             </div>

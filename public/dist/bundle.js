@@ -58175,13 +58175,28 @@ var GenericChart = function (_React$Component) {
         }, _this.componentDidMount = function () {
             _this.loadData();
             setInterval(_this.loadData, 60000);
-        }, _this.createArray = function () {
+        }, _this.createArray = function (typeNum) {
             var weatherArray = [];
             for (var i = 0; i < _this.state.weatherData.length; i++) {
-                var dataString = JSON.parse('{"x": ' + (i + 1) + ', "y": ' + _this.state.weatherData[i].ExtTemp + '}');
+                var readingType = eval(_this.whichReading(typeNum));
+                console.log(readingType);
+                var dataString = JSON.parse( true ? readingType : 0 + '}');
                 weatherArray.push(dataString);
             }
             return weatherArray;
+        }, _this.whichReading = function (value) {
+            switch (value) {
+                case 1:
+                    return "this.state.weatherData[i].ExtTemp";
+                    break;
+                case 2:
+                    return "this.state.weatherData[i].Humidity";
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+            }
         }, _this.loadData = function () {
             // GET from the local api endpoint
             fetch('/api').then(function (res) {
@@ -58281,8 +58296,8 @@ var GenericChart = function (_React$Component) {
                         _react2.default.createElement(
                             'div',
                             { className: 'gen_charts' },
-                            _react2.default.createElement(_TempChart2.default, { tempData: this.createArray() }),
-                            _react2.default.createElement(_HumidChart2.default, { weatherData: this.state.weatherData })
+                            _react2.default.createElement(_TempChart2.default, { tempData: this.createArray(1) }),
+                            _react2.default.createElement(_HumidChart2.default, { humidData: this.createArray(2) })
                         ),
                         _react2.default.createElement(
                             'div',
@@ -82318,7 +82333,7 @@ var _victory = __webpack_require__(92);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var HumidChart = function HumidChart(_ref) {
-    var weatherData = _ref.weatherData;
+    var humidData = _ref.humidData;
     return _react2.default.createElement(
         'div',
         null,
@@ -82331,7 +82346,7 @@ var HumidChart = function HumidChart(_ref) {
                     data: { stroke: "#c43f11" },
                     parent: { border: "1px solid #ccc" }
                 },
-                data: [{ x: 1, y: weatherData[0].Humidity }, { x: 2, y: weatherData[1].Humidity }, { x: 3, y: weatherData[2].Humidity }, { x: 4, y: weatherData[3].Humidity }, { x: 5, y: weatherData[4].Humidity }]
+                data: humidData
             })
         )
     );
