@@ -109,5 +109,4 @@ class GenericChart extends React.Component {
         }
 }
 
-
 export default GenericChart;
