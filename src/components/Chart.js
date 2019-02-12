@@ -15,6 +15,7 @@ class Chart extends React.Component {
         error: null,
         isLoaded: false,
         weatherData: [],
+        dates: [],
         temps: [],
         humidities: [],
         pressures: [],
@@ -26,31 +27,42 @@ class Chart extends React.Component {
         this.loadData();
         setInterval(this.loadData, 60000);
     }
-    arrayProcessing = () => {
+    // creates arrays of same-typed values
+    arrayProcessing = () => { 
+        let dateArr = [];
         let tempArr = [];
         let humArr = [];
         let pressArr = [];
         let spdArr = [];
         let dirArr = [];
+        // for every object in the weatherData array, 
+        // create a new array of each reading
         this.state.weatherData.map(readObj => {
+            dateArr.push(readObj.time_stamp);
             tempArr.push(readObj.ExtTemp);
             humArr.push(readObj.Humidity);
             pressArr.push(readObj.Pressure);
             spdArr.push(readObj.WindSpd);
             dirArr.push(readObj.WindDir);
         });
+        // set the state to the new arrays
         this.setState({
+            dates: dateArr,
             temps: tempArr,
             humidities: humArr,
             pressures: pressArr,
             wspeeds: spdArr,
             wdirs: dirArr
         });
-        console.log("the state boi");
-        console.log(this.state);
     }
-    createArray = (typeNum) => {
+    createArray = (desiredReading) => {
+        // END FORMAT: [
+        //     { x: DATE, y: READING }
+        //     { x: DATE2, y: READING2 } 
+        // ] 
         const weatherArray = [];
+
+
             for (let i = 0; i < this.state.weatherData.length; i++) {
                 let readingType = eval(this.whichReading(typeNum));
                 //console.log(readingType);
@@ -58,18 +70,6 @@ class Chart extends React.Component {
                 weatherArray.push(dataString);
             }
             return weatherArray;
-    }
-    whichReading = (value) => {
-        switch(value){
-            case 1:
-                return "this.state.weatherData[i].ExtTemp";
-            case 2:
-                return "this.state.weatherData[i].Humidity";
-            case 3:
-                return "this.state.weatherData[i].Pressure";
-            case 4:
-                return "this.state.weatherData[i].WindSpd";
-        }
     }
     loadData = () => { 
         // GET request to local api endpoint
@@ -104,19 +104,6 @@ class Chart extends React.Component {
                     {/* If the state is loaded and there's no error, proceed. */}
                     {this.state.isLoaded && !(this.state.error) &&
                         <div>
-                            <div className="readings">
-                                {/*this.state.weatherData.map(item => (
-                                    <ul key={item.time_stamp}>
-                                        <li>{"Date: " + item.time_stamp}</li>
-                                        <li>{"Temperature: " + item.ExtTemp}</li> 
-                                        <li>{"Humidity: " + item.Humidity}</li> 
-                                        <li>{"Pressure: " + item.Pressure}</li> 
-                                        <li>{"Wind Direction: " + item.WindDir}</li>
-                                        <li>{"Wind Speed: " + item.WindSpd}</li>
-                                    </ul>
-                                ))*/}
-                            </div>
-
                             <div>
                                 <div className="gen_charts" >
                                     <TempChart tempData={this.createArray(1)} />

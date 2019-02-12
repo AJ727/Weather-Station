@@ -58175,17 +58175,33 @@ var Chart = function (_React$Component) {
             temps: [],
             humidities: [],
             pressures: [],
-            speeds: []
+            wspeeds: [],
+            wdirs: []
         }, _this.componentDidMount = function () {
             _this.loadData();
             setInterval(_this.loadData, 60000);
         }, _this.arrayProcessing = function () {
-            var tArr = [];
+            var tempArr = [];
+            var humArr = [];
+            var pressArr = [];
+            var spdArr = [];
+            var dirArr = [];
             _this.state.weatherData.map(function (readObj) {
-                tArr.push(readObj.ExtTemp);
+                tempArr.push(readObj.ExtTemp);
+                humArr.push(readObj.Humidity);
+                pressArr.push(readObj.Pressure);
+                spdArr.push(readObj.WindSpd);
+                dirArr.push(readObj.WindDir);
             });
-            console.log("---FROM ARRAY PROCESSING---");
-            console.log(tArr);
+            _this.setState({
+                temps: tempArr,
+                humidities: humArr,
+                pressures: pressArr,
+                wspeeds: spdArr,
+                wdirs: dirArr
+            });
+            console.log("the state boi");
+            console.log(_this.state);
         }, _this.createArray = function (typeNum) {
             var weatherArray = [];
             for (var i = 0; i < _this.state.weatherData.length; i++) {
@@ -58228,7 +58244,8 @@ var Chart = function (_React$Component) {
                         error: error
                     };
                 });
-            }).then(function () {
+            }) // after data is loaded, process it
+            .then(function () {
                 return _this.arrayProcessing();
             });
         }, _temp), _possibleConstructorReturn(_this, _ret);
