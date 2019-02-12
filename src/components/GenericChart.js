@@ -5,9 +5,10 @@ import PressChart from './PressChart';
 import WindSpdChart from './WindSpdChart';
 import WindDirChart from './WindDirChart';
 
-// This components purpose is to be imported by actual
-// components such as Humidity, Pressure, etc
-// and pass in the data specific to each type
+// This components purpose is to query the API every
+// X minutes, and store that data in a local state array
+// It then passes in properties to the corresponding child chart
+// components, where the data will be displayed
 
 class GenericChart extends React.Component {
     state = {
