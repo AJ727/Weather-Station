@@ -18,25 +18,42 @@ class Chart extends React.Component {
         temps: [],
         humidities: [],
         pressures: [],
-        speeds: []
+        wspeeds: [],
+        wdirs: []
     };
     // call loadData every minute
     componentDidMount = () => {
         this.loadData();
-        this.arrayProcessing();
         setInterval(this.loadData, 60000);
-
     }
     arrayProcessing = () => {
-        this.state.weatherData.map(object =>{
-
+        let tempArr = [];
+        let humArr = [];
+        let pressArr = [];
+        let spdArr = [];
+        let dirArr = [];
+        this.state.weatherData.map(readObj => {
+            tempArr.push(readObj.ExtTemp);
+            humArr.push(readObj.Humidity);
+            pressArr.push(readObj.Pressure);
+            spdArr.push(readObj.WindSpd);
+            dirArr.push(readObj.WindDir);
         });
+        this.setState({
+            temps: tempArr,
+            humidities: humArr,
+            pressures: pressArr,
+            wspeeds: spdArr,
+            wdirs: dirArr
+        });
+        console.log("the state boi");
+        console.log(this.state);
     }
     createArray = (typeNum) => {
         const weatherArray = [];
             for (let i = 0; i < this.state.weatherData.length; i++) {
                 let readingType = eval(this.whichReading(typeNum));
-                console.log(readingType);
+                //console.log(readingType);
                 let dataString = JSON.parse('{"x": ' + (i + 1) + ', "y": ' + readingType ? readingType : 0 + '}');
                 weatherArray.push(dataString);
             }
@@ -72,9 +89,10 @@ class Chart extends React.Component {
                     isLoaded: true,
                     error
                 }))
-            });
+            }) // after data is loaded, process it
+        .then(() => this.arrayProcessing());
     }
-    render(){
+    render() {
             return (
                 <div className="wrapper">
                     {/* If there's an error, print it */}

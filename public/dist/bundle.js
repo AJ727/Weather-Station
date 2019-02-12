@@ -1673,7 +1673,7 @@ module.exports = keys;
 /* 33 */
 /***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.6.2' };
+var core = module.exports = { version: '2.5.7' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -5313,7 +5313,7 @@ var store = global[SHARED] || (global[SHARED] = {});
 })('versions', []).push({
   version: core.version,
   mode: __webpack_require__(53) ? 'pure' : 'global',
-  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
+  copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
 });
 
 
@@ -58178,15 +58178,19 @@ var Chart = function (_React$Component) {
             speeds: []
         }, _this.componentDidMount = function () {
             _this.loadData();
-            _this.arrayProcessing();
             setInterval(_this.loadData, 60000);
         }, _this.arrayProcessing = function () {
-            console.log(_this.state);
+            var tArr = [];
+            _this.state.weatherData.map(function (readObj) {
+                tArr.push(readObj.ExtTemp);
+            });
+            console.log("---FROM ARRAY PROCESSING---");
+            console.log(tArr);
         }, _this.createArray = function (typeNum) {
             var weatherArray = [];
             for (var i = 0; i < _this.state.weatherData.length; i++) {
                 var readingType = eval(_this.whichReading(typeNum));
-                console.log(readingType);
+                //console.log(readingType);
                 var dataString = JSON.parse( true ? readingType : 0 + '}');
                 weatherArray.push(dataString);
             }
@@ -58224,6 +58228,8 @@ var Chart = function (_React$Component) {
                         error: error
                     };
                 });
+            }).then(function () {
+                return _this.arrayProcessing();
             });
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
