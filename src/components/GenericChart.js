@@ -72,7 +72,7 @@ class GenericChart extends React.Component {
 
                             <div>
                                 <div className="gen_charts" >
-                                    <TempChart weatherData={this.createArray()} />
+                                    <TempChart weatherData={this.state.weatherData} />
                                     <HumidChart weatherData={this.state.weatherData} />
                                 </div>
 
