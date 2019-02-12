@@ -58172,6 +58172,7 @@ var Chart = function (_React$Component) {
             error: null,
             isLoaded: false,
             weatherData: [],
+            dates: [],
             temps: [],
             humidities: [],
             pressures: [],
@@ -58181,47 +58182,43 @@ var Chart = function (_React$Component) {
             _this.loadData();
             setInterval(_this.loadData, 60000);
         }, _this.arrayProcessing = function () {
+            var dateArr = [];
             var tempArr = [];
             var humArr = [];
             var pressArr = [];
             var spdArr = [];
             var dirArr = [];
+            // for every object in the weatherData array, 
+            // create a new array of each reading
             _this.state.weatherData.map(function (readObj) {
+                dateArr.push(readObj.time_stamp);
                 tempArr.push(readObj.ExtTemp);
                 humArr.push(readObj.Humidity);
                 pressArr.push(readObj.Pressure);
                 spdArr.push(readObj.WindSpd);
                 dirArr.push(readObj.WindDir);
             });
+            // set the state to the new arrays
             _this.setState({
+                dates: dateArr,
                 temps: tempArr,
                 humidities: humArr,
                 pressures: pressArr,
                 wspeeds: spdArr,
                 wdirs: dirArr
             });
-            console.log("the state boi");
-            console.log(_this.state);
-        }, _this.createArray = function (typeNum) {
+        }, _this.createArray = function (desiredReading) {
+            // END FORMAT: [
+            //     { x: DATE, y: READING }
+            //     { x: DATE2, y: READING2 } 
+            // ] 
             var weatherArray = [];
-            for (var i = 0; i < _this.state.weatherData.length; i++) {
-                var readingType = eval(_this.whichReading(typeNum));
-                //console.log(readingType);
-                var dataString = JSON.parse( true ? readingType : 0 + '}');
+            for (var i = 0; i < desiredReading.length; i++) {
+                var dataString = JSON.parse('{ "x": ' + (i + 1) + ', "y": ' + desiredReading[i] + ' }');
+                console.log(dataString);
                 weatherArray.push(dataString);
             }
             return weatherArray;
-        }, _this.whichReading = function (value) {
-            switch (value) {
-                case 1:
-                    return "this.state.weatherData[i].ExtTemp";
-                case 2:
-                    return "this.state.weatherData[i].Humidity";
-                case 3:
-                    return "this.state.weatherData[i].Pressure";
-                case 4:
-                    return "this.state.weatherData[i].WindSpd";
-            }
         }, _this.loadData = function () {
             // GET request to local api endpoint
             fetch('/api').then(function (res) {
@@ -58252,6 +58249,8 @@ var Chart = function (_React$Component) {
     }
     // call loadData every minute
 
+    // creates arrays of same-typed values
+
 
     _createClass(Chart, [{
         key: 'render',
@@ -58273,21 +58272,20 @@ var Chart = function (_React$Component) {
                 this.state.isLoaded && !this.state.error && _react2.default.createElement(
                     'div',
                     null,
-                    _react2.default.createElement('div', { className: 'readings' }),
                     _react2.default.createElement(
                         'div',
                         null,
                         _react2.default.createElement(
                             'div',
                             { className: 'gen_charts' },
-                            _react2.default.createElement(_TempChart2.default, { tempData: this.createArray(1) }),
-                            _react2.default.createElement(_HumidChart2.default, { humidData: this.createArray(2) })
+                            _react2.default.createElement(_TempChart2.default, { tempData: this.createArray(this.state.temps) }),
+                            _react2.default.createElement(_HumidChart2.default, { humidData: this.createArray(this.state.humidities) })
                         ),
                         _react2.default.createElement(
                             'div',
                             { className: 'gen_charts' },
-                            _react2.default.createElement(_PressChart2.default, { pressData: this.createArray(3) }),
-                            _react2.default.createElement(_WindSpdChart2.default, { spdData: this.createArray(4) }),
+                            _react2.default.createElement(_PressChart2.default, { pressData: this.createArray(this.state.pressures) }),
+                            _react2.default.createElement(_WindSpdChart2.default, { spdData: this.createArray(this.state.wspeeds) }),
                             _react2.default.createElement(_WindDirChart2.default, { weatherData: this.state.weatherData })
                         )
                     )
