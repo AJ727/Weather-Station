@@ -58212,9 +58212,8 @@ var Chart = function (_React$Component) {
             // FOR WINDDIR: [ { x: "N", y: numOfNreadings }, { x: "NE", y: numofNEreadings } ]
             var weatherArray = [];
             if (desiredReading.toString() === _this.state.wdirs.toString()) {
-                console.log('EQUAL');
+                weatherArray = _this.windDirProcesser(desiredReading);
             } else {
-                console.log('NOT EQUAL');
                 for (var i = 0; i < desiredReading.length; i++) {
                     var dataString = JSON.parse('{ "x": ' + (i + 1) + ', "y": ' + desiredReading[i] + ' }');
                     weatherArray.push(dataString);
@@ -58222,6 +58221,59 @@ var Chart = function (_React$Component) {
             }
 
             return weatherArray;
+        }, _this.windDirProcesser = function () {
+            var enumeratedDirArr = [];
+            var N = 0,
+                NE = 0,
+                E = 0,
+                SE = 0,
+                S = 0,
+                SW = 0,
+                W = 0,
+                NW = 0;
+            _this.state.wdirs.map(function (direction) {
+                switch (direction) {
+                    case "N":
+                        N++;
+                        break;
+                    case "NE":
+                        NE++;
+                        break;
+                    case "E":
+                        E++;
+                        break;
+                    case "SE":
+                        SE++;
+                        break;
+                    case "S":
+                        S++;
+                        break;
+                    case "SW":
+                        SW++;
+                        break;
+                    case "W":
+                        W++;
+                        break;
+                    case "NW":
+                        NW++;
+                        break;
+                    default:
+                        N++;
+                        break;
+                }
+            });
+
+            var nDir = JSON.parse('{ "x": "N", "y": ' + N + ' }');
+            var neDir = JSON.parse('{ "x": "NE", "y": ' + NE + ' }');
+            var eDir = JSON.parse('{ "x": "E", "y": ' + E + ' }');
+            var seDir = JSON.parse('{ "x": "SE", "y": ' + SE + ' }');
+            var sDir = JSON.parse('{ "x": "S", "y": ' + S + ' }');
+            var swDir = JSON.parse('{ "x": "SW", "y": ' + SW + ' }');
+            var wDir = JSON.parse('{ "x": "W", "y": ' + W + ' }');
+            var nwDir = JSON.parse('{ "x": "NW", "y": ' + NW + ' }');
+            enumeratedDirArr.push(nDir, neDir, eDir, seDir, sDir, swDir, wDir, nwDir);
+
+            return enumeratedDirArr;
         }, _this.loadData = function () {
             // GET request to local api endpoint
             fetch('/api').then(function (res) {

@@ -60,7 +60,7 @@ class Chart extends React.Component {
         // FOR WINDDIR: [ { x: "N", y: numOfNreadings }, { x: "NE", y: numofNEreadings } ]
         let weatherArray = [];
             if (desiredReading.toString() === this.state.wdirs.toString()) {
-                this.windDirProcesser(desiredReading);
+                weatherArray = this.windDirProcesser(desiredReading);
             }
             else {
                 for (let i = 0; i < desiredReading.length; i++) {
@@ -72,7 +72,8 @@ class Chart extends React.Component {
             return weatherArray;
     }
     windDirProcesser = () => {
-        N = NE = NW = W = SW = S = SE = E = 0;
+        let enumeratedDirArr = []
+        let N = 0, NE = 0, E = 0, SE = 0, S = 0, SW = 0, W = 0, NW = 0;
         this.state.wdirs.map(direction => {
             switch(direction) {
                 case "N":
@@ -81,29 +82,41 @@ class Chart extends React.Component {
                 case "NE":
                     NE++;
                     break;
-                case "NW":
-                    NW++;
-                    break;
-                case "W":
-                    W++;
-                    break;
-                case "SW":
-                    SW++;
-                    break;
-                case "S":
-                    S++;
+                case "E":
+                    E++;
                     break;
                 case "SE":
                     SE++;
                     break;
-                case "E":
-                    E++;
+                case "S":
+                    S++;
+                    break;
+                case "SW":
+                    SW++;
+                    break;
+                case "W":
+                    W++;
+                    break;
+                case "NW":
+                    NW++;
                     break;
                 default:
                     N++;
                     break;
             }
         });
+
+        let nDir = JSON.parse(`{ "x": "N", "y": ${N} }`);
+        let neDir = JSON.parse(`{ "x": "NE", "y": ${NE} }`);
+        let eDir = JSON.parse(`{ "x": "E", "y": ${E} }`);
+        let seDir = JSON.parse(`{ "x": "SE", "y": ${SE} }`);
+        let sDir = JSON.parse(`{ "x": "S", "y": ${S} }`);
+        let swDir = JSON.parse(`{ "x": "SW", "y": ${SW} }`);
+        let wDir = JSON.parse(`{ "x": "W", "y": ${W} }`);
+        let nwDir = JSON.parse(`{ "x": "NW", "y": ${NW} }`);
+        enumeratedDirArr.push(nDir, neDir, eDir, seDir, sDir, swDir, wDir, nwDir);
+
+        return enumeratedDirArr;
     }
     loadData = () => { 
         // GET request to local api endpoint
