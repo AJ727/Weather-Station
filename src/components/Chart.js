@@ -74,12 +74,34 @@ class Chart extends React.Component {
     windDirProcesser = () => {
         N = NE = NW = W = SW = S = SE = E = 0;
         this.state.wdirs.map(direction => {
-            switch(direction){
+            switch(direction) {
                 case "N":
                     N++;
                     break;
                 case "NE":
                     NE++;
+                    break;
+                case "NW":
+                    NW++;
+                    break;
+                case "W":
+                    W++;
+                    break;
+                case "SW":
+                    SW++;
+                    break;
+                case "S":
+                    S++;
+                    break;
+                case "SE":
+                    SE++;
+                    break;
+                case "E":
+                    E++;
+                    break;
+                default:
+                    N++;
+                    break;
             }
         });
     }
