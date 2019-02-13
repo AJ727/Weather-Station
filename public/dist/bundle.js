@@ -1673,7 +1673,7 @@ module.exports = keys;
 /* 33 */
 /***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.5.7' };
+var core = module.exports = { version: '2.6.2' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -5313,7 +5313,7 @@ var store = global[SHARED] || (global[SHARED] = {});
 })('versions', []).push({
   version: core.version,
   mode: __webpack_require__(53) ? 'pure' : 'global',
-  copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
+  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
 
 
@@ -58208,16 +58208,19 @@ var Chart = function (_React$Component) {
                 wdirs: dirArr
             });
         }, _this.createArray = function (desiredReading) {
-            // END FORMAT: [
-            //     { x: DATE, y: READING }
-            //     { x: DATE2, y: READING2 } 
-            // ] 
+            // END FORMAT: [ { x: DATE, y: READING }, { x: DATE2, y: READING2 } ] 
+            // FOR WINDDIR: [ { x: "N", y: numOfNreadings }, { x: "NE", y: numofNEreadings } ]
             var weatherArray = [];
-            for (var i = 0; i < desiredReading.length; i++) {
-                var dataString = JSON.parse('{ "x": ' + (i + 1) + ', "y": ' + desiredReading[i] + ' }');
-                console.log(dataString);
-                weatherArray.push(dataString);
+            if (desiredReading.toString() === _this.state.wdirs.toString()) {
+                console.log('EQUAL');
+            } else {
+                console.log('NOT EQUAL');
+                for (var i = 0; i < desiredReading.length; i++) {
+                    var dataString = JSON.parse('{ "x": ' + (i + 1) + ', "y": ' + desiredReading[i] + ' }');
+                    weatherArray.push(dataString);
+                }
             }
+
             return weatherArray;
         }, _this.loadData = function () {
             // GET request to local api endpoint
@@ -58226,7 +58229,7 @@ var Chart = function (_React$Component) {
             }) // convert to json
             .then( // change the local state
             function (result) {
-                console.log("FROM LOAD DATA: --- ");
+                console.log("FROM LOAD DATA: ");
                 console.log(result);
                 _this.setState(function () {
                     return {
@@ -58286,7 +58289,7 @@ var Chart = function (_React$Component) {
                             { className: 'gen_charts' },
                             _react2.default.createElement(_PressChart2.default, { pressData: this.createArray(this.state.pressures) }),
                             _react2.default.createElement(_WindSpdChart2.default, { spdData: this.createArray(this.state.wspeeds) }),
-                            _react2.default.createElement(_WindDirChart2.default, { weatherData: this.state.weatherData })
+                            _react2.default.createElement(_WindDirChart2.default, { dirData: this.createArray(this.state.wdirs) })
                         )
                     )
                 )
@@ -82411,7 +82414,8 @@ var _victory = __webpack_require__(92);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var WindDirChart = function WindDirChart(props) {
+var WindDirChart = function WindDirChart(_ref) {
+    var dirData = _ref.dirData;
     return _react2.default.createElement(
         'div',
         null,
@@ -82419,7 +82423,7 @@ var WindDirChart = function WindDirChart(props) {
             _victory.VictoryChart,
             { theme: _victory.VictoryTheme.material },
             _react2.default.createElement(_victory.VictoryLabel, { text: 'Wind Direction Readings', x: 180, y: 30, textAnchor: 'middle' }),
-            _react2.default.createElement(_victory.VictoryLine, {
+            _react2.default.createElement(_victory.VictoryBar, {
                 style: {
                     data: { stroke: "#c43f11" },
                     parent: { border: "1px solid #ccc" }
@@ -82427,7 +82431,7 @@ var WindDirChart = function WindDirChart(props) {
                 // data={props.data.ExtTemp} <-- this is correct, but we need more data, so trying with dummy data
                 // TODO: Change code so that data is saved, and just added on to, instead
                 // of replacing the state each time
-                , data: [{ x: 1, y: 1 }, { x: 2, y: 8 }, { x: 3, y: 7 }, { x: 4, y: 3 }]
+                , data: dirData
             })
         )
     );

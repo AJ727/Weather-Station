@@ -56,16 +56,32 @@ class Chart extends React.Component {
         });
     }
     createArray = (desiredReading) => {
-        // END FORMAT: [
-        //     { x: DATE, y: READING }
-        //     { x: DATE2, y: READING2 } 
-        // ] 
-        const weatherArray = [];
-            for (let i = 0; i < desiredReading.length; i++) {
-                let dataString = JSON.parse(`{ "x": ${i + 1}, "y": ${desiredReading[i]} }`);
-                weatherArray.push(dataString);
+        // END FORMAT: [ { x: DATE, y: READING }, { x: DATE2, y: READING2 } ] 
+        // FOR WINDDIR: [ { x: "N", y: numOfNreadings }, { x: "NE", y: numofNEreadings } ]
+        let weatherArray = [];
+            if (desiredReading.toString() === this.state.wdirs.toString()) {
+                this.windDirProcesser(desiredReading);
             }
+            else {
+                for (let i = 0; i < desiredReading.length; i++) {
+                    let dataString = JSON.parse(`{ "x": ${i + 1}, "y": ${desiredReading[i]} }`);
+                    weatherArray.push(dataString);
+                }
+            }
+            
             return weatherArray;
+    }
+    windDirProcesser = () => {
+        N = NE = NW = W = SW = S = SE = E = 0;
+        this.state.wdirs.map(direction => {
+            switch(direction){
+                case "N":
+                    N++;
+                    break;
+                case "NE":
+                    NE++;
+            }
+        });
     }
     loadData = () => { 
         // GET request to local api endpoint
@@ -109,14 +125,14 @@ class Chart extends React.Component {
                                 <div className="gen_charts">
                                     <PressChart pressData={this.createArray(this.state.pressures)} />         
                                     <WindSpdChart spdData={this.createArray(this.state.wspeeds)} />
-                                    <WindDirChart weatherData={this.state.weatherData} />
+                                    <WindDirChart dirData={this.createArray(this.state.wdirs)} />
                                 </div>
                             </div>
                         </div>
                     }
                 </div>
-                )
-            }
+            )
+        }
             
 }
 
