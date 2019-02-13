@@ -22,12 +22,13 @@ class Chart extends React.Component {
         wspeeds: [],
         wdirs: []
     };
-    // call loadData every minute
+    // SPEC: Lifecycle method that is called once component is inserted as a node into the DOM
     componentDidMount = () => {
         this.loadData();
+        // call loadData every minute
         setInterval(this.loadData, 60000);
     }
-    // creates arrays of same-typed values
+    // SPEC: Creates arrays of same-typed values using the loaded data (loadData calls this function)
     arrayProcessing = () => { 
         let dateArr = [];
         let tempArr = [];
@@ -55,6 +56,7 @@ class Chart extends React.Component {
             wdirs: dirArr
         });
     }
+    // SPEC: Takes state and returns an array of the same type of data (Ex. all Temps, or all Pressures)
     createArray = (desiredReading) => {
         // END FORMAT: [ { x: DATE, y: READING }, { x: DATE2, y: READING2 } ] 
         // FOR WINDDIR: [ { x: "N", y: numOfNreadings }, { x: "NE", y: numofNEreadings } ]
@@ -69,8 +71,10 @@ class Chart extends React.Component {
                 }
             }
             
-            return weatherArray;
+        return weatherArray;
     }
+    // SPEC: Loops through wind directions, and counts the occurences of each one,
+    //       then parses to JSON and returns the array of JSON objects
     windDirProcesser = () => {
         let enumeratedDirArr = []
         let N = 0, NE = 0, E = 0, SE = 0, S = 0, SW = 0, W = 0, NW = 0;
@@ -118,14 +122,15 @@ class Chart extends React.Component {
 
         return enumeratedDirArr;
     }
+    // SPEC: Makes get to request to API, converts to JSON, sets the new state with the result,
+    //       and calls arrayProcessing to process the data
     loadData = () => { 
         // GET request to local api endpoint
         fetch('/api')
         .then(res => res.json())  // convert to json
         .then(                    // change the local state
             (result) => {
-                console.log("FROM LOAD DATA: ")
-                console.log(result);
+                // log result here if wanting to see structure
                 this.setState(() => ({
                     isLoaded: true,
                     weatherData: result.Readings
@@ -142,6 +147,7 @@ class Chart extends React.Component {
     render() {
             return (
                 <div className="wrapper">
+
                     {/* If there's an error, print it */}
                     {this.state.error && <div>Error: {error.message}</div>}
                     
@@ -161,10 +167,11 @@ class Chart extends React.Component {
                                     <PressChart pressData={this.createArray(this.state.pressures)} />  
                                     <WindDirChart dirData={this.createArray(this.state.wdirs)} />       
                                     <WindSpdChart spdData={this.createArray(this.state.wspeeds)} />
-                                    </div>
+                                </div>
                             </div>
                         </div>
                     }
+
                 </div>
             )
         }
