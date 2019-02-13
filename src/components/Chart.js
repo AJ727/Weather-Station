@@ -158,10 +158,10 @@ class Chart extends React.Component {
                                 </div>
 
                                 <div className="gen_charts">
-                                    <PressChart pressData={this.createArray(this.state.pressures)} />         
+                                    <PressChart pressData={this.createArray(this.state.pressures)} />  
+                                    <WindDirChart dirData={this.createArray(this.state.wdirs)} />       
                                     <WindSpdChart spdData={this.createArray(this.state.wspeeds)} />
-                                    <WindDirChart dirData={this.createArray(this.state.wdirs)} />
-                                </div>
+                                    </div>
                             </div>
                         </div>
                     }
