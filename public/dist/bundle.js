@@ -58340,8 +58340,8 @@ var Chart = function (_React$Component) {
                             'div',
                             { className: 'gen_charts' },
                             _react2.default.createElement(_PressChart2.default, { pressData: this.createArray(this.state.pressures) }),
-                            _react2.default.createElement(_WindSpdChart2.default, { spdData: this.createArray(this.state.wspeeds) }),
-                            _react2.default.createElement(_WindDirChart2.default, { dirData: this.createArray(this.state.wdirs) })
+                            _react2.default.createElement(_WindDirChart2.default, { dirData: this.createArray(this.state.wdirs) }),
+                            _react2.default.createElement(_WindSpdChart2.default, { spdData: this.createArray(this.state.wspeeds) })
                         )
                     )
                 )
@@ -58380,7 +58380,7 @@ var TempChart = function TempChart(_ref) {
         null,
         _react2.default.createElement(
             _victory.VictoryChart,
-            { theme: _victory.VictoryTheme.material },
+            { domainPadding: 20, theme: _victory.VictoryTheme.material },
             _react2.default.createElement(_victory.VictoryLabel, { text: 'Temperature Readings', x: 180, y: 30, textAnchor: 'middle' }),
             _react2.default.createElement(_victory.VictoryLine, {
                 style: {
@@ -82350,7 +82350,7 @@ var HumidChart = function HumidChart(_ref) {
         null,
         _react2.default.createElement(
             _victory.VictoryChart,
-            { theme: _victory.VictoryTheme.material },
+            { domainPadding: 20, theme: _victory.VictoryTheme.material },
             _react2.default.createElement(_victory.VictoryLabel, { text: 'Humidity Readings', textAnchor: 'middle', x: 180, y: 30 }),
             _react2.default.createElement(_victory.VictoryLine, {
                 style: {
@@ -82391,7 +82391,7 @@ var PressChart = function PressChart(_ref) {
         null,
         _react2.default.createElement(
             _victory.VictoryChart,
-            { theme: _victory.VictoryTheme.material },
+            { domainPadding: 20, theme: _victory.VictoryTheme.material },
             _react2.default.createElement(_victory.VictoryLabel, { text: 'Pressure Readings', x: 180, y: 30, textAnchor: 'middle' }),
             _react2.default.createElement(_victory.VictoryLine, {
                 style: {
@@ -82432,7 +82432,7 @@ var WindSpdChart = function WindSpdChart(_ref) {
         null,
         _react2.default.createElement(
             _victory.VictoryChart,
-            { theme: _victory.VictoryTheme.material },
+            { domainPadding: 20, theme: _victory.VictoryTheme.material },
             _react2.default.createElement(_victory.VictoryLabel, { text: 'Wind Speed Readings', textAnchor: 'middle', x: 180, y: 30 }),
             _react2.default.createElement(_victory.VictoryLine, {
                 style: {
@@ -82473,7 +82473,7 @@ var WindDirChart = function WindDirChart(_ref) {
         null,
         _react2.default.createElement(
             _victory.VictoryChart,
-            { theme: _victory.VictoryTheme.material },
+            { domainPadding: 20, theme: _victory.VictoryTheme.material },
             _react2.default.createElement(_victory.VictoryLabel, { text: 'Wind Direction Readings', x: 180, y: 30, textAnchor: 'middle' }),
             _react2.default.createElement(_victory.VictoryBar, {
                 style: {

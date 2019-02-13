@@ -3,7 +3,7 @@ import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel } from 'victory';
 
 const HumidChart = ({ humidData }) => (
     <div>
-        <VictoryChart theme={VictoryTheme.material}>
+        <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
             <VictoryLabel text="Humidity Readings" textAnchor="middle" x={180} y={30} />
             <VictoryLine 
                 style={{
