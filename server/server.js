@@ -37,7 +37,7 @@ app.get('/api', (req, res) => {
             console.log(err);
         }
         else {
-            request = new Request("USE weatherDB; SELECT TOP(10) \
+            request = new Request("USE weatherDB; SELECT TOP(15) \
             time_stamp, \
             CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
             CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
@@ -64,41 +64,6 @@ app.get('/api', (req, res) => {
         }
     })
 });
-
-
-// app.get('/api', (req, res) => {
-//     let connection = new Connection(dbConfig);
-//     connection.on('connect', (err) => {
-//         if(err){
-//             console.log(err);
-//         }
-//         else {
-//             request = new Request("USE weatherDB; SELECT TOP(1) \
-//             time_stamp, \
-//             CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
-//             CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
-//             CONVERT(DECIMAL(10,2), Pressure) AS Pressure, \
-//             WindDir \
-//             FROM Readings ORDER BY time_stamp DESC \
-//             FOR JSON PATH, ROOT('Readings');"
-//             , (err, rowCount) => {
-//                 if(err){
-//                     console.log(err);
-//                 }
-//                 else{
-//                     console.log(rowCount + ' rows');
-//                 }
-//             }); 
-
-//             let data = '';
-//             request.on('row', (columns) => {
-//                 columns.forEach((column) => data += column.value);
-//                 res.json(JSON.parse(data));
-//             });
-//             connection.execSql(request);
-//         }
-//     })
-// });
 
 // POST request handler (arduino data is sent here)
 // Sends validated and formatted data to SQL Server AWS Instance
