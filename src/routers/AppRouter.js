@@ -2,6 +2,11 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import DashboardPage from '../components/DashboardPage';
+import TempChart from '../components/TempChart';
+import HumidChart from '../components/HumidChart';
+import PressChart from '../components/PressChart';
+import WindSpdChart from '../components/WindSpdChart';
+import WindDirChart from '../components/WindDirChart';
 import NotFoundPage from '../components/NotFoundPage';
 
 // Stateless functional React Component
@@ -18,6 +23,11 @@ const AppRouter = () => (
         <div>
         <Switch>
             <Route path="/" component={DashboardPage} exact={true} />
+            <Route path="/temp" component={TempChart} />
+            <Route path="/humidity" component={HumidChart} />
+            <Route path="/pressure" component={PressChart} />
+            <Route path="/wind_speed" component={WindSpdChart} />
+            <Route path="/wind_dir" component={WindDirChart} />
             <Route component={NotFoundPage} />
         </Switch>
         </div>
