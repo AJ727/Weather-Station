@@ -1,4 +1,5 @@
 import React from 'react';
+import LoadingPage from './LoadingPage';
 import TempChart from './TempChart';
 import HumidChart from './HumidChart';
 import PressChart from './PressChart';
@@ -153,7 +154,7 @@ class Chart extends React.Component {
                     {this.state.error && <div>Error: {error.message}</div>}
                     
                     {/* If the state isn't loaded, print loading */}
-                    {!(this.state.isLoaded) && <div>Loading...</div>}
+                    {!(this.state.isLoaded) && <LoadingPage />}
                     
                     {/* If the state is loaded and there's no error, proceed. */}
                     {this.state.isLoaded && !(this.state.error) &&
