@@ -62,5 +62,3 @@ typings/
 
 # ignore generated webpack files
 public/dist/
-public/dist/bundle.js
-public/dist/bundle.js.map
