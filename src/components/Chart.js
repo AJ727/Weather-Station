@@ -48,12 +48,12 @@ class Chart extends React.Component {
         });
         // set the state to the new arrays
         this.setState({
-            dates: dateArr,
-            temps: tempArr,
-            humidities: humArr,
-            pressures: pressArr,
-            wspeeds: spdArr,
-            wdirs: dirArr
+            dates: dateArr.reverse(),
+            temps: tempArr.reverse(),
+            humidities: humArr.reverse(),
+            pressures: pressArr.reverse(),
+            wspeeds: spdArr.reverse(),
+            wdirs: dirArr.reverse()
         });
     }
     // SPEC: Takes state and returns an array of the same type of data (Ex. all Temps, or all Pressures)

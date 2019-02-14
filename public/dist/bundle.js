@@ -58481,12 +58481,12 @@ var Chart = function (_React$Component) {
             });
             // set the state to the new arrays
             _this.setState({
-                dates: dateArr,
-                temps: tempArr,
-                humidities: humArr,
-                pressures: pressArr,
-                wspeeds: spdArr,
-                wdirs: dirArr
+                dates: dateArr.reverse(),
+                temps: tempArr.reverse(),
+                humidities: humArr.reverse(),
+                pressures: pressArr.reverse(),
+                wspeeds: spdArr.reverse(),
+                wdirs: dirArr.reverse()
             });
         }, _this.createArray = function (desiredReading) {
             // END FORMAT: [ { x: DATE, y: READING }, { x: DATE2, y: READING2 } ] 
