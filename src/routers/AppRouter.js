@@ -23,11 +23,11 @@ const AppRouter = () => (
         <div>
         <Switch>
             <Route path="/" component={DashboardPage} exact={true} />
-            <Route path="/temp" component={TempChart} />
-            <Route path="/humidity" component={HumidChart} />
-            <Route path="/pressure" component={PressChart} />
-            <Route path="/wind_speed" component={WindSpdChart} />
-            <Route path="/wind_dir" component={WindDirChart} />
+            <Route path="/temps" component={TempChart} />
+            <Route path="/humidities" component={HumidChart} />
+            <Route path="/pressures" component={PressChart} />
+            <Route path="/wind_speeds" component={WindSpdChart} />
+            <Route path="/wind_dirs" component={WindDirChart} />
             <Route component={NotFoundPage} />
         </Switch>
         </div>

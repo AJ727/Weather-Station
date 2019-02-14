@@ -11,10 +11,21 @@ export const Header = () => (
                 <h1>WEATHER STATION</h1>
             </Link>
             <div className="nav-buttons">
-            <button className="button button--link" >Temperature</button>
-            <button className="button button--link" >Humidity</button>
-            <button className="button button--link" >Pressure</button>
-            <button className="button button--link" >Wind Direction</button>
+                <Link to="/temps">
+                    <button className="button button--link" >Temperature</button>
+                </Link>
+                <Link to="/humidities">
+                    <button className="button button--link" >Humidity</button>
+                </Link>
+                <Link to="/pressures">
+                    <button className="button button--link" >Pressure</button>
+                </Link>
+                <Link to="/wind_speeds">
+                    <button className="button button--link" >Wind Speeds</button>
+                </Link>
+                <Link to="/wind_dirs">
+                    <button className="button button--link" >Wind Direction</button>
+                </Link>
             </div>
         </div>
     </div>
