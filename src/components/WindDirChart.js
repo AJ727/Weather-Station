@@ -14,6 +14,10 @@ const WindDirChart = ({ dirData }) => (
                 // TODO: Change code so that data is saved, and just added on to, instead
                 // of replacing the state each time
                 data={dirData}
+                animate={{
+                    duration: 2000,
+                    onLoad: { duration: 1000 }
+                }}
             />
         </VictoryChart>    
     </div>

@@ -11,6 +11,10 @@ const HumidChart = ({ humidData }) => (
                     parent: { border: "1px solid #ccc" }
                 }}
                 data={humidData}
+                animate={{
+                    duration: 2000,
+                    onLoad: { duration: 1000 }
+                }}
             />
         </VictoryChart>    
     </div>

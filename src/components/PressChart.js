@@ -11,6 +11,10 @@ const PressChart = ({ pressData }) => (
                     parent: { border: "1px solid #ccc" }
                 }}
                 data={pressData}
+                animate={{
+                    duration: 2000,
+                    onLoad: { duration: 1000 }
+                }}
             />
         </VictoryChart>    
     </div>
