@@ -54224,7 +54224,7 @@ var AppRouter = function AppRouter() {
                 _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _DashboardPage2.default, exact: true }),
                 _react2.default.createElement(_reactRouterDom.Route, { path: '/temps', render: function render(_ref) {
                         var tempData = _ref.tempData;
-                        return _react2.default.createElement(_TempChart2.default, { tempData: [{ x: 4, y: 22 }] });
+                        return _react2.default.createElement(_TempChart2.default, null);
                     } }),
                 _react2.default.createElement(_reactRouterDom.Route, { path: '/humidities', component: _HumidChart2.default }),
                 _react2.default.createElement(_reactRouterDom.Route, { path: '/pressures', component: _PressChart2.default }),

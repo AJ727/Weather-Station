@@ -25,7 +25,7 @@ const AppRouter = () => (
                 <Switch>
                     <Route path="/" component={DashboardPage} exact={true} />
                     <Route path="/temps" render={({tempData}) => (
-                        <TempChart tempData={[{x:4, y:22}]} />
+                        <TempChart />
                     )} />
                     <Route path="/humidities" component={HumidChart} />
                     <Route path="/pressures" component={PressChart} />
