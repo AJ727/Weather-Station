@@ -62,9 +62,10 @@ class Chart extends React.Component {
         // FOR WINDDIR: [ { x: "N", y: numOfNreadings }, { x: "NE", y: numofNEreadings } ]
         let weatherArray = [];
             if (desiredReading.toString() === this.state.wdirs.toString()) {
-                weatherArray = this.windDirProcesser(desiredReading);
+                weatherArray = this.windDirProcessor(desiredReading);
             }
             else {
+                // using string interpolation and a template literal, parse the string to a JSON object
                 for (let i = 0; i < desiredReading.length; i++) {
                     let dataString = JSON.parse(`{ "x": ${i + 1}, "y": ${desiredReading[i]} }`);
                     weatherArray.push(dataString);
@@ -75,7 +76,7 @@ class Chart extends React.Component {
     }
     // SPEC: Loops through wind directions, and counts the occurences of each one,
     //       then parses to JSON and returns the array of JSON objects
-    windDirProcesser = () => {
+    windDirProcessor = () => {
         let enumeratedDirArr = []
         let N = 0, NE = 0, E = 0, SE = 0, S = 0, SW = 0, W = 0, NW = 0;
         this.state.wdirs.map(direction => {
