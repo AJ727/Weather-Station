@@ -37,7 +37,7 @@ app.get('/api', (req, res) => {
             console.log(err);
         }
         else {
-            request = new Request("USE weatherDB; SELECT TOP(15) \
+            request = new Request("USE weatherDB; SELECT TOP(12) \
             time_stamp, \
             CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
             CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
@@ -55,13 +55,29 @@ app.get('/api', (req, res) => {
                 }
             }); 
 
-            let data = '';
-            request.on('row', (columns) => {
-                columns.forEach((column) => data += column.value);
+            let chunks = [];
+            request.on('row', (res) => {
+                console.log("FIRST DATA");
+                console.log(res);
+                chunks.push(res);
+                //columns.forEach((column) => data += column.value);
+                //console.log(columns);
+                //res.json(JSON.parse(chunks));
+            }).on('done', () => {
+                console.log("First body----------");
+                console.log(chunks);
+                let data = Buffer.concat(chunks);
+                console.log("SEcond body----------");
+                console.log(data);
                 res.json(JSON.parse(data));
             });
+            //console.log(data);
             connection.execSql(request);
         }
+
+    }).on('end', () => {
+        console.log('--------END------');
+        connection.close();
     })
 });
 
@@ -80,6 +96,7 @@ app.post('/api', (req, res) => {
             console.log('WRITTEN TO DB');
         }
     })
+    connection.close();
 });
 
 // Creates SQL query that sends data to SQL Server
