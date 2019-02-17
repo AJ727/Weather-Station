@@ -37,7 +37,7 @@ app.get('/api', (req, res) => {
             console.log(err);
         }
         else {
-            request = new Request("USE weatherDB; SELECT TOP(20) \
+            request = new Request("USE weatherDB; SELECT TOP(30) \
             time_stamp, \
             CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
             CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
@@ -51,7 +51,7 @@ app.get('/api', (req, res) => {
                     console.log(err);
                 }
                 else{
-                    console.log(rowCount + ' rows');
+                    console.log('Query successful with ' +  rowCount + ' rows returned');
                 }
             }); 
 
@@ -62,12 +62,11 @@ app.get('/api', (req, res) => {
             });
 
             // If we don't check if the dataset is empty, JSON parse errors will be thrown when trying to parse nothing
-            request.on('done', (rowCount) => {
+            request.on('done', () => {
                 if(data === null || data === ''){
-                    console.log("NO DATA");
+                    console.log("Loading data...");
                 }
                 else {
-                    console.log(rowCount + ' rows from the done event.');
                     res.json(JSON.parse(data));
                 }
             });
