@@ -29,6 +29,17 @@ const dbConfig = {
     database: 'weatherDB'
 };
 
+// Query that retrieves top X results from SQL Server
+const readingsQuery = "USE weatherDB; SELECT TOP(30) \
+time_stamp, \
+CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
+CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
+CONVERT(DECIMAL(10,2), Pressure) AS Pressure, \
+WindDir, \
+CONVERT(DECIMAL(10,2), WindSpd) AS WindSpd \
+FROM Readings ORDER BY time_stamp DESC \
+FOR JSON PATH, ROOT('Readings');";
+
 // ----------------API---------------- //
 app.get('/api', (req, res) => {
     let connection = new Connection(dbConfig);
@@ -37,16 +48,7 @@ app.get('/api', (req, res) => {
             console.log(err);
         }
         else {
-            request = new Request("USE weatherDB; SELECT TOP(30) \
-            time_stamp, \
-            CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
-            CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
-            CONVERT(DECIMAL(10,2), Pressure) AS Pressure, \
-            WindDir, \
-            CONVERT(DECIMAL(10,2), WindSpd) AS WindSpd \
-            FROM Readings ORDER BY time_stamp DESC \
-            FOR JSON PATH, ROOT('Readings');"
-            , (err, rowCount) => {
+            request = new Request(readingsQuery, (err, rowCount) => {
                 if(err){
                     console.log(err);
                 }
@@ -55,7 +57,7 @@ app.get('/api', (req, res) => {
                 }
             }); 
 
-            // For every columns returned in columns, add it's value to a string
+            // For every column returned in columns, add it's value to a string
             let data = '';
             request.on('row', (columns) => {
                 columns.forEach((column) => data += column.value);
@@ -77,7 +79,7 @@ app.get('/api', (req, res) => {
     })
 
     connection.on('end', () => {
-        console.log('--------END------');
+        console.log('Connection Closed');
         connection.close();
     });
 
