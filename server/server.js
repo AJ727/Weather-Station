@@ -37,7 +37,7 @@ app.get('/api', (req, res) => {
             console.log(err);
         }
         else {
-            request = new Request("USE weatherDB; SELECT TOP(60) \
+            request = new Request("USE weatherDB; SELECT TOP(20) \
             time_stamp, \
             CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
             CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
@@ -55,27 +55,33 @@ app.get('/api', (req, res) => {
                 }
             }); 
 
+            // For every columns returned in columns, add it's value to a string
             let data = '';
             request.on('row', (columns) => {
                 columns.forEach((column) => data += column.value);
             });
 
-            request.on('done', () => {
+            // If we don't check if the dataset is empty, JSON parse errors will be thrown when trying to parse nothing
+            request.on('done', (rowCount) => {
                 if(data === null || data === ''){
                     console.log("NO DATA");
                 }
                 else {
-                    res.send(JSON.parse(data));
+                    console.log(rowCount + ' rows from the done event.');
+                    res.json(JSON.parse(data));
                 }
             });
 
             connection.execSqlBatch(request);
         }
 
-    }).on('end', () => {
+    })
+
+    connection.on('end', () => {
         console.log('--------END------');
         connection.close();
-    })
+    });
+
 });
 
 // POST request handler (arduino data is sent here)
