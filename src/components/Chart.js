@@ -151,7 +151,7 @@ class Chart extends React.Component {
                 <div className="wrapper">
 
                     {/* If there's an error, print it */}
-                    {this.state.error && <div>Error: {error.message}</div>}
+                    {this.state.error && <div>Error: {this.state.error}</div>}
                     
                     {/* If the state isn't loaded, print loading */}
                     {!(this.state.isLoaded) && <LoadingPage />}
