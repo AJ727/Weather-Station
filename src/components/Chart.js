@@ -41,8 +41,8 @@ class Chart extends React.Component {
         // for every object in the weatherData array, 
         // create a new array of each reading
         this.state.weatherData.map(readObj => {
-            dateArr.push((moment(readObj.time_stamp).format('YYYY-MM-D h:mm:s')));
-            //dateArr.push((moment(readObj.time_stamp).format('')));
+            //dateArr.push((moment(readObj.time_stamp).format('YYYY-MM-D h:mm:s')));
+            dateArr.push(new Date(readObj.time_stamp));
             tempArr.push(readObj.ExtTemp);
             humArr.push(readObj.Humidity);
             pressArr.push(readObj.Pressure);
@@ -65,6 +65,9 @@ class Chart extends React.Component {
         // FOR WINDDIR: [ { x: "N", y: numOfNreadings }, { x: "NE", y: numofNEreadings } ]
         let weatherArray = [];
             if (desiredReading.toString() === this.state.wdirs.toString()) {
+                console.log("@@@@CHART@@@");
+                console.log(desiredReading.toString());
+                console.log(this.state.wdirs.toString());
                 weatherArray = this.windDirProcessor(desiredReading);
             }
             else {
