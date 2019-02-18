@@ -392,7 +392,12 @@ template {
   box-sizing: border-box; }
 
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  background-image: url("/images/meteorology.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%; }
 
 body {
   color: #333333;
