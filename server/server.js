@@ -95,7 +95,7 @@ app.post('/api', (req, res) => {
             console.log('WRITTEN TO DB');
         }
     })
-    connection.close();
+    res.json(req.body.Hum);
 });
 
 // Creates SQL query that sends data to SQL Server
@@ -115,7 +115,7 @@ let execSendToDb = (req, connection) => {
     request.addParameter('WindSpd', TYPES.Float, req.body.WindSpd);
     //console.log(request);
     connection.execSql(request);
-    res.json(req.body.Hum);
+
 };
 
 // First arg: path (the * matches all unmatched routes)
