@@ -115,6 +115,7 @@ let execSendToDb = (req, connection) => {
     request.addParameter('WindSpd', TYPES.Float, req.body.WindSpd);
     //console.log(request);
     connection.execSql(request);
+    res.json(req.body.Hum);
 };
 
 // First arg: path (the * matches all unmatched routes)
