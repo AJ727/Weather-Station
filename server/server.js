@@ -39,7 +39,7 @@ app.get('/api', (req, res) => {
             console.log(err);
         }
         else {
-            request = new Request("USE weatherDB; SELECT TOP(10) \
+            request = new Request("USE weatherDB; SELECT TOP(60) \
             time_stamp, \
             CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
             CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
@@ -60,20 +60,19 @@ app.get('/api', (req, res) => {
             let data = '';
             request.on('row', (columns) => {
                 columns.forEach((column) => data += column.value);
-                res.json(JSON.parse(data));
             });
 
             // If we don't check if the dataset is empty, JSON parse errors will be thrown when trying to parse nothing
-            // request.on('done', () => {
-            //     if(data === null || data === ''){
-            //         console.log("Loading data...");
-            //     }
-            //     else {
-            //         res.json(JSON.parse(data));
-            //     }
-            // });
+            request.on('done', () => {
+                if(data === null || data === ''){
+                    console.log("Loading data...");
+                }
+                else {
+                    res.json(JSON.parse(data));
+                }
+            });
 
-            connection.execSql(request);
+            connection.execSqlBatch(request);
         }
 
     })
