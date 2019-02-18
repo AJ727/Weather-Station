@@ -7,7 +7,7 @@ const WindDirChart = ({ dirData }) => (
             <VictoryLabel text="Wind Direction Readings" x={180} y={30} textAnchor="middle" />
             <VictoryBar 
                 style={{
-                    data: { stroke: "#c43f11" },
+                    data: { stroke: "#c43f11", strokeWidth: 5 },
                     parent: { border: "1px solid #ccc" }
                 }}
                 // data={props.data.ExtTemp} <-- this is correct, but we need more data, so trying with dummy data

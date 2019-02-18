@@ -9,8 +9,8 @@ const TempChart = ({ tempData }) => (
             <VictoryLabel text="Temperature Readings" x={180} y={30} textAnchor="middle" />
             <VictoryLine 
                 style={{
-                    data: { stroke: "#c43f11" },
-                    parent: { border: "1px solid #ccc" }
+                    data: { stroke: "#4F3FE6", strokeWidth: 2 },
+                    parent: { border: "1px solid #ccc", background: "#555555" }
                 }}
                 data={tempData}
                 animate={{

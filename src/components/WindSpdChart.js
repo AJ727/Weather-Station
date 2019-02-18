@@ -7,7 +7,7 @@ const WindSpdChart = ({ spdData }) => (
             <VictoryLabel text="Wind Speed Readings" textAnchor="middle" x={180} y={30} />
             <VictoryLine 
                 style={{
-                    data: { stroke: "#c43f11" },
+                    data: { stroke: "#55C93E", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                 }}
                 data={spdData}

@@ -7,7 +7,7 @@ const HumidChart = ({ humidData }) => (
             <VictoryLabel text="Humidity Readings" textAnchor="middle" x={180} y={30} />
             <VictoryLine 
                 style={{
-                    data: { stroke: "#c43f11" },
+                    data: { stroke: "#DC272D", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                 }}
                 data={humidData}
