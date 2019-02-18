@@ -1,9 +1,11 @@
 import React from 'react';
-import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel } from 'victory';
+import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel, VictoryAxis } from 'victory';
 
 const TempChart = ({ tempData }) => (
     <div>
-        <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
+        <VictoryChart domainPadding={20}
+            theme={VictoryTheme.material}
+        >
             <VictoryLabel text="Temperature Readings" x={180} y={30} textAnchor="middle" />
             <VictoryLine 
                 style={{
@@ -12,8 +14,7 @@ const TempChart = ({ tempData }) => (
                 }}
                 data={tempData}
                 animate={{
-                    duration: 2000,
-                    onLoad: { duration: 1000 }
+                    onLoad: { duration: 300 }
                 }}
             />
         </VictoryChart>    
