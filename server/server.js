@@ -41,50 +41,50 @@ FROM Readings ORDER BY time_stamp DESC \
 FOR JSON PATH, ROOT('Readings');";
 
 // ----------------API---------------- //
-app.get('/api', (req, res) => {
-    let connection = new Connection(dbConfig);
-    connection.on('connect', (err) => {
-        if(err){
-            console.log(err);
-        }
-        else {
-            request = new Request(readingsQuery, (err, rowCount) => {
-                if(err){
-                    console.log(err);
-                }
-                else{
-                    console.log('Query successful with ' +  rowCount + ' rows returned');
-                }
-            }); 
+// app.get('/api', (req, res) => {
+//     let connection = new Connection(dbConfig);
+//     connection.on('connect', (err) => {
+//         if(err){
+//             console.log(err);
+//         }
+//         else {
+//             request = new Request(readingsQuery, (err, rowCount) => {
+//                 if(err){
+//                     console.log(err);
+//                 }
+//                 else{
+//                     console.log('Query successful with ' +  rowCount + ' rows returned');
+//                 }
+//             }); 
 
-            // For every column returned in columns, add it's value to a string
-            let data = '';
-            request.on('row', (columns) => {
-                columns.forEach((column) => data += column.value);
-                res.json(JSON.parse(data));
-            });
+//             // For every column returned in columns, add it's value to a string
+//             let data = '';
+//             request.on('row', (columns) => {
+//                 columns.forEach((column) => data += column.value);
+//                 res.json(JSON.parse(data));
+//             });
 
-            // If we don't check if the dataset is empty, JSON parse errors will be thrown when trying to parse nothing
-            // request.on('done', () => {
-            //     if(data === null || data === ''){
-            //         console.log("Loading data...");
-            //     }
-            //     else {
-            //         res.json(JSON.parse(data));
-            //     }
-            // });
+//             // If we don't check if the dataset is empty, JSON parse errors will be thrown when trying to parse nothing
+//             // request.on('done', () => {
+//             //     if(data === null || data === ''){
+//             //         console.log("Loading data...");
+//             //     }
+//             //     else {
+//             //         res.json(JSON.parse(data));
+//             //     }
+//             // });
 
-            connection.execSql(request);
-        }
+//             connection.execSql(request);
+//         }
 
-    })
+//     })
 
-    connection.on('done', () => {
-        console.log('Connection Closed');
-        connection.close();
-    });
+//     connection.on('done', () => {
+//         console.log('Connection Closed');
+//         connection.close();
+//     });
 
-});
+// });
 
 // POST request handler (arduino data is sent here)
 // Sends validated and formatted data to SQL Server AWS Instance

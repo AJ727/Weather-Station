@@ -160,7 +160,7 @@ class Chart extends React.Component {
                     {this.state.isLoaded && !(this.state.error) &&
                         <div>
                             <div>
-                                <div className="gen_charts" >
+                                {/* <div className="gen_charts" >
                                     <TempChart tempData={this.createArray(this.state.temps)} />
                                     <HumidChart humidData={this.createArray(this.state.humidities)} />
                                 </div>
@@ -169,7 +169,7 @@ class Chart extends React.Component {
                                     <PressChart pressData={this.createArray(this.state.pressures)} />  
                                     <WindDirChart dirData={this.createArray(this.state.wdirs)} />       
                                     <WindSpdChart spdData={this.createArray(this.state.wspeeds)} />
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     }
