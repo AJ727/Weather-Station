@@ -1,4 +1,5 @@
 import React from 'react';
+import LoadingPage from './LoadingPage';
 import TempChart from './TempChart';
 import HumidChart from './HumidChart';
 import PressChart from './PressChart';
@@ -48,12 +49,12 @@ class Chart extends React.Component {
         });
         // set the state to the new arrays
         this.setState({
-            dates: dateArr,
-            temps: tempArr,
-            humidities: humArr,
-            pressures: pressArr,
-            wspeeds: spdArr,
-            wdirs: dirArr
+            dates: dateArr.reverse(),
+            temps: tempArr.reverse(),
+            humidities: humArr.reverse(),
+            pressures: pressArr.reverse(),
+            wspeeds: spdArr.reverse(),
+            wdirs: dirArr.reverse()
         });
     }
     // SPEC: Takes state and returns an array of the same type of data (Ex. all Temps, or all Pressures)
@@ -150,10 +151,10 @@ class Chart extends React.Component {
                 <div className="wrapper">
 
                     {/* If there's an error, print it */}
-                    {this.state.error && <div>Error: {error.message}</div>}
+                    {this.state.error && <div>Error: {this.state.error}</div>}
                     
                     {/* If the state isn't loaded, print loading */}
-                    {!(this.state.isLoaded) && <div>Loading...</div>}
+                    {!(this.state.isLoaded) && <LoadingPage />}
                     
                     {/* If the state is loaded and there's no error, proceed. */}
                     {this.state.isLoaded && !(this.state.error) &&
