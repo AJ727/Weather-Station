@@ -30,7 +30,7 @@ const dbConfig = {
 };
 
 // Query that retrieves top X results from SQL Server
-const readingsQuery = "USE weatherDB; SELECT TOP(30) \
+const readingsQuery = "USE weatherDB; SELECT TOP(10) \
 time_stamp, \
 CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
 CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
@@ -73,7 +73,7 @@ app.get('/api', (req, res) => {
                 }
             });
 
-            connection.execSqlBatch(request);
+            connection.execSql(request);
         }
 
     })
