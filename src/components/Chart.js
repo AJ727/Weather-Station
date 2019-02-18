@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import LoadingPage from './LoadingPage';
 import TempChart from './TempChart';
 import HumidChart from './HumidChart';
@@ -40,7 +41,8 @@ class Chart extends React.Component {
         // for every object in the weatherData array, 
         // create a new array of each reading
         this.state.weatherData.map(readObj => {
-            dateArr.push(readObj.time_stamp);
+            dateArr.push((moment(readObj.time_stamp).format('YYYY-MM-D h:mm:s')));
+            //dateArr.push((moment(readObj.time_stamp).format('')));
             tempArr.push(readObj.ExtTemp);
             humArr.push(readObj.Humidity);
             pressArr.push(readObj.Pressure);
@@ -68,7 +70,7 @@ class Chart extends React.Component {
             else {
                 // using string interpolation and a template literal, parse the string to a JSON object
                 for (let i = 0; i < desiredReading.length; i++) {
-                    let dataString = JSON.parse(`{ "x": ${i + 1}, "y": ${desiredReading[i]} }`);
+                    let dataString = JSON.parse(`{ "x": "${this.state.dates[i]}", "y": ${desiredReading[i]} }`);
                     weatherArray.push(dataString);
                 }
             }

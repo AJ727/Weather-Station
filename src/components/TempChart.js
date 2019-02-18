@@ -3,7 +3,9 @@ import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel } from 'victory';
 
 const TempChart = ({ tempData }) => (
     <div>
-        <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
+        <VictoryChart domainPadding={20} theme={VictoryTheme.material}
+            scale={{x : "time"}}
+        >
             <VictoryLabel text="Temperature Readings" x={180} y={30} textAnchor="middle" />
             <VictoryLine 
                 style={{
