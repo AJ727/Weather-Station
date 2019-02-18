@@ -78,7 +78,7 @@ app.get('/api', (req, res) => {
 
     })
 
-    connection.on('end', () => {
+    connection.on('done', () => {
         console.log('Connection Closed');
         connection.close();
     });
