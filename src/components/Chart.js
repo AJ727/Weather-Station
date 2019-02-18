@@ -25,9 +25,9 @@ class Chart extends React.Component {
     };
     // SPEC: Lifecycle method that is called once component is inserted as a node into the DOM
     componentDidMount = () => {
-        this.loadData();
-        // call loadData every minute
-        setInterval(this.loadData, 60000);
+        // this.loadData();
+        // // call loadData every minute
+        // setInterval(this.loadData, 60000);
     }
     // SPEC: Creates arrays of same-typed values using the loaded data (loadData calls this function)
     arrayProcessing = () => { 
