@@ -30,15 +30,6 @@ const dbConfig = {
 };
 
 // Query that retrieves top X results from SQL Server
-const readingsQuery = "USE weatherDB; SELECT TOP(10) \
-time_stamp, \
-CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
-CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
-CONVERT(DECIMAL(10,2), Pressure) AS Pressure, \
-WindDir, \
-CONVERT(DECIMAL(10,2), WindSpd) AS WindSpd \
-FROM Readings ORDER BY time_stamp DESC \
-FOR JSON PATH, ROOT('Readings');";
 
 // ----------------API---------------- //
 app.get('/api', (req, res) => {
@@ -48,7 +39,15 @@ app.get('/api', (req, res) => {
             console.log(err);
         }
         else {
-            request = new Request(readingsQuery, (err, rowCount) => {
+            request = new Request("USE weatherDB; SELECT TOP(10) \
+            time_stamp, \
+            CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
+            CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
+            CONVERT(DECIMAL(10,2), Pressure) AS Pressure, \
+            WindDir, \
+            CONVERT(DECIMAL(10,2), WindSpd) AS WindSpd \
+            FROM Readings ORDER BY time_stamp DESC \
+            FOR JSON PATH, ROOT('Readings');", (err, rowCount) => {
                 if(err){
                     console.log(err);
                 }
@@ -78,11 +77,6 @@ app.get('/api', (req, res) => {
         }
 
     })
-
-    connection.on('done', () => {
-        console.log('Connection Closed');
-        connection.close();
-    });
 
 });
 
