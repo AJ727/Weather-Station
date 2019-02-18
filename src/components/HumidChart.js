@@ -12,8 +12,7 @@ const HumidChart = ({ humidData }) => (
                 }}
                 data={humidData}
                 animate={{
-                    duration: 2000,
-                    onLoad: { duration: 1000 }
+                    onLoad: { duration: 300 }
                 }}
             />
         </VictoryChart>    

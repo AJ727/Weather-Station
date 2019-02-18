@@ -12,8 +12,7 @@ const WindSpdChart = ({ spdData }) => (
                 }}
                 data={spdData}
                 animate={{
-                    duration: 2000,
-                    onLoad: { duration: 1000 }
+                    onLoad: { duration: 300 }
                 }}
             />
         </VictoryChart>    

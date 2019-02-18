@@ -12,8 +12,7 @@ const PressChart = ({ pressData }) => (
                 }}
                 data={pressData}
                 animate={{
-                    duration: 2000,
-                    onLoad: { duration: 1000 }
+                    onLoad: { duration: 300 }
                 }}
             />
         </VictoryChart>    

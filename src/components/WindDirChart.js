@@ -15,8 +15,7 @@ const WindDirChart = ({ dirData }) => (
                 // of replacing the state each time
                 data={dirData}
                 animate={{
-                    duration: 2000,
-                    onLoad: { duration: 1000 }
+                    onLoad: { duration: 300 }
                 }}
             />
         </VictoryChart>    

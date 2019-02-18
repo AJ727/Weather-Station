@@ -1,5 +1,5 @@
 import React from 'react';
-import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel } from 'victory';
+import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel, VictoryAxis } from 'victory';
 
 const TempChart = ({ tempData }) => (
     <div>
@@ -14,8 +14,7 @@ const TempChart = ({ tempData }) => (
                 }}
                 data={tempData}
                 animate={{
-                    duration: 2000,
-                    onLoad: { duration: 1000 }
+                    onLoad: { duration: 300 }
                 }}
             />
         </VictoryChart>    
