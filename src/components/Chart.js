@@ -25,9 +25,9 @@ class Chart extends React.Component {
     };
     // SPEC: Lifecycle method that is called once component is inserted as a node into the DOM
     componentDidMount = () => {
-        // this.loadData();
-        // // call loadData every minute
-        // setInterval(this.loadData, 60000);
+        this.loadData();
+        // call loadData every minute
+        setInterval(this.loadData, 60000);
     }
     // SPEC: Creates arrays of same-typed values using the loaded data (loadData calls this function)
     arrayProcessing = () => { 
@@ -160,7 +160,7 @@ class Chart extends React.Component {
                     {this.state.isLoaded && !(this.state.error) &&
                         <div>
                             <div>
-                                {/* <div className="gen_charts" >
+                                <div className="gen_charts" >
                                     <TempChart tempData={this.createArray(this.state.temps)} />
                                     <HumidChart humidData={this.createArray(this.state.humidities)} />
                                 </div>
@@ -169,7 +169,7 @@ class Chart extends React.Component {
                                     <PressChart pressData={this.createArray(this.state.pressures)} />  
                                     <WindDirChart dirData={this.createArray(this.state.wdirs)} />       
                                     <WindSpdChart spdData={this.createArray(this.state.wspeeds)} />
-                                </div> */}
+                                </div>
                             </div>
                         </div>
                     }
