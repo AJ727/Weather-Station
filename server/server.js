@@ -61,17 +61,18 @@ app.get('/api', (req, res) => {
             let data = '';
             request.on('row', (columns) => {
                 columns.forEach((column) => data += column.value);
+                res.json(JSON.parse(data));
             });
 
             // If we don't check if the dataset is empty, JSON parse errors will be thrown when trying to parse nothing
-            request.on('done', () => {
-                if(data === null || data === ''){
-                    console.log("Loading data...");
-                }
-                else {
-                    res.json(JSON.parse(data));
-                }
-            });
+            // request.on('done', () => {
+            //     if(data === null || data === ''){
+            //         console.log("Loading data...");
+            //     }
+            //     else {
+            //         res.json(JSON.parse(data));
+            //     }
+            // });
 
             connection.execSql(request);
         }
