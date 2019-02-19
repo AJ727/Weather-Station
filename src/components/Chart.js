@@ -69,7 +69,7 @@ class Chart extends React.Component {
             else {
                 // using string interpolation and a template literal, parse the string to a JSON object
                 for (let i = 0; i < desiredReading.length; i++) {
-                    let dataString = JSON.parse(`{ "x": ${i + 1}, "y": ${desiredReading[i]} }`);
+                    let dataString = JSON.parse(`{ "x": "${this.state.dates[i]}", "y": ${desiredReading[i]} }`);
                     weatherArray.push(dataString);
                 }
             }
