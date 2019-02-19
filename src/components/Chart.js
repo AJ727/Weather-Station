@@ -62,7 +62,8 @@ class Chart extends React.Component {
         // END FORMAT: [ { x: DATE, y: READING }, { x: DATE2, y: READING2 } ] 
         // FOR WINDDIR: [ { x: "N", y: numOfNreadings }, { x: "NE", y: numofNEreadings } ]
         let weatherArray = [];
-            if (desiredReading.toString() === this.state.wdirs.toString()) {
+            // using Object.is() checks if both objects are the same, which is a massive improvement over using === and .toString() previously
+            if (Object.is(desiredReading, this.state.wdirs)) {
                 weatherArray = this.windDirProcessor(desiredReading);
             }
             else {
