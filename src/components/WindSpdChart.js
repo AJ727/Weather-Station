@@ -1,10 +1,23 @@
 import React from 'react';
+import moment from 'moment';
 import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel } from 'victory';
 
 const WindSpdChart = ({ spdData }) => (
     <div>
         <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
             <VictoryLabel text="Wind Speed Readings" textAnchor="middle" x={180} y={30} />
+            <VictoryAxis 
+                    tickFormat={(x) => new moment(x).format("MM-DD hh:mm")}
+                    fixLabelOverlap="true"
+                    tickLabelComponent={<VictoryLabel angle={-20} />}
+                />
+                <VictoryAxis
+                    dependentAxis
+                    tickLabelComponent={<VictoryLabel angle={-20}/>}
+                    style={{
+                        grid: {stroke: "orange", size: 5}
+                    }}
+                />
             <VictoryLine 
                 style={{
                     data: { stroke: "#55C93E", strokeWidth: 2 },

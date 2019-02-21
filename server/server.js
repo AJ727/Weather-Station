@@ -39,7 +39,7 @@ app.get('/api', (req, res) => {
             console.log(err);
         }
         else {
-            request = new Request("USE weatherDB; SELECT TOP(10) \
+            request = new Request("USE weatherDB; SELECT TOP(100) \
             time_stamp, \
             CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
             CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
