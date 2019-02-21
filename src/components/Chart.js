@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import LoadingPage from './LoadingPage';
 import TempChart from './TempChart';
 import HumidChart from './HumidChart';
