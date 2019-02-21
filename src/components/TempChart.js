@@ -6,6 +6,10 @@ class TempChart extends React.Component {
     // state = {
     //     zoomDomain: {x: [new Date(1990, 1, 1), new Date(2009, 1, 1)]}
     // };
+    constructor() {
+        super();
+        this.state = {};
+    }
     handleZoom = (domain) => {
         this.setState({ zoomDomain: domain });
     };
@@ -17,14 +21,15 @@ class TempChart extends React.Component {
                     scale={{ x: "time" }}
                     containerComponent={
                         <VictoryZoomContainer 
-                        
-                        />
+                        zoomDimension="x"
+                        zoomDomain={this.state.zoomDomain}
+                        onZoomDomainChange={this.handleZoom.bind(this)}/>
                     }
                 >
                 <VictoryLabel text="Temperature Readings" x={180} y={30} textAnchor="middle" />
                 <VictoryAxis 
-                    tickFormat={(x) => new moment(x).format("MM-DD hh:mm")}
-                    fixLabelOverlap="true"
+                    tickFormat={(x) => moment(x).format("MM-DD hh:mm:ss")}
+                    fixLabelOverlap={true}
                     tickLabelComponent={<VictoryLabel angle={-20} />}
                 />
                 <VictoryAxis
