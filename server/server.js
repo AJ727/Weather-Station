@@ -77,6 +77,16 @@ app.get('/api', (req, res) => {
 
     })
 
+    connection.on('end', (err) => {
+        if(err){
+            console.log(err);
+        }
+        else {
+            connection.close();
+            console.log("---Connection Closed---");
+        }
+    });
+
 });
 
 // POST request handler (arduino data is sent here)
