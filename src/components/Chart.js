@@ -41,8 +41,6 @@ class Chart extends React.Component {
         // for every object in the weatherData array, 
         // create a new array of each reading
         this.state.weatherData.map(readObj => {
-            console.log("@@TIME_STAMP@@");
-            console.log(readObj.time_stamp);
             dateArr.push(readObj.time_stamp);
             tempArr.push(readObj.ExtTemp);
             humArr.push(readObj.Humidity);
@@ -73,8 +71,7 @@ class Chart extends React.Component {
                 // using string interpolation and a template literal, parse the string to a JSON object
                 for (let i = 0; i < desiredReading.length; i++) {
                     let dataString = JSON.parse(`{ "x": "${this.state.dates[i]}", "y": ${desiredReading[i]} }`);
-                    //let dataString = JSON.parse(`{ "x": "${this.state.dates[i]}", "y": ${desiredReading[i]} }`);
-                    console.log(dataString);
+                    //console.log(dataString);
                     weatherArray.push(dataString);
                 }
             }

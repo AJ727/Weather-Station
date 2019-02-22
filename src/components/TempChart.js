@@ -23,7 +23,7 @@ class TempChart extends React.Component {
                         <VictoryZoomContainer 
                         zoomDimension="x"
                         zoomDomain={this.state.zoomDomain}
-                        onZoomDomainChange={this.handleZoom.bind(this)}/>
+                        onZoomDomainChange={() => this.handleZoom}/>
                     }
                 >
                 <VictoryLabel text="Temperature Readings" x={180} y={30} textAnchor="middle" />

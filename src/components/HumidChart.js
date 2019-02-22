@@ -18,7 +18,7 @@ class HumidChart extends React.Component {
                     <VictoryLabel text="Humidity Readings" textAnchor="middle" x={180} y={30} />
                     <VictoryAxis 
                             tickFormat={(x) => new moment(x).format("MM-DD hh:mm")}
-                            fixLabelOverlap="true"
+                            fixLabelOverlap={true}
                             tickLabelComponent={<VictoryLabel angle={-20} />}
                         />
                         <VictoryAxis
