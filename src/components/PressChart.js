@@ -20,7 +20,7 @@ class PressChart extends React.Component {
                 <VictoryLabel text="Pressure Readings" x={180} y={30} textAnchor="middle" />
                 <VictoryAxis 
                     tickFormat={(x) => new moment(x).format("MM-DD hh:mm")}
-                    fixLabelOverlap="true"
+                    fixLabelOverlap={true}
                     tickLabelComponent={<VictoryLabel angle={-20} />}
                 />
                 <VictoryAxis
