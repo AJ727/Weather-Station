@@ -1,5 +1,9 @@
 .header {
     background: $dark-blue;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    width: 100%;
 }
 
 .header__content {

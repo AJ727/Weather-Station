@@ -7,6 +7,8 @@ import PressChart from './PressChart';
 import WindSpdChart from './WindSpdChart';
 import WindDirChart from './WindDirChart';
 
+import FullPage from './FullPage';
+
 // This components purpose is to query the API every
 // X minutes, and store that data in a local state array
 // It then passes in properties to the corresponding child chart
@@ -150,35 +152,27 @@ class Chart extends React.Component {
         .then(() => this.arrayProcessing());
     }
     render() {
-            return (
-                <div className="wrapper">
-
-                    {/* If there's an error, print it */}
-                    {this.state.error && <div>Error: {this.state.error}</div>}
-                    
-                    {/* If the state isn't loaded, print loading */}
-                    {!(this.state.isLoaded) && <LoadingPage />}
-                    
-                    {/* If the state is loaded and there's no error, proceed. */}
-                    {this.state.isLoaded && !(this.state.error) &&
-                        <div>
-                            <div>
-                                <div className="gen_charts" >
-                                    <TempChart tempData={this.createArray(this.state.temps)} />
-                                    <HumidChart humidData={this.createArray(this.state.humidities)} />
-                                </div>
-
-                                <div className="gen_charts">
-                                    <PressChart pressData={this.createArray(this.state.pressures)} />  
-                                    <WindDirChart dirData={this.createArray(this.state.wdirs)} />       
-                                    <WindSpdChart spdData={this.createArray(this.state.wspeeds)} />
-                                </div>
-                            </div>
-                        </div>
-                    }
-
-                </div>
-            )
+            if (this.state.error) {
+                return ( <div>Error: {this.state.error}</div> )
+            }
+            else if (!(this.state.isLoaded)) {
+                return <LoadingPage />
+            }
+            else if (this.state.isLoaded && !(this.state.error)) {
+                return ( 
+                    <FullPage 
+                        tempData={this.createArray(this.state.temps)} 
+                        humidData={this.createArray(this.state.humidities)}
+                        pressData={this.createArray(this.state.pressures)}
+                        dirData={this.createArray(this.state.wdirs)}
+                        spdData={this.createArray(this.state.wspeeds)}
+                    />
+                )
+            }
+            else {
+                return (<LoadingPage />)
+            }
+            
         }
             
 }

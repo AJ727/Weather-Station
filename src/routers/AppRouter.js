@@ -9,6 +9,7 @@ import PressChart from '../components/PressChart';
 import WindSpdChart from '../components/WindSpdChart';
 import WindDirChart from '../components/WindDirChart';
 import NotFoundPage from '../components/NotFoundPage';
+import FullPageWrapper, { fullpageOptions } from '../components/FullPage';
 
 // Stateless functional React Component
 // path = where we want to show something
