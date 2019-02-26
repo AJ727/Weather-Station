@@ -1,12 +1,5 @@
 import React from 'react';
-import moment from 'moment';
 import LoadingPage from './LoadingPage';
-import TempChart from './TempChart';
-import HumidChart from './HumidChart';
-import PressChart from './PressChart';
-import WindSpdChart from './WindSpdChart';
-import WindDirChart from './WindDirChart';
-
 import FullPage from './FullPage';
 
 // This components purpose is to query the API every

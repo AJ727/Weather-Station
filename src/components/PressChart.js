@@ -3,11 +3,7 @@ import moment from 'moment';
 import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel, VictoryAxis, VictoryZoomContainer } from 'victory';
 
 class PressChart extends React.Component {
-    
-    constructor() {
-        super();
-        this.state = {};
-    }
+    state={}
     handleZoom(domain) {
         this.setState({ zoomDomain: domain });
     }
@@ -31,7 +27,7 @@ class PressChart extends React.Component {
                             <VictoryZoomContainer 
                                 zoomDimension="x"
                                 zoomDomain={this.state.zoomDomain}
-                                onZoomDomainChange={this.handleZoom.bind(this)}
+                                onZoomDomainChange={() => this.handleZoom}
                             />
                         }
                     >
