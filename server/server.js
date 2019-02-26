@@ -30,7 +30,7 @@ const dbConfig = {
 };
 
 // Query that retrieves top X results from SQL Server
-const numberOfResults = "60";
+const numberOfResults = "2016";
 const retrieveReadings = `USE weatherDB; SELECT TOP(${numberOfResults}) \
 time_stamp, \
 CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \

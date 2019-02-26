@@ -3,45 +3,66 @@ import moment from 'moment';
 import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel, VictoryAxis, VictoryZoomContainer } from 'victory';
 
 class HumidChart extends React.Component {
+    
+    constructor() {
+        super();
+        this.state = {};
+    }
+    handleZoom(domain) {
+        this.setState({ zoomDomain: domain });
+    }
+
     render() {
-        return (
-            <div>
-                <VictoryChart domainPadding={20} 
-                    theme={VictoryTheme.material}
-                    scale={{ x: "time" }}
-                    containerComponent={
-                        <VictoryZoomContainer 
-                        
-                        />
-                    }
-                >
-                    <VictoryLabel text="Humidity Readings" textAnchor="middle" x={180} y={30} />
+
+        for (let i = 0; i < this.props.humidData.length; i++) {
+            if (this.props.humidData[i] != undefined) {
+                this.props.humidData[i].x = moment(this.props.humidData[i].x);
+                this.props.humidData[i] = { x: this.props.humidData[i].x, y: this.props.humidData[i].y }
+            }
+        }
+        
+        if (this.props.humidData.length != 0) {
+            return (
+                <div>
+                    <VictoryChart domainPadding={20}
+                        theme={VictoryTheme.greyscale}
+                        scale={{ x: "time" }}
+                        containerComponent={
+                            <VictoryZoomContainer 
+                                zoomDimension="x"
+                                zoomDomain={this.state.zoomDomain}
+                                onZoomDomainChange={this.handleZoom.bind(this)}
+                            />
+                        }
+                    >
+                    <VictoryLabel text="Humidity (Percentage)" x={180} y={30} textAnchor="middle" />
                     <VictoryAxis 
-                            tickFormat={(x) => new moment(x).format("MM-DD hh:mm")}
-                            fixLabelOverlap={true}
-                            tickLabelComponent={<VictoryLabel angle={-20} />}
-                        />
-                        <VictoryAxis
-                            dependentAxis
-                            tickLabelComponent={<VictoryLabel angle={-20}/>}
-                            style={{
-                                grid: {stroke: "orange", size: 5}
-                            }}
-                        />
-                    <VictoryLine 
+                        fixLabelOverlap={false}
+    
+                    />
+                    <VictoryAxis
+                        dependentAxis={true}
+                        fixLabelOverlap={false}
                         style={{
-                            data: { stroke: "#DC272D", strokeWidth: 2 },
-                            parent: { border: "1px solid #ccc" }
-                        }}
-                        data={this.props.humidData}
-                        animate={{
-                            onLoad: { duration: 300 }
+                            grid: {stroke: "grey", size: 5}
                         }}
                     />
-                </VictoryChart>    
-            </div>
-        )
+                    <VictoryLine 
+                        style={{
+                            data: { stroke: "red", strokeWidth: 2 },
+                            parent: { border: "1px solid #ccc", background: "#555555" }
+                        }}
+                        data={this.props.humidData}
+                    />
+                    </VictoryChart>
+                </div>
+            );
+        }
+
+        else {
+            return(<div></div>)
+        }
     }
-} 
+}
 
 export default HumidChart;

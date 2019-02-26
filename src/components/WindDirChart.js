@@ -4,7 +4,7 @@ import { VictoryBar, VictoryChart, VictoryTheme, VictoryLabel } from 'victory';
 const WindDirChart = ({ dirData }) => (
     <div>
         <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
-            <VictoryLabel text="Wind Direction Readings" x={180} y={30} textAnchor="middle" />
+            <VictoryLabel text="Wind Direction (Polar)" x={180} y={30} textAnchor="middle" />
             <VictoryBar 
                 style={{
                     data: { stroke: "#c43f11", strokeWidth: 5 },

@@ -3,45 +3,66 @@ import moment from 'moment';
 import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel, VictoryAxis, VictoryZoomContainer } from 'victory';
 
 class WindSpdChart extends React.Component {
+    
+    constructor() {
+        super();
+        this.state = {};
+    }
+    handleZoom(domain) {
+        this.setState({ zoomDomain: domain });
+    }
+
     render() {
-        return (
-            <div>
-                <VictoryChart domainPadding={20} 
-                    theme={VictoryTheme.material}
-                    scale={{ x: "time" }}
-                    containerComponent={
-                        <VictoryZoomContainer 
-                        
-                        />
-                    }
-                >
-                    <VictoryLabel text="Wind Speed Readings" textAnchor="middle" x={180} y={30} />
+
+        for (let i = 0; i < this.props.spdData.length; i++) {
+            if (this.props.spdData[i] != undefined) {
+                this.props.spdData[i].x = moment(this.props.spdData[i].x);
+                this.props.spdData[i] = { x: this.props.spdData[i].x, y: this.props.spdData[i].y }
+            }
+        }
+        
+        if (this.props.spdData.length != 0) {
+            return (
+                <div>
+                    <VictoryChart domainPadding={20}
+                        theme={VictoryTheme.greyscale}
+                        scale={{ x: "time" }}
+                        containerComponent={
+                            <VictoryZoomContainer 
+                                zoomDimension="x"
+                                zoomDomain={this.state.zoomDomain}
+                                onZoomDomainChange={this.handleZoom.bind(this)}
+                            />
+                        }
+                    >
+                    <VictoryLabel text="Wind Speed (mph)" x={180} y={30} textAnchor="middle" />
                     <VictoryAxis 
-                            tickFormat={(x) => new moment(x).format("MM-DD hh:mm")}
-                            fixLabelOverlap={true}
-                            tickLabelComponent={<VictoryLabel angle={-20} />}
-                        />
-                        <VictoryAxis
-                            dependentAxis
-                            tickLabelComponent={<VictoryLabel angle={-20}/>}
-                            style={{
-                                grid: {stroke: "orange", size: 5}
-                            }}
-                        />
-                    <VictoryLine 
+                        fixLabelOverlap={false}    
+                    />
+                    <VictoryAxis
+                        dependentAxis={true}
+                        fixLabelOverlap={false}
                         style={{
-                            data: { stroke: "#55C93E", strokeWidth: 2 },
-                            parent: { border: "1px solid #ccc" }
-                        }}
-                        data={this.props.spdData}
-                        animate={{
-                            onLoad: { duration: 300 }
+                            grid: {stroke: "grey", size: 5}
                         }}
                     />
-                </VictoryChart>    
-            </div> 
-        )
+                    <VictoryLine 
+                        style={{
+                            data: { stroke: "green", strokeWidth: 2 },
+                            parent: { border: "1px solid #ccc", background: "#555555" }
+                        }}
+                        data={this.props.spdData}
+                    />
+                    </VictoryChart>
+                </div>
+            );
+        }
+
+        //Else return an empty div element.
+        else {
+            return(<div></div>)
+        }
     }
-} 
+}
 
 export default WindSpdChart;
