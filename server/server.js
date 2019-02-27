@@ -1,9 +1,7 @@
-// EXPRESSJS (Nodejs framework)
+// NodeJS with Express
 const path = require('path');
 const express = require('express');
-
-// tedious module
-const Connection = require('tedious').Connection;
+const Connection = require('tedious').Connection; // tedious module for communication with SQL Server
 const Request = require('tedious').Request;
 const TYPES = require('tedious').TYPES;
 
@@ -20,17 +18,17 @@ const publicPath = path.join(__dirname, '..', 'public');
 // This serves up all assets from the public folder
 app.use(express.static(publicPath));
 
-// --------------DB Config-------------//
-
+// --------------DB Config------------- //
 const dbConfig = {
-    userName: 'weather',
-    password: 'We@ther304',
-    server: '3.86.58.142',
-    database: 'weatherDB'
+    userName: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    server: process.env.DATABASE_SERVER,
+    database: process.env.DATABASE
+
 };
 
 // Query that retrieves top X results from SQL Server
-const numberOfResults = "2016";
+const numberOfResults = "36";
 const retrieveReadings = `USE weatherDB; SELECT TOP(${numberOfResults}) \
 time_stamp, \
 CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
