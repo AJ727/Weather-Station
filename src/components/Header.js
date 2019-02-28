@@ -6,23 +6,23 @@ export const Header = () => (
     <header className="header">
     <div className="content-container">
         <div className="header__content">
-            <Link className="header__title" to="/">
+            <Link className="header__title" to="#">
                 <h1>WEATHER STATION</h1>
             </Link>
             <div className="nav-buttons">
-                <Link to="/temps">
+                <Link to="#tempPage">
                     <button className="button button--link" >Temperature</button>
                 </Link>
-                <Link to="/humidities">
+                <Link to="#humidPage">
                     <button className="button button--link" >Humidity</button>
                 </Link>
-                <Link to="/pressures">
+                <Link to="#pressPage">
                     <button className="button button--link" >Pressure</button>
                 </Link>
-                <Link to="/wind_speeds">
+                <Link to="#dirPage">
                     <button className="button button--link" >Wind Speeds</button>
                 </Link>
-                <Link to="/wind_dirs">
+                <Link to="#spdPage">
                     <button className="button button--link" >Wind Direction</button>
                 </Link>
             </div>

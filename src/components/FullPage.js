@@ -12,7 +12,9 @@ export const fullpageOptions = {
     ],
     sectionsColor: ["#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8",],
     callbacks: ["onLeave"],
-    scrollOverflow: false
+    scrollOverflow: false,
+    navigationTooltips: ["dashPage", "tempPage", "humidPage", "pressPage", "dirPage", "spdPage"],
+    showActiveTooltip: true
 }
 
 const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) => (
