@@ -25,6 +25,18 @@ const FullPageWrapper = ({
                 <div id="fullpage-wrapper">
                     
                     <div className="section">
+                        <div className="pane-dash">
+                            <TempChart tempData={tempData} />
+                            <PressChart pressData={pressData} />
+                        </div>
+                        <div className="pane-dash">
+                            <HumidChart humidData={humidData} />
+                            <WindDirChart dirData={dirData} />
+                            <WindSpdChart spdData={spdData} />
+                        </div>               
+                    </div>
+
+                    <div className="section">
                         <div className="pane">
                             <TempChart tempData={tempData} />
                         </div>
@@ -32,13 +44,13 @@ const FullPageWrapper = ({
 
                     <div className="section">
                         <div className="pane">
-                            <PressChart pressData={pressData} />
+                            <HumidChart humidData={humidData} />
                         </div>        
                     </div>
                     
                     <div className="section">
                         <div className="pane">
-                            <HumidChart humidData={humidData} />
+                            <PressChart pressData={pressData} />
                         </div>              
                     </div>
                     
@@ -52,12 +64,6 @@ const FullPageWrapper = ({
                         <div className="pane">
                             <WindSpdChart spdData={spdData} />
                         </div> 
-                    </div>
-
-                    <div className="section">
-                        <div className="pane">
-                            <TempChart tempData={tempData} />
-                        </div>               
                     </div>
                     
                 </div>
