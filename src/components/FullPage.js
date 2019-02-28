@@ -13,7 +13,10 @@ export const fullpageOptions = {
     sectionsColor: ["#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8",],
     callbacks: ["onLeave"],
     scrollOverflow: false,
-    navigationTooltips: ["dashPage", "tempPage", "humidPage", "pressPage", "dirPage", "spdPage"],
+    menu: '#kaar-Menu',
+    navigation: true,
+    navigationTooltips: ["Dashboard", "Temps", "Humidity", "Pressures", "Directions", "Speeds"],
+    navigationPosition: "left",
     showActiveTooltip: true
 }
 
