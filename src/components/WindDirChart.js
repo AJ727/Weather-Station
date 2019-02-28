@@ -1,9 +1,29 @@
 import React from 'react';
-import { VictoryBar, VictoryChart, VictoryTheme, VictoryLabel } from 'victory';
+import { VictoryBar, VictoryChart, VictoryTheme, VictoryLabel, VictoryPolarAxis } from 'victory';
 
 const WindDirChart = ({ dirData }) => (
     <div>
-        <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
+        <VictoryChart polar 
+            domain={{ x: [0, 360] }}
+            height={400} width={400}
+        >
+            <VictoryPolarAxis dependentAxis 
+                style={{
+                    axis: {stroke: "none"},
+                    tickLabels: { fill: "none"},
+                     grid: { stroke: "grey", strokeDasharray: "4, 8" }
+                  }}
+            />
+            <VictoryPolarAxis
+                tickValues={[0, 45, 90, 135, 180, 225, 270, 315]}
+            />
+            <VictoryBar
+                style={{ data: { fill: "#c43a31", width: 50 }}}
+                data={dirData}
+            />
+        </VictoryChart>
+
+        {/* <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
             <VictoryLabel text="Wind Direction (Polar)" x={180} y={30} textAnchor="middle" />
             <VictoryBar 
                 style={{
@@ -18,7 +38,8 @@ const WindDirChart = ({ dirData }) => (
                     onLoad: { duration: 300 }
                 }}
             />
-        </VictoryChart>    
+        </VictoryChart>     */}
+
     </div>
 )
 
