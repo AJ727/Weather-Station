@@ -10,14 +10,12 @@ export const fullpageOptions = {
     anchors: [
         "dashPage", "tempPage", "humidPage", "pressPage", "dirPage", "spdPage"
     ],
-    sectionsColor: ["#548eea", "#467ace", "#44bde2", "#389dbc", "#238faf", "#83def7"],
+    sectionsColor: ["#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8",],
     callbacks: ["onLeave"],
     scrollOverflow: false
 }
 
-const FullPageWrapper = ({
-    tempData, humidData, pressData, dirData, spdData
-}) => (
+const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) => (
     <ReactFullpage
         {...fullpageOptions}
         render={({state, fullpageApi}) => {
