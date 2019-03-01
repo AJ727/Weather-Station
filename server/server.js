@@ -17,7 +17,6 @@ const publicPath = path.join(__dirname, '..', 'public');
 
 // This serves up all assets from the public folder
 app.use(express.static(publicPath));
-require('dotenv').config();
 
 // --------------DB Config------------- //
 const dbConfig = {
