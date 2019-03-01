@@ -3,7 +3,7 @@ import { VictoryBar, VictoryChart, VictoryTheme, VictoryLabel, VictoryPolarAxis 
 
 const WindDirChart = ({ dirData }) => (
     <div>
-        <VictoryChart polar 
+        {/* <VictoryChart polar 
             domain={{ x: [0, 360] }}
             height={400} width={400}
         >
@@ -21,9 +21,9 @@ const WindDirChart = ({ dirData }) => (
                 style={{ data: { fill: "#c43a31", width: 50 }}}
                 data={dirData}
             />
-        </VictoryChart>
+                </VictoryChart> */}
 
-        {/* <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
+        <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
             <VictoryLabel text="Wind Direction (Polar)" x={180} y={30} textAnchor="middle" />
             <VictoryBar 
                 style={{
@@ -38,7 +38,7 @@ const WindDirChart = ({ dirData }) => (
                     onLoad: { duration: 300 }
                 }}
             />
-        </VictoryChart>     */}
+        </VictoryChart>    
 
     </div>
 )
