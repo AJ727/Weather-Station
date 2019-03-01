@@ -37,7 +37,7 @@ CONVERT(DECIMAL(10,2), Pressure) AS Pressure, \
 WindDir, \
 CONVERT(DECIMAL(10,2), WindSpd) AS WindSpd \
 FROM Readings ORDER BY time_stamp DESC \
-FOR JSON PATH, ROOT('Readings');`;
+FOR JSON PATH;`;
 
 // ----------------API---------------- //
 app.get('/api', (req, res) => {

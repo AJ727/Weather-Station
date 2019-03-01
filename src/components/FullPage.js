@@ -17,7 +17,12 @@ export const fullpageOptions = {
     navigation: true,
     navigationTooltips: ["Dashboard", "Temps", "Humidity", "Pressures", "Directions", "Speeds"],
     navigationPosition: "left",
-    showActiveTooltip: true
+    showActiveTooltip: true,
+    scrollingSpeed: 800,
+    paddingTop: "2rem",
+    normalScrollElementTouchThreshold: 500,
+    //fixedElements: '.VictoryContainer',
+    normalScrollElements: '.pane > div, .pane, .VictoryContainer'
 }
 
 const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) => (

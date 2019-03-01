@@ -127,13 +127,13 @@ class Chart extends React.Component {
     loadData = () => { 
         // GET request to local api endpoint
         fetch('/api')
-        .then(res => res.json())  // convert to json
-        .then(                    // change the local state
+        .then(res => res.json()) // convert to json
+        .then(                   // change the local state
             (result) => {
                 // log result here if wanting to see structure
                 this.setState(() => ({
                     isLoaded: true,
-                    weatherData: result.Readings
+                    weatherData: result
             }))
         },
             (error) => {
@@ -146,10 +146,10 @@ class Chart extends React.Component {
     }
     render() {
             if (this.state.error) {
-                return ( <div>Error: {this.state.error}</div> )
+                return ( <div>Error: {this.state.error.toString()}</div> )
             }
             else if (!(this.state.isLoaded)) {
-                return <LoadingPage />
+                return ( <LoadingPage /> )
             }
             else if (this.state.isLoaded && !(this.state.error)) {
                 return ( 
@@ -165,7 +165,6 @@ class Chart extends React.Component {
             else {
                 return (<LoadingPage />)
             }
-            
         }
             
 }
