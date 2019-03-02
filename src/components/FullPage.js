@@ -19,8 +19,9 @@ export const fullpageOptions = {
     navigationPosition: "left",
     showActiveTooltip: true,
     scrollingSpeed: 800,
-    paddingTop: "2rem",
+    paddingTop: "5%",
     normalScrollElementTouchThreshold: 500,
+    verticalCentered: false,
     //fixedElements: '.VictoryContainer',
     normalScrollElements: '.pane > div, .pane, .VictoryContainer'
 }
@@ -63,7 +64,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                     </div>
                     
                     <div className="section">
-                        <div className="pane">
+                        <div className="pane pane-dir">
                             <WindDirChart dirData={dirData} />
                         </div>       
                     </div>
