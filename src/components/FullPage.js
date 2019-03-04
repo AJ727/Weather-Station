@@ -13,7 +13,7 @@ export const fullpageOptions = {
     sectionsColor: ["#faf8f8", "#faf8f8", "#faf8f8", "#faf8f8", "#faf8f8", "#faf8f8"],
     paddingTop: "4.5rem",
     slidesNavigation: true,
-    scrollingSpeed: 550
+    scrollingSpeed: 400
 }
 
 const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) => (
@@ -55,15 +55,15 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                         </div>
                         
                         <div className="slide">
-                            <div className="pane pane-dir">
-                                <WindDirChart dirData={dirData} />
-                            </div>       
+                            <div className="pane">
+                                <WindSpdChart spdData={spdData} />
+                            </div> 
                         </div>
 
                         <div className="slide">
-                            <div className="pane">
-                                <WindSpdChart spdData={spdData} dirData={dirData} />
-                            </div> 
+                            <div className="pane pane-dir">
+                                <WindDirChart dirData={dirData} />
+                            </div>       
                         </div>
 
                     </div>
