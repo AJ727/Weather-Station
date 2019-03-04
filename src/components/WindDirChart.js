@@ -12,30 +12,29 @@ class WindSpdChart extends React.Component {
           };
 
         if (this.props.dirData != undefined && this.props.dirData.length != 0) {
-
             return (
-
-                <VictoryChart polar 
-                    domain={{ x: [0, 360] }}
-                    height={400} width={400}
-                >
-                    <VictoryPolarAxis dependentAxis 
-                        style={{
-                            axis: {stroke: "none"},
-                            tickLabels: { fill: "none"},
-                            grid: { stroke: "grey", strokeDasharray: "4, 8" }
-                        }}
-                    />
-                    <VictoryPolarAxis
-                        tickValues={Object.keys(directions).map((k) => +k)}
-                        tickFormat={Object.values(directions)}
-                    />
-                    <VictoryBar
-                        style={{ data: { fill: "#c43a31", width: 50 }}}
-                        data={this.props.dirData}
-                    />
-                </VictoryChart>
-
+                <div>
+                    <VictoryChart polar 
+                        domain={{ x: [0, 360] }}
+                        height={400} width={400}
+                    >
+                        <VictoryPolarAxis dependentAxis 
+                            style={{
+                                axis: {stroke: "none"},
+                                tickLabels: { fill: "none"},
+                                grid: { stroke: "grey", strokeDasharray: "4, 8" }
+                            }}
+                        />
+                        <VictoryPolarAxis
+                            tickValues={Object.keys(directions).map((k) => +k)}
+                            tickFormat={Object.values(directions)}
+                        />
+                        <VictoryBar
+                            style={{ data: { fill: "#c43a31", width: 50 }}}
+                            data={this.props.dirData}
+                        />
+                    </VictoryChart>
+                </div>
             );
         }
 

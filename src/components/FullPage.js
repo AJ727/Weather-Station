@@ -11,7 +11,7 @@ export const fullpageOptions = {
         "readings"
     ],
     sectionsColor: ["#faf8f8", "#faf8f8", "#faf8f8", "#faf8f8", "#faf8f8", "#faf8f8"],
-    paddingTop: "4.5rem",
+    paddingTop: "5rem",
     slidesNavigation: true,
     scrollingSpeed: 400
 }
@@ -31,7 +31,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                             </div>
                             <div className="pane-dash">
                                 <HumidChart humidData={humidData} />
-                                <WindDirChart dirData={dirData} />
+                                <WindDirChart className="dir" dirData={dirData} />
                                 <WindSpdChart spdData={spdData} />
                             </div>               
                         </div>
