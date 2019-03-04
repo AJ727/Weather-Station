@@ -6,25 +6,25 @@ export const Header = () => (
     <header className="header">
     <div className="content-container">
         <div className="header__content">
-            <Link className="header__title" to="#">
+            <a className="header__title" href="#readings">
                 <h1>WEATHER STATION</h1>
-            </Link>
+            </a>
             <div className="nav-buttons">
-                <Link to="#tempPage">
-                    <button className="button button--link" >Temperature</button>
-                </Link>
-                <Link to="#humidPage">
-                    <button className="button button--link" >Humidity</button>
-                </Link>
-                <Link to="#pressPage">
-                    <button className="button button--link" >Pressure</button>
-                </Link>
-                <Link to="#dirPage">
-                    <button className="button button--link" >Wind Speeds</button>
-                </Link>
-                <Link to="#spdPage">
-                    <button className="button button--link" >Wind Direction</button>
-                </Link>
+                <a href="#readings/1">
+                    <button className="button button--link">Temperatures</button>
+                </a>
+                <a href="#readings/2">
+                    <button className="button button--link">Humidity</button>
+                </a>
+                <a href="#readings/3">
+                    <button className="button button--link">Pressure</button>
+                </a>
+                <a href="#readings/4">
+                    <button className="button button--link">Wind Speeds</button>
+                </a>
+                <a href="#readings/5">
+                    <button className="button button--link">Wind Direction</button>
+                </a>
             </div>
         </div>
     </div>

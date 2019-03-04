@@ -8,73 +8,80 @@ import ReactFullpage from '@fullpage/react-fullpage';
 
 export const fullpageOptions = {
     anchors: [
-        "dashPage", "tempPage", "humidPage", "pressPage", "dirPage", "spdPage"
+        "readings"
     ],
     sectionsColor: ["#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8",],
-    callbacks: ["onLeave"],
-    scrollOverflow: false,
-    menu: '#kaar-Menu',
-    navigation: true,
-    navigationTooltips: ["Dashboard", "Temps", "Humidity", "Pressures", "Directions", "Speeds"],
-    navigationPosition: "left",
-    showActiveTooltip: true,
-    scrollingSpeed: 800,
-    paddingTop: "5%",
-    normalScrollElementTouchThreshold: 500,
-    verticalCentered: false,
-    //fixedElements: '.VictoryContainer',
-    normalScrollElements: '.pane > div, .pane, .VictoryContainer'
+    paddingTop: "4rem"
 }
+
+// export const fullpageOptions = {
+    // anchors: [
+    //     "dashPage", "tempPage", "humidPage", "pressPage", "dirPage", "spdPage"
+    // ],
+//     sectionsColor: ["#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8",],
+//     callbacks: ["onLeave"],
+//     scrollOverflow: false,
+//     menu: '#kaar-Menu',
+//     navigation: true,
+//     navigationTooltips: ["Dashboard", "Temps", "Humidity", "Pressures", "Directions", "Speeds"],
+//     navigationPosition: "left",
+//     showActiveTooltip: true,
+//     verticalCentered: false,
+//     //fixedElements: '.VictoryContainer',
+//     normalScrollElements: '.pane > div, .pane, .VictoryContainer'
+// }
 
 const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) => (
     <ReactFullpage
         {...fullpageOptions}
         render={({state, fullpageApi}) => {
             return (
-                <div id="fullpage-wrapper">
-                    
+                <div className="fullpage">
                     <div className="section">
-                        <div className="pane-dash">
-                            <TempChart tempData={tempData} />
-                            <PressChart pressData={pressData} />
+
+                        <div className="slide">
+                            <div className="pane-dash">
+                                <TempChart tempData={tempData} />
+                                <PressChart pressData={pressData} />
+                            </div>
+                            <div className="pane-dash">
+                                <HumidChart humidData={humidData} />
+                                <WindDirChart dirData={dirData} />
+                                <WindSpdChart spdData={spdData} />
+                            </div>               
                         </div>
-                        <div className="pane-dash">
-                            <HumidChart humidData={humidData} />
-                            <WindDirChart dirData={dirData} />
-                            <WindSpdChart spdData={spdData} />
-                        </div>               
-                    </div>
 
-                    <div className="section">
-                        <div className="pane">
-                            <TempChart tempData={tempData} />
+                        <div className="slide">
+                            <div className="pane">
+                                <TempChart tempData={tempData} />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="section">
-                        <div className="pane">
-                            <HumidChart humidData={humidData} />
-                        </div>        
-                    </div>
-                    
-                    <div className="section">
-                        <div className="pane">
-                            <PressChart pressData={pressData} />
-                        </div>              
-                    </div>
-                    
-                    <div className="section">
-                        <div className="pane pane-dir">
-                            <WindDirChart dirData={dirData} />
-                        </div>       
-                    </div>
+                        <div className="slide">
+                            <div className="pane">
+                                <HumidChart humidData={humidData} />
+                            </div>        
+                        </div>
+                        
+                        <div className="slide">
+                            <div className="pane">
+                                <PressChart pressData={pressData} />
+                            </div>              
+                        </div>
+                        
+                        <div className="slide">
+                            <div className="pane pane-dir">
+                                <WindDirChart dirData={dirData} />
+                            </div>       
+                        </div>
 
-                    <div className="section">
-                        <div className="pane">
-                            <WindSpdChart spdData={spdData} />
-                        </div> 
+                        <div className="slide">
+                            <div className="pane">
+                                <WindSpdChart spdData={spdData} />
+                            </div> 
+                        </div>
+
                     </div>
-                    
                 </div>
             )
         }}
