@@ -10,7 +10,7 @@ export const fullpageOptions = {
     anchors: [
         "readings"
     ],
-    sectionsColor: ["#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8",],
+    sectionsColor: ["#faf8f8", "#faf8f8", "#faf8f8", "#faf8f8", "#faf8f8", "#faf8f8"],
     paddingTop: "4.5rem",
     slidesNavigation: true,
     scrollingSpeed: 550
