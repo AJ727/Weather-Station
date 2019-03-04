@@ -31,7 +31,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                             </div>
                             <div className="pane-dash">
                                 <HumidChart humidData={humidData} />
-                                <WindDirChart dirData={dirData} />
+                                {/* <WindDirChart dirData={dirData} /> */}
                                 <WindSpdChart spdData={spdData} />
                             </div>               
                         </div>
@@ -54,15 +54,15 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                             </div>              
                         </div>
                         
-                        <div className="slide">
+                        {/* <div className="slide">
                             <div className="pane pane-dir">
                                 <WindDirChart dirData={dirData} />
                             </div>       
-                        </div>
+                        </div> */}
 
                         <div className="slide">
                             <div className="pane">
-                                <WindSpdChart spdData={spdData} />
+                                <WindSpdChart spdData={spdData} dirData={dirData} />
                             </div> 
                         </div>
 
