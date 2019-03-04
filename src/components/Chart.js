@@ -110,14 +110,14 @@ class Chart extends React.Component {
             }
         });
 
-        let nDir = JSON.parse(`{ "x": 0, "y": ${N} }`);
+        let nDir = JSON.parse(`{ "x": 90, "y": ${N} }`);
         let neDir = JSON.parse(`{ "x": 45, "y": ${NE} }`);
-        let eDir = JSON.parse(`{ "x": 90, "y": ${E} }`);
-        let seDir = JSON.parse(`{ "x": 135, "y": ${SE} }`);
-        let sDir = JSON.parse(`{ "x": 180, "y": ${S} }`);
+        let eDir = JSON.parse(`{ "x": 0, "y": ${E} }`);
+        let seDir = JSON.parse(`{ "x": 315, "y": ${SE} }`);
+        let sDir = JSON.parse(`{ "x": 270, "y": ${S} }`);
         let swDir = JSON.parse(`{ "x": 225, "y": ${SW} }`);
-        let wDir = JSON.parse(`{ "x": 270, "y": ${W} }`);
-        let nwDir = JSON.parse(`{ "x": 315, "y": ${NW} }`);
+        let wDir = JSON.parse(`{ "x": 180, "y": ${W} }`);
+        let nwDir = JSON.parse(`{ "x": 135, "y": ${NW} }`);
         enumeratedDirArr.push(nDir, neDir, eDir, seDir, sDir, swDir, wDir, nwDir);
 
         return enumeratedDirArr;
