@@ -26,6 +26,7 @@ class WindSpdChart extends React.Component {
                             }}
                         />
                         <VictoryPolarAxis
+                            labelPlacement="vertical"
                             tickValues={Object.keys(directions).map((k) => +k)}
                             tickFormat={Object.values(directions)}
                         />
