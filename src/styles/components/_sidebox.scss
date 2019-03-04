@@ -1,5 +1,31 @@
 .sidebox {
-    background: $off-white;
+    background: $blue;
     position: fixed;
     right: 0;
+    top: 25%;
+    z-index: 98;
+    color: white;
+    border-style: solid;
+    border-color: grey;
+    padding: 5px;
+    display: none;
+}
+
+.sidebox-button {
+    background-image: url("/images/drip.gif");
+    background-position: center;
+    color: white;
+    text-align: center;
+    display: block;
+    position: fixed;
+    border-style: solid;
+    border-color: grey;
+    right: 0;
+    top: 30%;
+    z-index: 98;
+    &:focus + .sidebox {
+        -webkit-transition: 0.4s ease;
+        transition: 0.4s ease;
+        display: block;
+    }
 }

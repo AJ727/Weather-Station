@@ -20,18 +20,18 @@ class WindSpdChart extends React.Component {
             180: "W", 225: "SW", 270: "S", 315: "SE"
           };
 
-        let windData = {[{x: 0, y: 0}]};
+        // let windData = {[{x: 0, y: 0}]};
 
         if (this.props.spdData.length != 0 || this.props.dirData != undefined) {
 
-            for (let i = 0; i < this.props.tempData.length; i++) {
+            /* for (let i = 0; i < this.props.tempData.length; i++) {
                 windData[i].x = this.props.dirData[i].x;
                 windData[i].y = this.props.spdData[i].y 
-            }
+            } */
 
             // console.log(this.props.dirData);
             // console.log(this.props.spdData);
-            console.log(windData);
+            // console.log(windData);
 
             return (
 

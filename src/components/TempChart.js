@@ -30,7 +30,7 @@ class TempChart extends React.Component {
                             />
                         }
                     >
-                    <VictoryLabel text="Temperature (Degrees Farenheit)" x={220} y={30} textAnchor="middle" />
+                    <VictoryLabel text="Temperature (°F)" x={220} y={30} textAnchor="middle" />
                     <VictoryAxis 
                         fixLabelOverlap={false}
     
