@@ -1,46 +1,48 @@
 import React from 'react';
-import { VictoryBar, VictoryChart, VictoryTheme, VictoryLabel, VictoryPolarAxis } from 'victory';
+import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel, VictoryAxis, VictoryZoomContainer, VictoryStack, VictoryPolarAxis, VictoryBar } from 'victory';
 
-const WindDirChart = ({ dirData }) => (
-    <div>
-        {/* <VictoryChart polar 
-            domain={{ x: [0, 360] }}
-            height={400} width={400}
-        >
-            <VictoryPolarAxis dependentAxis 
-                style={{
-                    axis: {stroke: "none"},
-                    tickLabels: { fill: "none"},
-                     grid: { stroke: "grey", strokeDasharray: "4, 8" }
-                  }}
-            />
-            <VictoryPolarAxis
-                tickValues={[0, 45, 90, 135, 180, 225, 270, 315]}
-            />
-            <VictoryBar
-                style={{ data: { fill: "#c43a31", width: 50 }}}
-                data={dirData}
-            />
-                </VictoryChart> */}
+class WindSpdChart extends React.Component {
+    state = {}
 
-        <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
-            <VictoryLabel text="Wind Direction (Polar)" x={220} y={30} textAnchor="middle" />
-            <VictoryBar 
-                style={{
-                    data: { stroke: "#c43f11", strokeWidth: 5 },
-                    parent: { border: "1px solid #ccc" }
-                }}
-                // data={props.data.ExtTemp} <-- this is correct, but we need more data, so trying with dummy data
-                // TODO: Change code so that data is saved, and just added on to, instead
-                // of replacing the state each time
-                data={dirData}
-                animate={{
-                    onLoad: { duration: 300 }
-                }}
-            />
-        </VictoryChart>    
+    render() {
 
-    </div>
-)
+        const directions = {
+            0: "E", 45 : "NE", 90: "N", 135: "NW",
+            180: "W", 225: "SW", 270: "S", 315: "SE"
+          };
 
-export default WindDirChart;
+        if (this.props.dirData != undefined && this.props.dirData.length != 0) {
+            return (
+                <div>
+                    <VictoryChart polar 
+                        domain={{ x: [0, 360] }}
+                        height={400} width={400}
+                    >
+                        <VictoryPolarAxis dependentAxis 
+                            style={{
+                                axis: {stroke: "none"},
+                                tickLabels: { fill: "none"},
+                                grid: { stroke: "grey", strokeDasharray: "4, 8" }
+                            }}
+                        />
+                        <VictoryPolarAxis
+                            labelPlacement="vertical"
+                            tickValues={Object.keys(directions).map((k) => +k)}
+                            tickFormat={Object.values(directions)}
+                        />
+                        <VictoryBar
+                            style={{ data: { fill: "#c43a31", width: 50 }}}
+                            data={this.props.dirData}
+                        />
+                    </VictoryChart>
+                </div>
+            );
+        }
+
+        else {
+            return(<div></div>)
+        }
+    }
+}
+
+export default WindSpdChart;

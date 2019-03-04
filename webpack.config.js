@@ -67,7 +67,7 @@ module.exports = () => {
                 };
                 
                 // Query that retrieves top X results from SQL Server
-                const numberOfResults = "80";
+                const numberOfResults = "200";
                 // TOP(${numberOfResults})
                 const retrieveReadings = `USE weatherDB; SELECT TOP(${numberOfResults}) \
                 time_stamp, \

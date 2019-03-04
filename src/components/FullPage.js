@@ -10,10 +10,10 @@ export const fullpageOptions = {
     anchors: [
         "readings"
     ],
-    sectionsColor: ["#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8",],
-    paddingTop: "4.5rem",
+    sectionsColor: ["#faf8f8", "#faf8f8", "#faf8f8", "#faf8f8", "#faf8f8", "#faf8f8"],
+    paddingTop: "5rem",
     slidesNavigation: true,
-    scrollingSpeed: 550
+    scrollingSpeed: 400
 }
 
 const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) => (
@@ -31,7 +31,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                             </div>
                             <div className="pane-dash">
                                 <HumidChart humidData={humidData} />
-                                {/* <WindDirChart dirData={dirData} /> */}
+                                <WindDirChart className="dir" dirData={dirData} />
                                 <WindSpdChart spdData={spdData} />
                             </div>               
                         </div>
@@ -54,16 +54,16 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                             </div>              
                         </div>
                         
-                        {/* <div className="slide">
+                        <div className="slide">
+                            <div className="pane">
+                                <WindSpdChart spdData={spdData} />
+                            </div> 
+                        </div>
+
+                        <div className="slide">
                             <div className="pane pane-dir">
                                 <WindDirChart dirData={dirData} />
                             </div>       
-                        </div> */}
-
-                        <div className="slide">
-                            <div className="pane">
-                                <WindSpdChart spdData={spdData} dirData={dirData} />
-                            </div> 
                         </div>
 
                     </div>
