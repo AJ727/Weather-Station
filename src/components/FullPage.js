@@ -12,7 +12,8 @@ export const fullpageOptions = {
     ],
     sectionsColor: ["#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8",],
     paddingTop: "4.5rem",
-    slidesNavigation: true
+    slidesNavigation: true,
+    scrollingSpeed: 550
 }
 
 const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) => (
