@@ -11,25 +11,9 @@ export const fullpageOptions = {
         "readings"
     ],
     sectionsColor: ["#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8",],
-    paddingTop: "4rem"
+    paddingTop: "4.5rem",
+    slidesNavigation: true
 }
-
-// export const fullpageOptions = {
-    // anchors: [
-    //     "dashPage", "tempPage", "humidPage", "pressPage", "dirPage", "spdPage"
-    // ],
-//     sectionsColor: ["#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8", "#dad8d8",],
-//     callbacks: ["onLeave"],
-//     scrollOverflow: false,
-//     menu: '#kaar-Menu',
-//     navigation: true,
-//     navigationTooltips: ["Dashboard", "Temps", "Humidity", "Pressures", "Directions", "Speeds"],
-//     navigationPosition: "left",
-//     showActiveTooltip: true,
-//     verticalCentered: false,
-//     //fixedElements: '.VictoryContainer',
-//     normalScrollElements: '.pane > div, .pane, .VictoryContainer'
-// }
 
 const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) => (
     <ReactFullpage

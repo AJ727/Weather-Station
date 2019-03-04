@@ -31,7 +31,7 @@ class PressChart extends React.Component {
                             />
                         }
                     >
-                    <VictoryLabel text="Pressure (inches Hg)" x={180} y={30} textAnchor="middle" />
+                    <VictoryLabel text="Pressure (inches Hg)" x={220} y={30} textAnchor="middle" />
                     <VictoryAxis 
                         fixLabelOverlap={false}
     

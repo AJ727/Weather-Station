@@ -31,7 +31,7 @@ class WindSpdChart extends React.Component {
                             />
                         }
                     >
-                    <VictoryLabel text="Wind Speed (mph)" x={180} y={30} textAnchor="middle" />
+                    <VictoryLabel text="Wind Speed (mph)" x={220} y={30} textAnchor="middle" />
                     <VictoryAxis 
                         fixLabelOverlap={false}    
                     />

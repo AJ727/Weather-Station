@@ -31,7 +31,7 @@ class HumidChart extends React.Component {
                             />
                         }
                     >
-                    <VictoryLabel text="Humidity (Percentage)" x={180} y={30} textAnchor="middle" />
+                    <VictoryLabel text="Humidity (Percentage)" x={220} y={30} textAnchor="middle" />
                     <VictoryAxis 
                         fixLabelOverlap={false}
     

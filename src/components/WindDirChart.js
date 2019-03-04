@@ -24,7 +24,7 @@ const WindDirChart = ({ dirData }) => (
                 </VictoryChart> */}
 
         <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
-            <VictoryLabel text="Wind Direction (Polar)" x={180} y={30} textAnchor="middle" />
+            <VictoryLabel text="Wind Direction (Polar)" x={220} y={30} textAnchor="middle" />
             <VictoryBar 
                 style={{
                     data: { stroke: "#c43f11", strokeWidth: 5 },
