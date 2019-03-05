@@ -5,6 +5,15 @@
     align-items: center;
     justify-content: space-evenly;
     flex: 1;
+}
+
+.pane-dash > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 1;
     // @media (max-width: $desktop-breakpoint) {
     //     display: none;
     // }
