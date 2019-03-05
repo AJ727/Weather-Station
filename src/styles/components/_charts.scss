@@ -1,24 +1,24 @@
 .pane-dash {
-    // display: flex;
-    // flex-direction: column;
-    // flex-wrap: wrap-reverse;
-    // align-items: center;
-    // justify-content: space-between;
-    // flex: 1;
-    padding: 1px;
-}
-
-.pane-dash > div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
     flex: 1;
-    // @media (max-width: $desktop-breakpoint) {
-    //     display: none;
-    // }
+    padding: 0px;
 }
+
+// .pane-dash > div {
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//     align-items: center;
+//     justify-content: space-around;
+//     //flex: 1;
+//     // @media (max-width: $desktop-breakpoint) {
+//     //     display: none;
+//     // }
+// }
 
 // nav dots
 div.fp-slidesNav {
