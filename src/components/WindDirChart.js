@@ -1,5 +1,5 @@
 import React from 'react';
-import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel, VictoryAxis, VictoryZoomContainer, VictoryStack, VictoryPolarAxis, VictoryBar, VictoryTooltip } from 'victory';
+import { VictoryChart, VictoryLabel, VictoryPolarAxis, VictoryBar } from 'victory';
 
 class WindSpdChart extends React.Component {
     state = {}
@@ -24,7 +24,7 @@ class WindSpdChart extends React.Component {
                         height={400} width={400}
                         innerRadius={20}
                     >
-                        <VictoryLabel text="Wind Direction (Frequency)" x={210} y={15} textAnchor="middle" />
+                        <VictoryLabel text="Wind Direction (Frequency)" x={210} y={20} textAnchor="middle" />
 
                         <VictoryPolarAxis dependentAxis 
                             animate={{

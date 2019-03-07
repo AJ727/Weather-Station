@@ -1,0 +1,29 @@
+.pane-about {
+    display: flex;
+    justify-content: space-between;
+    word-wrap: break-word;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin: auto;
+}
+
+.pane-about > div.person {
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+
+}
+
+.person > img:hover {
+    opacity: 0.3;
+    transition: .5s ease;
+}
+
+.person {
+    margin: 10px;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 // activeClassName only gets applied when the page is the one clicked on
 export const Header = () => (
@@ -26,7 +26,7 @@ export const Header = () => (
                 <a href="#readings/5">
                     <button className="button button--link">Wind Direction</button>
                 </a>
-                <a href="#">
+                <a href="#readings/6">
                     <button className="button button--link">About Us</button>
                 </a>
             </div>
