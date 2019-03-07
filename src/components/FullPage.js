@@ -26,13 +26,23 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
 
                         <div className="slide">
                             <div className="pane-dash">
-                                <TempChart tempData={tempData} />
-                                <PressChart pressData={pressData} />
+                                <div className="dash-chart">
+                                    <TempChart tempData={tempData} />
+                                </div>
+                                <div className="dash-chart">
+                                    <PressChart pressData={pressData} />
+                                </div>
                             </div>
                             <div className="pane-dash">
-                                <HumidChart humidData={humidData} />
-                                <WindDirChart className="dir" dirData={dirData} />
-                                <WindSpdChart spdData={spdData} />
+                                <div className="dash-chart">
+                                    <HumidChart humidData={humidData} />
+                                </div>
+                                <div className="dash-chart">
+                                    <WindDirChart className="dir" dirData={dirData} />
+                                </div>
+                                <div className="dash-chart">
+                                    <WindSpdChart spdData={spdData} />
+                                </div>
                             </div>               
                         </div>
 
@@ -67,6 +77,11 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                         </div>
 
                     </div>
+
+                    <div className="Section">
+                        Hello
+                    </div>
+
                 </div>
             )
         }}

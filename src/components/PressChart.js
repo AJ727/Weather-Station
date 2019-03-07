@@ -9,15 +9,14 @@ class PressChart extends React.Component {
     }
 
     render() {
+        
+        if (this.props.pressData.length != 0) {
 
-        for (let i = 0; i < this.props.pressData.length; i++) {
-            if (this.props.pressData[i] != undefined) {
+            for (let i = 0; i < this.props.pressData.length; i++) {
                 this.props.pressData[i].x = moment(this.props.pressData[i].x);
                 this.props.pressData[i] = { x: this.props.pressData[i].x, y: this.props.pressData[i].y }
             }
-        }
-        
-        if (this.props.pressData.length != 0) {
+            
             return (
                 <div>
                     <VictoryChart domainPadding={20}
@@ -44,8 +43,11 @@ class PressChart extends React.Component {
                         }}
                     />
                     <VictoryLine 
+                        animate={{
+                            duration: 1000,
+                        }}
                         style={{
-                            data: { stroke: "orange", strokeWidth: 2 },
+                            data: { stroke: "orange", strokeWidth: 1 },
                             parent: { border: "1px solid #ccc", background: "#555555" }
                         }}
                         data={this.props.pressData}

@@ -11,11 +11,11 @@ class TempChart extends React.Component {
     render() {
         
         if (this.props.tempData.length != 0) {
+
             for (let i = 0; i < this.props.tempData.length; i++) {
                 this.props.tempData[i].x = moment(this.props.tempData[i].x);
-                this.props.tempData[i] = { x: this.props.tempData[i].x, y: this.props.tempData[i].y 
+                this.props.tempData[i] = { x: this.props.tempData[i].x, y: this.props.tempData[i].y }
             }
-        }
 
             return (
                 <div>
@@ -43,8 +43,11 @@ class TempChart extends React.Component {
                         }}
                     />
                     <VictoryLine 
+                        animate={{
+                            duration: 1000,
+                        }}
                         style={{
-                            data: { stroke: "#4F3FE6", strokeWidth: 2 },
+                            data: { stroke: "#4F3FE6", strokeWidth: 1 },
                             parent: { border: "1px solid #ccc", background: "#555555" }
                         }}
                         data={this.props.tempData}

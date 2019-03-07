@@ -9,14 +9,14 @@ class WindSpdChart extends React.Component {
     }
 
     render() {
-        for (let i = 0; i < this.props.spdData.length; i++) {
-            if (this.props.spdData[i] != undefined) {
+
+        if (this.props.spdData.length != 0) {
+
+            for (let i = 0; i < this.props.spdData.length; i++) {
                 this.props.spdData[i].x = moment(this.props.spdData[i].x);
                 this.props.spdData[i] = { x: this.props.spdData[i].x, y: this.props.spdData[i].y }
             }
-        }
-        
-        if (this.props.spdData.length != 0) {
+            
             return (
                 <div>
                     <VictoryChart domainPadding={20}
@@ -42,8 +42,11 @@ class WindSpdChart extends React.Component {
                         }}
                     />
                     <VictoryLine 
+                        animate={{
+                            duration: 1000,
+                        }}
                         style={{
-                            data: { stroke: "green", strokeWidth: 2 },
+                            data: { stroke: "green", strokeWidth: 1 },
                             parent: { border: "1px solid #ccc", background: "#555555" }
                         }}
                         data={this.props.spdData}

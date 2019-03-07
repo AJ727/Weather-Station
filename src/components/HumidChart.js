@@ -9,15 +9,14 @@ class HumidChart extends React.Component {
     }
 
     render() {
+        
+        if (this.props.humidData.length != 0) {
 
-        for (let i = 0; i < this.props.humidData.length; i++) {
-            if (this.props.humidData[i] != undefined) {
+            for (let i = 0; i < this.props.humidData.length; i++) {
                 this.props.humidData[i].x = moment(this.props.humidData[i].x);
                 this.props.humidData[i] = { x: this.props.humidData[i].x, y: this.props.humidData[i].y }
             }
-        }
-        
-        if (this.props.humidData.length != 0) {
+
             return (
                 <div>
                     <VictoryChart domainPadding={20}
@@ -44,8 +43,11 @@ class HumidChart extends React.Component {
                         }}
                     />
                     <VictoryLine 
+                        animate={{
+                            duration: 1000,
+                        }}
                         style={{
-                            data: { stroke: "red", strokeWidth: 2 },
+                            data: { stroke: "red", strokeWidth: 1 },
                             parent: { border: "1px solid #ccc", background: "#555555" }
                         }}
                         data={this.props.humidData}

@@ -26,8 +26,9 @@ div.fp-slidesNav {
 }
 
 div.fp-slidesNav > ul > li > a > span {
-    color: blue !important;
-    background-color: blue !important; 
+    // color: blue !important;
+    // background-color: blue !important; 
+    background-color: $dark-blue !important;
 }
 
 // slide nav arrows
@@ -50,7 +51,11 @@ div.fp-controlArrow.fp-next {
 
 .pane-dir {
     @extend .pane;
-    width: 750px;
-    height: 750px;
+    width: 700px;
+    height: 700px;
 }
 
+.dash-chart {
+    width: 25%;
+    height: 25%;
+}

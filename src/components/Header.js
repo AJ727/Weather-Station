@@ -7,7 +7,8 @@ export const Header = () => (
     <div className="content-container">
         <div className="header__content">
             <a className="header__title" href="#readings">
-                <h1>WEATHER STATION</h1>
+                {/* <h1>WEATHER STATION</h1> */}
+                <img src="/images/logo2.png" height="50px" ></img>
             </a>
             <div className="nav-buttons">
                 <a href="#readings/1">
@@ -24,6 +25,9 @@ export const Header = () => (
                 </a>
                 <a href="#readings/5">
                     <button className="button button--link">Wind Direction</button>
+                </a>
+                <a href="#">
+                    <button className="button button--link">About Us</button>
                 </a>
             </div>
         </div>
