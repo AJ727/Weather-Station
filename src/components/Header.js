@@ -10,7 +10,7 @@ export const Header = () => (
                 {/* <h1>WEATHER STATION</h1> */}
                 <img src="/images/logo2.png" height="50px" ></img>
             </a>
-            <div className="nav-buttons">
+            <div className="nav-buttons show-for-desktop">
                 <a href="#readings/1">
                     <button className="button button--link">Temperatures</button>
                 </a>
@@ -29,6 +29,10 @@ export const Header = () => (
                 <a href="#readings/6">
                     <button className="button button--link">About Us</button>
                 </a>
+            </div>
+            {/* The hamburger menu button with show up once the viewport hits a certain width */}
+            <div className="show-for-mobile">
+                <button>MENU</button>
             </div>
         </div>
     </div>
