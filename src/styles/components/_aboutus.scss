@@ -11,19 +11,23 @@
     width: 50%;
     text-align: center;
     padding: 10px;
+    word-wrap: break-word;
 
 }
 
 .person > img:hover {
     opacity: 0.3;
     transition: .5s ease;
+    word-wrap: break-word;
 }
 
 .person {
     margin: 10px;
     padding: 20px;
+    word-wrap: break-word;
 }
 
 h2 {
     text-align: center;
+    word-wrap: break-word;
 }

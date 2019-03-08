@@ -6,6 +6,7 @@ import WindSpdChart from './WindSpdChart';
 import WindDirChart from './WindDirChart';
 import ReactFullpage from '@fullpage/react-fullpage';
 import AboutUs from './AboutUs';
+import DashLabel from './DashLabel';
 
 export const fullpageOptions = {
     anchors: ["readings"],
@@ -28,18 +29,9 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                                 <div className="dash-chart show-for-desktop">
                                     <TempChart tempData={tempData} />
                                 </div>
-                                {/* <div className="dash-img">
-                                    <img src="/images/meme_sun.gif" height="50%" width="50%"></img>
-                                </div> */}
-                                <div className="current-dash">
-                                    <h3 className="locale-text">Tampa, FL</h3>
-                                    <h3 className="temp-text">70&#176;F</h3>
-                                    <div className="reading-dash">
-                                        <h3 className="press-text">Pressure<br />30.3 (inHg)</h3>
-                                        <h3 className="humid-text">Humidity<br />50.4%</h3>
-                                        <h3 className="wind-text">Wind Speed<br />S 3.4 mph</h3>
-                                    </div>
-                                </div>
+                                
+                                <DashLabel location={"Brooksville, FL"} tempData={tempData} humidData={humidData} pressData={pressData} dirData={dirData} spdData={spdData}/>
+
                                 <div className="dash-chart show-for-desktop">
                                     <PressChart pressData={pressData} />
                                 </div>
