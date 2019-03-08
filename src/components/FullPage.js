@@ -93,30 +93,31 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                             <div className="pane-about">
                                 <AboutUs 
                                     name={"Roger Huang"} 
-                                    image={"/images/meme_sun.gif"}
+                                    image={"/images/obi.gif"}
                                     color={"#F95F52"}
                                     bio={"Roger is known for his 9 consecutive 1st place finishes at the \
-                                    Daytona 500. He also enjoys volunteering at orphanages, but only if he gets to keep an \
-                                    orphan as payment."}
+                                    Daytona 500. He also enjoys bad movie spin-offs."}
                                 />
                                 <AboutUs 
                                     name={"Austin Pickart"} 
-                                    image={"/images/meme_sun.gif"}
+                                    image={"/images/neo.gif"}
                                     color={"#37F476"}
-                                    bio={"Y E E T"}
+                                    bio={"Austin learned programming from a Monk at a Temple \
+                                    in Eastern Asia. Note: This may or may not be true, it could've been a \
+                                    temple elsewhere."}
                                 />
                                 <AboutUs 
                                     name={"Kody \"Krash\" Looper"} 
-                                    image={"/images/meme_sun.gif"}
+                                    image={"/images/crash.gif"}
                                     color={"#37E3F4"}
-                                    bio={"Kody enjoys long afternoon strolls on the range, coupled with being \
+                                    bio={"Kody enjoys long afternoon strolls on the range, and is an \
                                     an avid part time underwater-basket weaver."}
                                 />
                                 <AboutUs 
                                     name={"Andrew Erickson"} 
-                                    image={"/images/meme_sun.gif"}
+                                    image={"/images/type.gif"}
                                     color={"#F2B622"}
-                                    bio={"Andrew enjoys memes and bad puns. What's more to say?"}
+                                    bio={"Andrew enjoys bad puns. What's more to say?"}
                                 />
                             </div>       
                         </div>
