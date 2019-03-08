@@ -23,11 +23,12 @@
 // nav dots
 div.fp-slidesNav {
     padding-left: 45% !important;
+    @media (max-width: $desktop-breakpoint - .01rem) {
+        display: none;
+    }
 }
 
 div.fp-slidesNav > ul > li > a > span {
-    // color: blue !important;
-    // background-color: blue !important; 
     background-color: $dark-blue !important;
 }
 
@@ -63,3 +64,8 @@ div.fp-controlArrow.fp-next {
 // .dash-img {
 //     text-align: center;
 // }
+
+
+
+
+
