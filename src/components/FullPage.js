@@ -25,7 +25,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                     
                         <div className="slide">
                             <div className="pane-dash">
-                                <div className="dash-chart">
+                                <div className="dash-chart show-for-desktop">
                                     <TempChart tempData={tempData} />
                                 </div>
                                 {/* <div className="dash-img">
@@ -40,19 +40,19 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                                         <h3 className="wind-text">Wind Speed<br />S 3.4 mph</h3>
                                     </div>
                                 </div>
-                                <div className="dash-chart">
+                                <div className="dash-chart show-for-desktop">
                                     <PressChart pressData={pressData} />
                                 </div>
                             </div>
 
                             <div className="pane-dash">
-                                <div className="dash-chart">
+                                <div className="dash-chart show-for-desktop">
                                     <HumidChart humidData={humidData} />
                                 </div>
-                                <div className="dash-chart">
+                                <div className="dash-chart show-for-desktop">
                                     <WindDirChart className="dir" dirData={dirData} />
                                 </div>
-                                <div className="dash-chart">
+                                <div className="dash-chart show-for-desktop">
                                     <WindSpdChart spdData={spdData} />
                                 </div>
                             </div>               
