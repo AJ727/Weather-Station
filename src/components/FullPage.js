@@ -12,8 +12,7 @@ export const fullpageOptions = {
     sectionsColor: ["#faf8f8"],
     paddingTop: "5rem",
     slidesNavigation: true,
-    //scrollingSpeed: 400
-    scrollingSpeed: 1000
+    scrollingSpeed: 400
 }
 
 const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) => (
@@ -23,19 +22,17 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
             return (
                 <div className="fullpage">
                     <div className="section">
-
+                    
                         <div className="slide">
                             <div className="pane-dash">
                                 <div className="dash-chart">
                                     <TempChart tempData={tempData} />
                                 </div>
-                                {/* <div className="dash-img">
-                                    <img src="/images/meme_sun.gif" height="50%" width="50%"></img>
-                                </div> */}
                                 <div className="dash-chart">
                                     <PressChart pressData={pressData} />
                                 </div>
                             </div>
+
                             <div className="pane-dash">
                                 <div className="dash-chart">
                                     <HumidChart humidData={humidData} />
@@ -86,37 +83,28 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                                     name={"Roger Huang"} 
                                     image={"/images/meme_sun.gif"}
                                     color={"#F95F52"}
-                                    bio={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, \
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
-                                    Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi \
-                                    ut aliquip ex ea commodo consequat."}
+                                    bio={"Roger is known for his 9 consecutive 1st place finishes at the \
+                                    Daytona 500. He also enjoys volunteering at orphanages, but only if he gets to keep an \
+                                    orphan as payment."}
                                 />
                                 <AboutUs 
                                     name={"Austin Pickart"} 
                                     image={"/images/meme_sun.gif"}
                                     color={"#37F476"}
-                                    bio={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, \
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
-                                    Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi \
-                                    ut aliquip ex ea commodo consequat."}
+                                    bio={"Y E E T"}
                                 />
                                 <AboutUs 
-                                    name={"Kody Looper"} 
+                                    name={"Kody \"Krash\" Looper"} 
                                     image={"/images/meme_sun.gif"}
                                     color={"#37E3F4"}
-                                    bio={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, \
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
-                                    Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi \
-                                    ut aliquip ex ea commodo consequat."}
+                                    bio={"Kody enjoys long afternoon strolls on the range, coupled with being \
+                                    an avid part time underwater-basket weaver."}
                                 />
                                 <AboutUs 
                                     name={"Andrew Erickson"} 
                                     image={"/images/meme_sun.gif"}
                                     color={"#F2B622"}
-                                    bio={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, \
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
-                                    Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi \
-                                    ut aliquip ex ea commodo consequat."}
+                                    bio={"Andrew enjoys memes and bad puns. What's more to say?"}
                                 />
                             </div>       
                         </div>
