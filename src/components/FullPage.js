@@ -28,7 +28,6 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                                 <div className="dash-chart">
                                     <TempChart tempData={tempData} />
                                 </div>
-<<<<<<< HEAD
                                 {/* <div className="dash-img">
                                     <img src="/images/meme_sun.gif" height="50%" width="50%"></img>
                                 </div> */}
@@ -41,8 +40,6 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                                         <h3 className="wind-text">Wind Speed<br />S 3.4 mph</h3>
                                     </div>
                                 </div>
-=======
->>>>>>> 1465c1212d78f4a41b18ffa293830fe0896e0e47
                                 <div className="dash-chart">
                                     <PressChart pressData={pressData} />
                                 </div>
