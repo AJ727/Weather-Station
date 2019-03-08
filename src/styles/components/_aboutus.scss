@@ -1,14 +1,21 @@
 .pane-about {
     display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     word-wrap: break-word;
-    padding-left: 5%;
-    padding-right: 5%;
-    margin: auto;
+    margin-left: 60px;
+    margin-right: 60px;
+    overflow: auto;
+
+    // border-color: $dark-blue;
+    // border-width: 1px;
+    // border-style: solid;
 }
 
 .pane-about > div.person {
-    width: 50%;
+    width: 100%;
+    height: 100%;
     text-align: center;
     padding: 10px;
     word-wrap: break-word;
@@ -27,7 +34,8 @@
     word-wrap: break-word;
 }
 
-h2 {
+h2.about-text {
     text-align: center;
     word-wrap: break-word;
+    margin-top: 10%;
 }

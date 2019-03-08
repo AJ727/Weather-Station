@@ -38,10 +38,6 @@ h3.locale-text {
     color: $dark-blue;
 }
 
-h3.temp-text {
-    color: $soft-blue;
-}
-
 h3.press-text {
     color: $soft-red;
 }
@@ -56,4 +52,11 @@ h3.wind-text {
 
 h3.wind-text span {
     color: $purple;
+}
+
+.icon {
+    background-image: "public/images/meme_sun.gif";
+    height: 20px;
+    width: 20px;
+    display: block;
 }
