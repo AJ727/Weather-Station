@@ -22,9 +22,9 @@
 
 // nav dots
 div.fp-slidesNav {
-    padding-left: 45% !important;
+    padding-left: 44.2% !important;
     @media (max-width: $desktop-breakpoint - .01rem) {
-        display: none;
+        padding-left: 30% !important;
     }
 }
 
