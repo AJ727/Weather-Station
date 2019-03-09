@@ -1,5 +1,5 @@
 import React from 'react';
-import { slide as Menu } from 'react-burger-menu';
+import { stack as Menu } from 'react-burger-menu';
 
 // activeClassName only gets applied when the page is the one clicked on
 export const Header = () => (

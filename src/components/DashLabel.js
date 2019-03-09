@@ -3,13 +3,9 @@ import React from 'react';
 let tempReading, tempImage, humidReading, pressReading, spdReading, dirReading = "";
 let tempColor = {};
 
-
 class DashLabel extends React.Component {
     state = {}
-
-    render() {
-        
-        
+    render() {   
         if (this.props.tempData.length != 0 &&   
             this.props.humidData.length != 0 &&  
             this.props.spdData.length != 0 &&
@@ -40,7 +36,6 @@ class DashLabel extends React.Component {
                 tempImage="/images/meme_flake.gif";
             }
             
-
             return (
                 <div className="current-dash">
                     <h3 className="locale-text">{this.props.location}</h3>
