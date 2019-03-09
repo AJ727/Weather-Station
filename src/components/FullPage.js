@@ -13,11 +13,17 @@ export const fullpageOptions = {
     sectionsColor: ["#faf8f8"],
     paddingTop: "5rem",
     slidesNavigation: true,
-    scrollingSpeed: 400
+    scrollingSpeed: 400,
+    scrollOverflow: true
+}
+
+export const pluginWrapper = () => {
+    require('fullpage.js/vendors/scrolloverflow');
 }
 
 const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) => (
     <ReactFullpage
+        pluginWrapper={pluginWrapper}
         {...fullpageOptions}
         render={({state, fullpageApi}) => {
             return (
