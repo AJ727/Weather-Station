@@ -4,7 +4,6 @@ div.current-dash {
     justify-content: flex-start;
     text-align: center;
     padding: 0.5%;
-    //width: 20%;
     word-wrap: break-word;
 
     background-color: $dark-blue-opaque;
@@ -12,6 +11,11 @@ div.current-dash {
     border-width: 1px;
     border-style: solid;
     border-radius: 25px;
+
+    @media (max-width: $desktop-breakpoint - .01rem) {
+        background-color: #faf8f8;
+        border-color: #faf8f8;
+    }
 }
 
 div.reading-dash {

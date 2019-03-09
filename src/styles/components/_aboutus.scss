@@ -1,42 +1,65 @@
 .pane-about {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
-    word-wrap: break-word;
     margin-left: 60px;
     margin-right: 60px;
-    overflow: auto;
+    overflow: hidden;
+    text-align: center;
 
     // border-color: $dark-blue;
     // border-width: 1px;
     // border-style: solid;
+
+    //On mobile devices, display as a column.
+    @media (max-width: 880px) {
+        flex-direction: column;
+    }
 }
 
 .pane-about > div.person {
     width: 100%;
     height: 100%;
-    text-align: center;
     padding: 10px;
     word-wrap: break-word;
 
 }
 
-.person > img:hover {
-    opacity: 0.3;
-    transition: .5s ease;
-    word-wrap: break-word;
-}
-
 .person {
     margin: 10px;
     padding: 20px;
-    word-wrap: break-word;
+}
+
+.person img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 5px 5px 15px;
+}
+
+// .person img:hover {
+//     box-shadow: none;
+//     transition: .5s ease;
+// }
+
+.person h1 {
+
+    margin-bottom: 0px;
+}
+
+.person h2 {
+    font-size: $font-size-small;
+    font-style: italic;
+    font-weight: normal;
+    margin-top: 0px;
+}
+
+.person p {
+    text-align: left;
 }
 
 h2.about-text {
     text-align: center;
-    word-wrap: break-word;
-    margin-top: 2%;
+    margin-top: 30px;
     margin-bottom: 6%;
 }
