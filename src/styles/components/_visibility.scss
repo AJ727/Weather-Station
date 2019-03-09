@@ -5,7 +5,7 @@
 }
 
 .show-for-desktop {
-    @media (max-width: $desktop-breakpoint - .01rem) {
+    @media (max-width: $desktop-breakpoint) {
         display: none;
     }
 }

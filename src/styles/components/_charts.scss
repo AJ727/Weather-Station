@@ -8,22 +8,10 @@
     padding: 0px;
 }
 
-// .pane-dash > div {
-//     display: flex;
-//     flex-direction: row;
-//     flex-wrap: wrap;
-//     align-items: center;
-//     justify-content: space-around;
-//     //flex: 1;
-//     // @media (max-width: $desktop-breakpoint) {
-//     //     display: none;
-//     // }
-// }
-
 // nav dots
 div.fp-slidesNav {
     padding-left: 44.2% !important;
-    @media (max-width: $desktop-breakpoint - .01rem) {
+    @media (max-width: $desktop-breakpoint) {
         padding-left: 30% !important;
     }
 }

@@ -12,7 +12,7 @@ div.current-dash {
     border-style: solid;
     border-radius: 25px;
 
-    @media (max-width: $desktop-breakpoint - .01rem) {
+    @media (max-width: $desktop-breakpoint) {
         background-color: #faf8f8;
         border-color: #faf8f8;
     }
