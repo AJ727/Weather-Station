@@ -47,7 +47,7 @@ class HumidChart extends React.Component {
                             duration: 1000,
                         }}
                         style={{
-                            data: { stroke: "red", strokeWidth: 1 },
+                            data: { stroke: "orange", strokeWidth: 1 },
                             parent: { border: "1px solid #ccc", background: "#555555" }
                         }}
                         data={this.props.humidData}

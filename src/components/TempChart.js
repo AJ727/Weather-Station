@@ -17,6 +17,16 @@ class TempChart extends React.Component {
                 this.props.tempData[i] = { x: this.props.tempData[i].x, y: this.props.tempData[i].y }
             }
 
+            let tempColor = "";
+            let tempReading = parseFloat(this.props.tempData.pop().y.toFixed(1));
+
+            if (tempReading >= 60.0) {
+                tempColor = "#F2B622";
+            }
+            else if (tempReading < 60.0) {
+                tempColor = "#37E3F4";
+            }
+
             return (
                 <div>
                     <VictoryChart domainPadding={20}
@@ -47,7 +57,7 @@ class TempChart extends React.Component {
                             duration: 1000,
                         }}
                         style={{
-                            data: { stroke: "#4F3FE6", strokeWidth: 1 },
+                            data: { stroke: tempColor, strokeWidth: 1 },
                             parent: { border: "1px solid #ccc", background: "#555555" }
                         }}
                         data={this.props.tempData}
