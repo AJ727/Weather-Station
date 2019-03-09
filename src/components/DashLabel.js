@@ -15,12 +15,12 @@ class DashLabel extends React.Component {
             this.props.spdData.length != 0 &&
             this.props.dirData.length != 0) {
 
-            tempReading = parseFloat(this.props.tempData.pop().y.toFixed(1));
-            humidReading = this.props.humidData.pop().y.toFixed(1);
-            pressReading = this.props.pressData.pop().y.toFixed(1);
-            spdReading = this.props.spdData.pop().y.toFixed(1);
+            tempReading = parseFloat(this.props.tempData[this.props.tempData.length-1].y.toFixed(0));
+            humidReading = this.props.humidData[this.props.humidData.length-1].y.toFixed(0);
+            pressReading = this.props.pressData[this.props.pressData.length-1].y.toFixed(0);
+            spdReading = this.props.spdData[this.props.spdData.length-1].y.toFixed(0);
 
-            switch(this.props.dirData.pop().x) {
+            switch(this.props.dirData[this.props.dirData.length-1].x) {
                 case 0: dirReading = "E"; break;
                 case 45: dirReading ="NE"; break;
                 case 90: dirReading = "N"; break;
@@ -44,7 +44,7 @@ class DashLabel extends React.Component {
             return (
                 <div className="current-dash">
                     <h3 className="locale-text">{this.props.location}</h3>
-                    <h3 className="temp-text" style={tempColor}><span className="icon"></span><img src={tempImage} width="50px" height="50px"></img>{tempReading}&#176;F</h3>
+                    <h3 className="temp-text" style={tempColor}><img src={tempImage} width="50px" height="50px"></img>{tempReading}&#176;F</h3>
                     <div className="reading-dash">
                         <h3 className="press-text">Pressure<br />{pressReading} inHg</h3>
                         <h3 className="humid-text">Humidity<br />{humidReading}%</h3>
