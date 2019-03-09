@@ -85,13 +85,15 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                             <div className="pane-about">
                                 <AboutUs 
                                     name={"Roger Huang"} 
-                                    image={"/images/obi.gif"}
+                                    role={"Project Manager"}
+                                    image={"/images/roger.png"}
                                     color={"#F95F52"}
                                     bio={"Roger is known for his 9 consecutive 1st place finishes at the \
                                     Daytona 500. He also enjoys bad movie spin-offs."}
                                 />
                                 <AboutUs 
                                     name={"Austin Pickart"} 
+                                    role={"-"}
                                     image={"/images/neo.gif"}
                                     color={"#37F476"}
                                     bio={"Austin learned programming from a Monk at a Temple \
@@ -99,7 +101,8 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                                     temple elsewhere."}
                                 />
                                 <AboutUs 
-                                    name={"Kody \"Krash\" Looper"} 
+                                    name={"Kody Looper"} 
+                                    role={"-"}
                                     image={"/images/crash.gif"}
                                     color={"#37E3F4"}
                                     bio={"Kody enjoys long afternoon strolls on the range, and is an \
@@ -107,6 +110,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                                 />
                                 <AboutUs 
                                     name={"Andrew Erickson"} 
+                                    role={"-"}
                                     image={"/images/type.gif"}
                                     color={"#F2B622"}
                                     bio={"Andrew enjoys bad puns, playing with his dogs, and \
