@@ -109,7 +109,8 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                                     name={"Andrew Erickson"} 
                                     image={"/images/type.gif"}
                                     color={"#F2B622"}
-                                    bio={"Andrew enjoys bad puns. What's more to say?"}
+                                    bio={"Andrew enjoys bad puns, playing with his dogs, and \
+                                    memes. What's more to say?"}
                                 />
                             </div>       
                         </div>
