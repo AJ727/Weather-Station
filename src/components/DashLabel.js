@@ -8,24 +8,26 @@ class DashLabel extends React.Component {
     render() {   
         if (this.props.tempData.length != 0 &&   
             this.props.humidData.length != 0 &&  
-            this.props.spdData.length != 0 &&
-            this.props.dirData.length != 0) {
+            this.props.spdData.length != 0)
+            //this.props.dirData.length != 0) 
+            {
 
             tempReading = parseFloat(this.props.tempData[this.props.tempData.length-1].y.toFixed(0));
             humidReading = this.props.humidData[this.props.humidData.length-1].y.toFixed(0);
             pressReading = this.props.pressData[this.props.pressData.length-1].y.toFixed(0);
             spdReading = this.props.spdData[this.props.spdData.length-1].y.toFixed(0);
+            dirReading = this.props.curWinDir;
 
-            switch(this.props.dirData[this.props.dirData.length-1].x) {
-                case 0: dirReading = "E"; break;
-                case 45: dirReading ="NE"; break;
-                case 90: dirReading = "N"; break;
-                case 135: dirReading = "NW"; break;
-                case 180: dirReading = "W"; break;
-                case 225: dirReading = "SW"; break;
-                case 270: dirReading = "S"; break;
-                case 315: dirReading = "SE"; break;
-            }
+            // switch(this.props.dirData[this.props.dirData.length-1].x) {
+            //     case 0: dirReading = "E"; break;
+            //     case 45: dirReading ="NE"; break;
+            //     case 90: dirReading = "N"; break;
+            //     case 135: dirReading = "NW"; break;
+            //     case 180: dirReading = "W"; break;
+            //     case 225: dirReading = "SW"; break;
+            //     case 270: dirReading = "S"; break;
+            //     case 315: dirReading = "SE"; break;
+            // }
 
             if (tempReading >= 60.0) {
                 tempColor = { color: "#F2B622" };

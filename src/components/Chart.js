@@ -172,6 +172,7 @@ class Chart extends React.Component {
                             pressData={this.createArray(this.state.pressures)}
                             dirData={this.createArray(this.state.wdirs)}
                             spdData={this.createArray(this.state.wspeeds)}
+                            curWinDir={this.state.wdirs[this.state.wdirs.length - 1]}
                         />
                     </div> 
                     // <div>

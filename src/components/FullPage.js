@@ -21,7 +21,7 @@ export const pluginWrapper = () => {
     require('fullpage.js/vendors/scrolloverflow');
 }
 
-const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) => (
+const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, curWinDir }) => (
     <ReactFullpage
         pluginWrapper={pluginWrapper}
         {...fullpageOptions}
@@ -36,7 +36,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData }) =
                                     <TempChart tempData={tempData} />
                                 </div>
                                 
-                                <DashLabel location={"Brooksville, FL"} tempData={tempData} humidData={humidData} pressData={pressData} dirData={dirData} spdData={spdData}/>
+                                <DashLabel location={"Brooksville, FL"} tempData={tempData} humidData={humidData} pressData={pressData} curWinDir={curWinDir} spdData={spdData}/>
 
                                 <div className="dash-chart show-for-desktop">
                                     <PressChart pressData={pressData} />
