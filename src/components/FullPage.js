@@ -13,7 +13,7 @@ export const fullpageOptions = {
     sectionsColor: ["#faf8f8"],
     paddingTop: "84px",
     slidesNavigation: true,
-    scrollingSpeed: 400,
+    scrollingSpeed: 300,
     scrollOverflow: true
 }
 

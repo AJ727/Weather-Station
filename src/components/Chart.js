@@ -154,7 +154,7 @@ class Chart extends React.Component {
             else if (this.state.isLoaded && !(this.state.error)) {
                 return (
                     <div>
-                        <div className="show-for-desktop">
+                        <div className="show-for-desktop hide-temporary">
                             <button className="sidebox-button">Click me!</button>
                             <div className="sidebox">
                             Current Readings:<br></br>
