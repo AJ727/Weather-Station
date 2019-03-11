@@ -9,11 +9,18 @@
 }
 
 // nav dots
-div.fp-slidesNav {
-    padding-left: 44.2% !important;
-    @media (max-width: $desktop-breakpoint) {
-        padding-left: 30% !important;
+div.fp-slidesNav.fp-bottom {
+    bottom: 0px !important;
+    text-align: center;
+
+    @media (max-height: 315px) {
+        display: none;
     }
+
+}
+
+div.fp-slidesNav > ul > li {
+    margin-bottom: 0px !important;
 }
 
 div.fp-slidesNav > ul > li > a > span {
@@ -57,7 +64,7 @@ div.fp-controlArrow.fp-next:hover {
     @extend .pane;
     // width: 700px;
     // height: 700px;
-    width: 40%;
+    width: 37%;
 }
 
 .dash-chart {

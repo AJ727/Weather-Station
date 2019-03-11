@@ -11,7 +11,7 @@ import DashLabel from './DashLabel';
 export const fullpageOptions = {
     anchors: ["readings"],
     sectionsColor: ["#faf8f8"],
-    paddingTop: "5rem",
+    paddingTop: "84px",
     slidesNavigation: true,
     scrollingSpeed: 400,
     scrollOverflow: true
