@@ -6,11 +6,11 @@ div.current-dash {
     padding: 0.5%;
     word-wrap: break-word;
 
-    background-color: $dark-blue-opaque;
-    border-color: $dark-blue;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 25px;
+    // background-color: $dark-blue-opaque;
+    // border-color: $dark-blue;
+    // border-width: 1px;
+    // border-style: solid;
+    // border-radius: 25px;
 
     @media (max-width: $desktop-breakpoint) {
         background-color: #faf8f8;
@@ -43,17 +43,21 @@ h3.locale-text {
 }
 
 h3.press-text {
-    color: $soft-red;
+    //color: $soft-red;
+    color: red;
 }
 
 h3.humid-text {
-    color: $soft-yellow;
+    //color: $soft-yellow;
+    color: blue;
 }
 
 h3.wind-text {
-    color: $soft-green;
+    //color: $soft-green;
+    color: green;
 }
 
 h3.wind-text span {
-    color: $purple;
+    //color: $purple;
+    color: rgb(150, 69, 243);
 }

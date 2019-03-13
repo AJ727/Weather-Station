@@ -12,6 +12,11 @@
     transition: 0.4s ease;
     text-decoration: none;
     border-bottom: transparent 1px solid;
+    outline: none;
+}
+
+a {
+    outline: none;
 }
 
 .button--secondary {
