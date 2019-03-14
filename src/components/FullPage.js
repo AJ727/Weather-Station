@@ -112,7 +112,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                                     image={"/images/crash.gif"}
                                     color={"#37E3F4"}
                                     bio={"Kody enjoys long afternoon strolls on the range, and is an \
-                                    an avid part time underwater-basket weaver."}
+                                    avid part time underwater-basket weaver."}
                                 />
                                 <AboutUs 
                                     name={"Andrew Erickson"} 
