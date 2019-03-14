@@ -1,9 +1,9 @@
 import React from 'react';
-import Chart from './Chart';
+import Main from './Main-Processor';
 
 const DashboardPage = () => (
     <div>
-        <Chart />
+        <Main />
     </div>
 );
 
