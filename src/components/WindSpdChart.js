@@ -24,7 +24,7 @@ class WindSpdChart extends React.Component {
                         scale={{ x: "time" }}
                         containerComponent={
                             <VictoryZoomContainer 
-                                zoomDimension="x"
+                                //zoomDimension="x"
                                 zoomDomain={this.state.zoomDomain}
                                 onZoomDomainChange={() => this.handleZoom}
                             />
@@ -43,7 +43,7 @@ class WindSpdChart extends React.Component {
                     />
                     <VictoryLine 
                         animate={{
-                            duration: 1000,
+                            duration: 10,
                         }}
                         style={{
                             data: { stroke: "green", strokeWidth: 1 },
