@@ -105,7 +105,6 @@ app.post('/api', (req, res) => {
             console.log('WRITTEN TO DB');
         }
     })
-    res.json(req.body.Hum);
 });
 
 // Creates SQL query that sends data to SQL Server
