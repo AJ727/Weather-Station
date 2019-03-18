@@ -10,7 +10,7 @@
 unsigned long int hum_raw,temp_raw,pres_raw;
 signed long int t_fine;
 
-//Digital and Analog port initialization
+//Digital port initialization
 uint16_t dig_T1;
  int16_t dig_T2;
  int16_t dig_T3;
