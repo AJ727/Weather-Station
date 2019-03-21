@@ -116,7 +116,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                                 />
                                 <AboutUs 
                                     name={"Andrew Erickson"} 
-                                    role={"Technical Writer | Document Designer"}
+                                    role={"Technical Writer | Front-End Designer"}
                                     image={"/images/type.gif"}
                                     color={"#F2B622"}
                                     bio={"Andrew enjoys bad puns, playing with his dogs, and \
