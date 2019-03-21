@@ -28,8 +28,7 @@ class WindSpdChart extends React.Component {
 
                         <VictoryPolarAxis dependentAxis 
                             animate={{
-                                duration: 0,
-                                onLoad: {duration: 2000}
+                                duration: 2000,
                             }}
                             axisAngle={90}
                             labelPlacement="vertical"

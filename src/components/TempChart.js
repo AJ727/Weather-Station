@@ -9,7 +9,9 @@ class TempChart extends React.Component {
     }
 
     render() {
+        
         if (this.props.tempData.length != 0) {
+
             for (let i = 0; i < this.props.tempData.length; i++) {
                 this.props.tempData[i].x = moment(this.props.tempData[i].x);
                 this.props.tempData[i] = { x: this.props.tempData[i].x, y: this.props.tempData[i].y }
@@ -40,11 +42,8 @@ class TempChart extends React.Component {
                     >
                     <VictoryLabel text="Temperature (°F)" x={220} y={30} textAnchor="middle" />
                     <VictoryAxis 
-                        fixLabelOverlap={true}
-                        tickFormat={tick => moment(tick).format('MMM Do[\n]h:mma')}
-                        style={{
-                            grid: {stroke: "grey", strokeWidth: .25}
-                        }}
+                        fixLabelOverlap={false}
+    
                     />
                     <VictoryAxis
                         dependentAxis={true}
@@ -55,8 +54,7 @@ class TempChart extends React.Component {
                     />
                     <VictoryLine 
                         animate={{
-                            duration: 0,
-                            onLoad: {duration: 2000}
+                            duration: 10,
                         }}
                         style={{
                             data: { stroke: tempColor, strokeWidth: 1 },
