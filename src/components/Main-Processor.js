@@ -7,7 +7,7 @@ import FullPage from './FullPage';
 // It then passes in properties to the corresponding child chart
 // components, where the data will be displayed
 
-class Chart extends React.Component {
+class Chart extends React.PureComponent {
     state = {
         error: null,
         isLoaded: false,
