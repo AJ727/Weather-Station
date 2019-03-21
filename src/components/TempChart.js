@@ -9,9 +9,7 @@ class TempChart extends React.Component {
     }
 
     render() {
-        
         if (this.props.tempData.length != 0) {
-
             for (let i = 0; i < this.props.tempData.length; i++) {
                 this.props.tempData[i].x = moment(this.props.tempData[i].x);
                 this.props.tempData[i] = { x: this.props.tempData[i].x, y: this.props.tempData[i].y }
