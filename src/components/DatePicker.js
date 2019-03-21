@@ -9,6 +9,8 @@ class DatePicker extends React.Component {
         this.state ={
           date: null,
           focused: null,
+          maxDay: moment(),
+          minDay: moment().subtract(7, 'days'),
         }
     }
 
@@ -17,22 +19,25 @@ class DatePicker extends React.Component {
         return (
             <SingleDatePicker
                 //showClearDate={true}
+                initialDate={{ _isAMomentObject: true }}
                 small={true}
                 block={false}
-                numberOfMonths={1}
+                numberOfMonths={2}
                 date={this.state.date}
-                placeholder={this.props.id}
+                placeholder={this.props.id }
                 onDateChange={date => this.setState({ date })}
                 focused={this.state.focused}
                 onFocusChange={({ focused }) =>
                     this.setState({ focused })
                 }
                 hideKeyboardShortcutsPanel={true}
+                //firstDayOfWeek={{ firstDayOfWeek: moment().weekday().day(moment().get('date'))}}
                 isOutsideRange={() => false}
                 withPortal={true}
                 //onClose={}
             />
         )
+        
     }
 }
 

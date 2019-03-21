@@ -59,6 +59,9 @@ div.fp-controlArrow.fp-next:hover {
     border-style: solid;
     border-radius: 25px;
     padding: 2%;
+    @media (max-width: $desktop-breakpoint) {
+        width: 75%;
+    };
 }
 
 .pane-dir {
