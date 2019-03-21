@@ -32,8 +32,11 @@ class HumidChart extends React.Component {
                     >
                     <VictoryLabel text="Humidity (Percentage)" x={220} y={30} textAnchor="middle" />
                     <VictoryAxis 
-                        fixLabelOverlap={false}
-    
+                        fixLabelOverlap={true}
+                        tickFormat={tick => moment(tick).format('MMM Do[\n]h:mma')}
+                        style={{
+                            grid: {stroke: "grey", strokeWidth: .25}
+                        }}
                     />
                     <VictoryAxis
                         dependentAxis={true}
@@ -44,7 +47,8 @@ class HumidChart extends React.Component {
                     />
                     <VictoryLine 
                         animate={{
-                            duration: 10,
+                            duration: 0,
+                            onLoad: {duration: 2000}
                         }}
                         style={{
                             data: { stroke: "blue", strokeWidth: 1 },

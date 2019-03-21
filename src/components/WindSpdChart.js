@@ -32,7 +32,11 @@ class WindSpdChart extends React.Component {
                     >
                     <VictoryLabel text="Wind Speed (mph)" x={220} y={30} textAnchor="middle" />
                     <VictoryAxis 
-                        fixLabelOverlap={false}    
+                        fixLabelOverlap={true}
+                        tickFormat={tick => moment(tick).format('MMM Do[\n]h:mma')}
+                        style={{
+                            grid: {stroke: "grey", strokeWidth: .25}
+                        }}
                     />
                     <VictoryAxis
                         dependentAxis={true}
@@ -43,7 +47,8 @@ class WindSpdChart extends React.Component {
                     />
                     <VictoryLine 
                         animate={{
-                            duration: 10,
+                            duration: 0,
+                            onLoad: {duration: 2000}
                         }}
                         style={{
                             data: { stroke: "green", strokeWidth: 1 },
