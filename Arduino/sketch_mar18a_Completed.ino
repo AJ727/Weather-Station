@@ -39,7 +39,7 @@ byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xCD };
 byte server[] = { 192, 168, 1, 168 }; //testing server
 
 //IP address used when DHCP is not enabled
-IPAddress ip(192, 168, 137, 150);
+IPAddress ip(192, 168, 1, 160);
 
 //Client initialization
 EthernetClient client;
@@ -130,7 +130,7 @@ void loop() {
     data += "\",\r\n    \"Hum\":\""; 
     data += hum_act; 
     data += "\",\r\n    \"Press\":\""; 
-    data += press_act;
+    data += inHgPressure(press_act);
     data += "\",\r\n    \"WindDir\":\"";
     data += wind;
     data += "\",\r\n    \"WindSpd\":\"";
@@ -365,4 +365,9 @@ String windDir(int degrees){
       windDir = "NW";
     }
     return windDir;
+}
+double inHgPressure (double press_act) {
+    double inHgPressure = press_act * 0.029529983071445;
+    return inHgPressure;
+    
 }
