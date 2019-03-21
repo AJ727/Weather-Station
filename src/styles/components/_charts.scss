@@ -30,6 +30,10 @@
     // width: 700px;
     // height: 700px;
     width: 37%;
+    // Enlarges the graph if it is in mobile view.
+    @media (max-width: $desktop-breakpoint) {
+        width: 60%;
+    };
 }
 
 .dash-chart {
@@ -71,6 +75,10 @@ div.fp-controlArrow.fp-prev {
     &:hover {
         border-right-color: black !important;
     }
+    // Disables arrows for switching panes on mobile devices
+    @media (max-width: $desktop-breakpoint) {
+        display: none;
+    };
 }
 
 // slide nav arrow - right side
@@ -80,4 +88,8 @@ div.fp-controlArrow.fp-next {
     &:hover {
         border-left-color: black !important;
     }
+    // Disables arrows for switching panes on mobile devices
+    @media (max-width: $desktop-breakpoint) {
+        display: none;
+    };
 }

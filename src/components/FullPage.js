@@ -35,14 +35,14 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                                 <div className="dash-chart show-for-desktop">
                                     <TempChart tempData={tempData} />
                                 </div>
-                                
-                                <DashLabel location={"Brooksville, FL"} tempData={tempData} humidData={humidData} pressData={pressData} curWinDir={curWinDir} spdData={spdData}/>
-
+                                <DashLabel location={"Brooksville, FL"} tempData={tempData}
+                                    humidData={humidData} pressData={pressData}
+                                    curWinDir={curWinDir} spdData={spdData}
+                                />
                                 <div className="dash-chart show-for-desktop">
                                     <PressChart pressData={pressData} />
                                 </div>
                             </div>
-
                             <div className="pane-dash">
                                 <div className="dash-chart show-for-desktop">
                                     <HumidChart humidData={humidData} />
