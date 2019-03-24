@@ -52,7 +52,7 @@ div.fp-slidesNav.fp-bottom {
     bottom: 0px !important;
     text-align: center;
 
-    @media (max-height: 315px) {
+    @media (max-width: 880px) {
         display: none;
     }
 

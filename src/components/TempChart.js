@@ -55,7 +55,8 @@ class TempChart extends React.Component {
                     />
                     <VictoryLine 
                         animate={{
-                            duration: 10,
+                            duration: 0,
+                            onLoad: {duration: 2000}
                         }}
                         style={{
                             data: { stroke: tempColor, strokeWidth: 1 },

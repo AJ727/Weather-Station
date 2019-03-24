@@ -47,7 +47,8 @@ class PressChart extends React.Component {
                     />
                     <VictoryLine 
                         animate={{
-                            duration: 10,
+                            duration: 0,
+                            onLoad: {duration: 2000}
                         }}
                         style={{
                             data: { stroke: "red", strokeWidth: 1 },

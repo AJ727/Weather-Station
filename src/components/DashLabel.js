@@ -1,6 +1,7 @@
 import React from 'react';
+import moment from 'moment';
 
-let tempReading, tempImage, humidReading, pressReading, spdReading, dirReading = "";
+let tempReading, tempImage, humidReading, pressReading, spdReading, dirReading, curDate, curTime = "";
 let tempColor = {};
 
 class DashLabel extends React.Component {
@@ -9,7 +10,6 @@ class DashLabel extends React.Component {
         if (this.props.tempData.length != 0 &&   
             this.props.humidData.length != 0 &&  
             this.props.spdData.length != 0)
-            //this.props.dirData.length != 0) 
             {
 
             tempReading = parseFloat(this.props.tempData[this.props.tempData.length-1].y.toFixed(0));
@@ -18,16 +18,8 @@ class DashLabel extends React.Component {
             spdReading = this.props.spdData[this.props.spdData.length-1].y.toFixed(0);
             dirReading = this.props.curWinDir;
 
-            // switch(this.props.dirData[this.props.dirData.length-1].x) {
-            //     case 0: dirReading = "E"; break;
-            //     case 45: dirReading ="NE"; break;
-            //     case 90: dirReading = "N"; break;
-            //     case 135: dirReading = "NW"; break;
-            //     case 180: dirReading = "W"; break;
-            //     case 225: dirReading = "SW"; break;
-            //     case 270: dirReading = "S"; break;
-            //     case 315: dirReading = "SE"; break;
-            // }
+            curDate = moment(this.props.tempData[this.props.tempData.length-1].x).format("MMMM Do");
+            curTime = moment(this.props.tempData[this.props.tempData.length-1].x).format("h:mm a");
 
             if (tempReading >= 60.0) {
                 tempColor = { color: "#F2B622" };
@@ -40,12 +32,15 @@ class DashLabel extends React.Component {
             
             return (
                 <div className="current-dash">
+                    <h3 className="date-text">{curDate}</h3>
                     <h3 className="locale-text">{this.props.location}</h3>
-                    <h3 className="temp-text" style={tempColor}><img src={tempImage} width="50px" height="50px"></img>{tempReading}&#176;F</h3>
+                    <h3 className="F-temp-text" style={tempColor}><img src={tempImage} width="50px" height="50px"></img>{tempReading}&#176;F</h3>
+                    {/* <h3 className="C-temp-text" style={tempColor}><img src={tempImage} width="50px" height="50px"></img>{tempReading}&#176;F</h3> */}
+                    <h3 className="time-text">Last updated at {curTime}</h3>
                     <div className="reading-dash">
                         <h3 className="press-text">Pressure<br />{pressReading} inHg</h3>
                         <h3 className="humid-text">Humidity<br />{humidReading}%</h3>
-                        <h3 className="wind-text">Wind Speed<br /><span>{dirReading}</span> {spdReading} mph</h3>
+                        <h3 className="wind-text">Wind<br /><span>{dirReading}</span> {spdReading} mph</h3>
                     </div>
                 </div>
             );
