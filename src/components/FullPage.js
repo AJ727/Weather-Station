@@ -109,7 +109,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                                 <AboutUs 
                                     name={"Kody Looper"} 
                                     role={"Hardware Engineer | Arduino Programmer"}
-                                    image={"/images/crash.gif"}
+                                    image={"/images/swanson.gif"}
                                     color={"#37E3F4"}
                                     bio={"Kody enjoys long afternoon strolls on the range, and is an \
                                     avid part time underwater-basket weaver."}
