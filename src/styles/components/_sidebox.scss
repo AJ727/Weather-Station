@@ -2,13 +2,13 @@
     background: $blue;
     position: fixed;
     right: 0;
-    top: 25%;
-    z-index: 98;
+    top: 15%;
+    z-index: -1;
     color: white;
     border-style: solid;
     border-color: grey;
     padding: 5px;
-    display: none;
+    display: block;
 }
 
 .sidebox-button {
@@ -21,11 +21,12 @@
     border-style: solid;
     border-color: grey;
     right: 0;
-    top: 30%;
-    z-index: 98;
-    &:focus + .sidebox {
-        -webkit-transition: 0.4s ease;
-        transition: 0.4s ease;
-        display: block;
+    top: 20%;
+    z-index: 1;
+    &:hover + .sidebox {
+        -webkit-transition: 0.3s ease;
+        transition: 0.3s ease;
+        z-index: 1;
+        opacity: .9;
     }
 }

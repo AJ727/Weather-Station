@@ -1,6 +1,7 @@
 import React from 'react';
 import LoadingPage from './LoadingPage';
 import FullPage from './FullPage';
+import DashLabel from './DashLabel';
 
 // This components purpose is to query the API every
 // X minutes, and store that data in a local state array
@@ -154,16 +155,16 @@ class Chart extends React.PureComponent {
             else if (this.state.isLoaded && !(this.state.error)) {
                 return (
                     <div>
-                        <div className="show-for-desktop hide-temporary">
-                            <button className="sidebox-button">Click me!</button>
+                        <div className="show-for-desktop">
+                        <button className="sidebox-button">Current<br></br>Readings</button>
                             <div className="sidebox">
-                            Current Readings:<br></br>
-                            Temperature = { this.state.temps[this.state.temps.length - 1] }  °F<br></br>
-                            Humidity = { this.state.humidities[this.state.humidities.length - 1] }%<br></br>
-                            Pressure = { this.state.pressures[this.state.pressures.length - 1] }" Hg<br></br>
-                            Wind Speed & Direction = { this.state.wspeeds[this.state.wspeeds.length - 1] }&nbsp;
-                            °{ this.state.wdirs[this.state.wdirs.length - 1] }<br></br>
-                            (Click outside box to close)
+                                <DashLabel location={"Brooksville, FL"} 
+                                    tempData={this.createArray(this.state.temps)}
+                                    humidData={this.createArray(this.state.humidities)}
+                                    pressData={this.createArray(this.state.pressures)}
+                                    curWinDir={this.state.wdirs[this.state.wdirs.length - 1]}
+                                    spdData={this.createArray(this.state.wspeeds)}
+                                />
                             </div>
                         </div>
                         <FullPage 
