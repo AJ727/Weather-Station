@@ -89,7 +89,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                         <div className="slide">
                             <h2 className="about-text">Learn about the creators!</h2>
                             <div className="pane-about">
-                                
+                                <AboutUs />
                             </div>       
                         </div>
 
