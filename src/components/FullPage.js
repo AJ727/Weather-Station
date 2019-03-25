@@ -89,39 +89,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                         <div className="slide">
                             <h2 className="about-text">Learn about the creators!</h2>
                             <div className="pane-about">
-                                <AboutUs 
-                                    name={"Roger Huang"} 
-                                    role={"Project Manager | Database Administrator"}
-                                    image={"/images/roger.png"}
-                                    color={"#F95F52"}
-                                    bio={"Roger is known for his 9 consecutive 1st place finishes at the \
-                                    Daytona 500. He also enjoys bad movie spin-offs."}
-                                />
-                                <AboutUs 
-                                    name={"Austin Pickart"} 
-                                    role={"Lead Programmer | Git Repo Manager"}
-                                    image={"/images/neo.gif"}
-                                    color={"#37F476"}
-                                    bio={"Austin learned programming from a Monk at a Temple \
-                                    in Eastern Asia. Note: This may or may not be true, it could've been a \
-                                    temple elsewhere."}
-                                />
-                                <AboutUs 
-                                    name={"Kody Looper"} 
-                                    role={"Hardware Engineer | Arduino Programmer"}
-                                    image={"/images/swanson.gif"}
-                                    color={"#37E3F4"}
-                                    bio={"Kody enjoys long afternoon strolls on the range, and is an \
-                                    avid part time underwater-basket weaver."}
-                                />
-                                <AboutUs 
-                                    name={"Andrew Erickson"} 
-                                    role={"Front-End Designer | Technical Writer"}
-                                    image={"/images/type.gif"}
-                                    color={"#F2B622"}
-                                    bio={"Andrew enjoys bad puns, playing with his dogs, and \
-                                    memes. What's more to say?"}
-                                />
+                                
                             </div>       
                         </div>
 
