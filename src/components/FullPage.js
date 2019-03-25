@@ -47,7 +47,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                                 <div className="dash-chart show-for-desktop">
                                     <HumidChart humidData={humidData} />
                                 </div>
-                                <div className="dash-chart show-for-desktop">
+                                <div className="dash-polar-chart show-for-desktop">
                                     <WindDirChart dirData={dirData} />
                                 </div>
                                 <div className="dash-chart show-for-desktop">
