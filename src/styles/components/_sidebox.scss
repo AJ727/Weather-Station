@@ -1,14 +1,16 @@
 .sidebox {
     background: $blue;
-    position: fixed;
+    position: absolute;
     right: 0;
     top: 15%;
-    z-index: -1;
+    z-index: 1;
     color: white;
     border-style: solid;
     border-color: grey;
+    border-radius: 6px;
     padding: 5px;
-    display: block;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .sidebox-button {
@@ -16,17 +18,67 @@
     background-position: center;
     color: white;
     text-align: center;
-    display: block;
-    position: absolute;
+    display: inline-block;
+    position: relative;
     border-style: solid;
     border-color: grey;
     right: 0;
     top: 20%;
-    z-index: 1;
+    pointer-events: auto;
     &:hover + .sidebox {
         -webkit-transition: 0.3s ease;
         transition: 0.3s ease;
-        z-index: 1;
         opacity: .9;
+        visibility: visible;
     }
+}
+
+.tooltip {
+    display:inline-block;
+    position:relative;
+}
+
+.tooltip .left {
+    min-width:200px; 
+    top:50%;
+    left:100%;
+    margin-right:20px;
+    transform:translate(0, -50%);
+    padding:10px 20px;
+    color:#FFFFFF;
+    background-color:#3399FF;
+    font-weight:normal;
+    font-size:13px;
+    border-radius:8px;
+    position:absolute;
+    z-index:99999999;
+    box-sizing:border-box;
+    border:1px solid #666666;box-shadow:0 1px 8px rgba(0,0,0,0.5);
+    visibility:hidden; opacity:0; transition:opacity 0.8s;
+}
+
+.tooltip:hover .left {
+    visibility:visible; opacity:1;
+}
+
+.tooltip .left i {
+    position:absolute;
+    top:50%;
+    right:100%;
+    margin-top:-12px;
+    width:12px;
+    height:24px;
+    overflow:hidden;
+}
+
+.tooltip .left i::after {
+    content:'';
+    position:absolute;
+    width:12px;
+    height:12px;
+    left:0;
+    top:50%;
+    transform:translate(-50%,-50%) rotate(-45deg);
+    background-color:#3399FF;
+    border:1px solid #666666;box-shadow:0 1px 8px rgba(0,0,0,0.5);
 }

@@ -41,13 +41,6 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                                     humidData={humidData} pressData={pressData}
                                     curWinDir={curWinDir} spdData={spdData}
                                 />
-
-                        <CRWidget location={"Brooksville, FL"}                                 
-                            tempData={tempData}
-                            humidData={humidData} pressData={pressData}
-                            curWinDir={curWinDir} spdData={spdData}
-                        />
-
                                 <div className="dash-chart show-for-desktop">
                                     <PressChart pressData={pressData} />
                                 </div>
@@ -66,6 +59,11 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                         </div>
 
                         <div className="slide">
+                            <CRWidget location={"Brooksville, FL"}                                 
+                            tempData={tempData}
+                            humidData={humidData} pressData={pressData}
+                            curWinDir={curWinDir} spdData={spdData}
+                            />
                             <div className="pane">
                                 <TempChart tempData={tempData} />
                             </div>

@@ -156,13 +156,6 @@ class Chart extends React.PureComponent {
             else if (this.state.isLoaded && !(this.state.error)) {
                 return (
                     <div>
-                        <CRWidget location={"Brooksville, FL"} 
-                            tempData={this.createArray(this.state.temps)}
-                            humidData={this.createArray(this.state.humidities)}
-                            pressData={this.createArray(this.state.pressures)}
-                            curWinDir={this.state.wdirs[this.state.wdirs.length - 1]}
-                            spdData={this.createArray(this.state.wspeeds)}
-                        />
                         <FullPage 
                             tempData={this.createArray(this.state.temps)} 
                             humidData={this.createArray(this.state.humidities)}
