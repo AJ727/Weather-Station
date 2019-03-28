@@ -1,7 +1,8 @@
 import React from 'react';
 import LoadingPage from './LoadingPage';
 import FullPage from './FullPage';
-import DashLabel from './DashLabel';
+import CRWidget from './CRWidget';
+
 
 // This components purpose is to query the API every
 // X minutes, and store that data in a local state array
@@ -155,18 +156,12 @@ class Chart extends React.PureComponent {
             else if (this.state.isLoaded && !(this.state.error)) {
                 return (
                     <div>
-                        <div className="show-for-desktop">
-                        <button className="sidebox-button">Current<br></br>Readings</button>
-                            <div className="sidebox">
-                                <DashLabel location={"Brooksville, FL"} 
-                                    tempData={this.createArray(this.state.temps)}
-                                    humidData={this.createArray(this.state.humidities)}
-                                    pressData={this.createArray(this.state.pressures)}
-                                    curWinDir={this.state.wdirs[this.state.wdirs.length - 1]}
-                                    spdData={this.createArray(this.state.wspeeds)}
-                                />
-                            </div>
-                        </div>
+                        <CRWidget location={"Brooksville, FL"}                                 tempData={this.createArray(this.state.temps)}
+                            humidData={this.createArray(this.state.humidities)}
+                            pressData={this.createArray(this.state.pressures)}
+                            curWinDir={this.state.wdirs[this.state.wdirs.length - 1]}
+                            spdData={this.createArray(this.state.wspeeds)}
+                        />
                         <FullPage 
                             tempData={this.createArray(this.state.temps)} 
                             humidData={this.createArray(this.state.humidities)}
