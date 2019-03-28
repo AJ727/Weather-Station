@@ -8,6 +8,8 @@ import ReactFullpage from '@fullpage/react-fullpage';
 import AboutUs from './AboutUs';
 import DashLabel from './DashLabel';
 
+import CRWidget from './CRWidget';
+
 export const fullpageOptions = {
     anchors: ["readings"],
     sectionsColor: ["#faf8f8"],
@@ -39,6 +41,13 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                                     humidData={humidData} pressData={pressData}
                                     curWinDir={curWinDir} spdData={spdData}
                                 />
+
+                        <CRWidget location={"Brooksville, FL"}                                 
+                            tempData={tempData}
+                            humidData={humidData} pressData={pressData}
+                            curWinDir={curWinDir} spdData={spdData}
+                        />
+
                                 <div className="dash-chart show-for-desktop">
                                     <PressChart pressData={pressData} />
                                 </div>
