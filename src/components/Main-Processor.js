@@ -3,11 +3,14 @@ import LoadingPage from './LoadingPage';
 import FullPage from './FullPage';
 import CRWidget from './CRWidget';
 
-
-// This components purpose is to query the API every
-// X minutes, and store that data in a local state array
-// It then passes in properties to the corresponding child chart
-// components, where the data will be displayed
+// SPEC: This components purpose is to query the API every
+//       X number of minutes, and store that data in local state arrays,
+//       after being processed by the various array processors and loaders.
+//       It then passes in properties to the corresponding child chart
+//       components, where the data will be displayed in graphs.
+//
+// FLOW: Fetch (GET) request -> JSON result -> weatherData = result -> arrayProcessing() -> 
+//       createArray() for each metric -> render child components passing in props
 
 class Chart extends React.PureComponent {
     state = {
@@ -56,9 +59,9 @@ class Chart extends React.PureComponent {
         });
     }
     // SPEC: Takes state and returns an array of the same type of data (Ex. all Temps, or all Pressures)
+    // END FORMAT: [ { x: DATE, y: READING }, { x: DATE2, y: READING2 } ] 
+    // FOR WINDDIR: [ { x: "N", y: numOfNreadings }, { x: "NE", y: numofNEreadings } ]
     createArray = (desiredReading) => {
-        // END FORMAT: [ { x: DATE, y: READING }, { x: DATE2, y: READING2 } ] 
-        // FOR WINDDIR: [ { x: "N", y: numOfNreadings }, { x: "NE", y: numofNEreadings } ]
         let weatherArray = [];
             // using Object.is() checks if both objects are the same, which is a massive improvement over using === and .toString() previously
             if (Object.is(desiredReading, this.state.wdirs)) {

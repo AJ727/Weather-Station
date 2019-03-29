@@ -1,21 +1,19 @@
 import React from 'react';
 import { VictoryChart, VictoryLabel, VictoryPolarAxis, VictoryBar } from 'victory';
 
+// SPEC: Renders the wind direction graph
+
 class WindSpdChart extends React.Component {
     state = {}
-
     render() {
-
         const directions = {
           0: "E", 45 : "NE", 90: "N", 135: "NW",
           180: "W", 225: "SW", 270: "S", 315: "SE"
         };
-
         let percent = [];
         let sum = 0;
 
         if (this.props.dirData != undefined && this.props.dirData.length != 0) {
-
             return (
                 <div>
                     <VictoryChart polar 
@@ -57,8 +55,7 @@ class WindSpdChart extends React.Component {
                                 }
                             }}
                             data={this.props.dirData}
-                        />
-
+                        />    
                     </VictoryChart>
                 </div>
             );

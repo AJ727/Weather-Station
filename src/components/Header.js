@@ -5,7 +5,6 @@ import { stack as Menu } from 'react-burger-menu';
 export const Header = () => (
     <header className="header">
         <div className="content-container">
-
             <div className="header__content">
                 <a className="header__title" href="#readings">
                     <img src="/images/logo2.png" height="50px" ></img>
@@ -43,7 +42,6 @@ export const Header = () => (
                     </Menu>
                 </div>
             </div>
-
         </div>
     </header>
 );

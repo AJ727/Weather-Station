@@ -1,7 +1,7 @@
 import React from 'react';
 
-// This is a stateless functional component that is used to 
-// display information for each member of our group.
+// SPEC: This is a stateless functional component that is used to 
+//       display information for each member of our group.
 
 export const aboutUsInfo = [
     ["Roger Huang", "Project Manager | Database Administrator", "/images/roger.png", "#F95F52", "Roger is known for his 9 consecutive 1st place finishes at the \
@@ -15,6 +15,8 @@ export const aboutUsInfo = [
                                 memes. What's more to say?"]
 ]
 
+// Map over the 2 dimensional array above, and for each array in the list of arrays,
+// pass in the appropriate value to the component using indexing
 export const AboutUs = () => ( 
     aboutUsInfo.map((info) => (   
         <div key={info[0]} className="person">

@@ -2,6 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel, VictoryAxis, VictoryZoomContainer } from 'victory';
 
+// SPEC: Renders the temperature graph
+
 class TempChart extends React.Component {
     state = {}
     handleZoom(domain) {
@@ -38,32 +40,32 @@ class TempChart extends React.Component {
                             />
                         }
                     >
-                    <VictoryLabel text="Temperature (°F)" x={220} y={30} textAnchor="middle" />
-                    <VictoryAxis 
-                        fixLabelOverlap={true}
-                        tickFormat={tick => moment(tick).format('MMM Do[\n]h:mma')}
-                        style={{
-                            grid: {stroke: "grey", strokeWidth: .25}
-                        }}
-                    />
-                    <VictoryAxis
-                        dependentAxis={true}
-                        fixLabelOverlap={false}
-                        style={{
-                            grid: {stroke: "grey", size: 5}
-                        }}
-                    />
-                    <VictoryLine 
-                        animate={{
-                            duration: 0,
-                            onLoad: {duration: 2000}
-                        }}
-                        style={{
-                            data: { stroke: tempColor, strokeWidth: 1 },
-                            parent: { border: "1px solid #ccc", background: "#555555" }
-                        }}
-                        data={this.props.tempData}
-                    />
+                        <VictoryLabel text="Temperature (°F)" x={220} y={30} textAnchor="middle" />
+                        <VictoryAxis 
+                            fixLabelOverlap={true}
+                            tickFormat={tick => moment(tick).format('MMM Do[\n]h:mma')}
+                            style={{
+                                grid: {stroke: "grey", strokeWidth: .25}
+                            }}
+                        />
+                        <VictoryAxis
+                            dependentAxis={true}
+                            fixLabelOverlap={false}
+                            style={{
+                                grid: {stroke: "grey", size: 5}
+                            }}
+                        />
+                        <VictoryLine 
+                            animate={{
+                                duration: 0,
+                                onLoad: {duration: 2000}
+                            }}
+                            style={{
+                                data: { stroke: tempColor, strokeWidth: 1 },
+                                parent: { border: "1px solid #ccc", background: "#555555" }
+                            }}
+                            data={this.props.tempData}
+                        />
                     </VictoryChart>
                 </div>
             );
