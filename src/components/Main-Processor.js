@@ -1,7 +1,6 @@
 import React from 'react';
 import LoadingPage from './LoadingPage';
 import FullPage from './FullPage';
-import CRWidget from './CRWidget';
 
 // SPEC: This components purpose is to query the API every
 //       X number of minutes, and store that data in local state arrays,
@@ -80,6 +79,7 @@ class Chart extends React.PureComponent {
     }
     // SPEC: Loops through wind directions, and counts the occurences of each one,
     //       then parses to JSON and returns the array of JSON objects
+    // NOTE: In the future, we could possibly move these functions into external selectors, just something to think about
     windDirProcessor = () => {
         let enumeratedDirArr = []
         let N = 0, NE = 0, E = 0, SE = 0, S = 0, SW = 0, W = 0, NW = 0;
@@ -171,9 +171,9 @@ class Chart extends React.PureComponent {
                 )
             }
             else {
-                return (<LoadingPage />)
+                return ( <LoadingPage /> )
             }
-        }
+    }
             
 }
 
