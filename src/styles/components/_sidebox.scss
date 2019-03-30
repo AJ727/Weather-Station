@@ -41,7 +41,7 @@
 .tooltip .left {
     min-width:200px; 
     top:50%;
-    left:100%;
+    right:100%;
     margin-right:20px;
     transform:translate(0, -50%);
     padding:10px 20px;
@@ -64,7 +64,7 @@
 .tooltip .left i {
     position:absolute;
     top:50%;
-    right:100%;
+    left:100%;
     margin-top:-12px;
     width:12px;
     height:24px;
