@@ -18,7 +18,7 @@ class TempChart extends React.Component {
             }
 
             let tempColor = "";
-            let tempReading = parseFloat(this.props.tempData.pop().y.toFixed(1));
+            let tempReading = parseFloat(this.props.tempData[this.props.tempData.length-1].y.toFixed(1));
 
             if (tempReading >= 60.0) {
                 tempColor = "#F2B622";
