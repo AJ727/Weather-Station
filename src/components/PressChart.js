@@ -16,7 +16,7 @@ class PressChart extends React.Component {
                 this.props.pressData[i] = { x: this.props.pressData[i].x, y: this.props.pressData[i].y }
             }       
             return (
-                <div>
+                <React.Fragment>
                     <VictoryChart domainPadding={20}
                         theme={VictoryTheme.greyscale}
                         scale={{ x: "time" }}
@@ -55,12 +55,12 @@ class PressChart extends React.Component {
                             data={this.props.pressData}
                         />
                     </VictoryChart>
-                </div>
+                </React.Fragment>
             );
         }
 
         else {
-            return(<div></div>)
+            return(<React.Fragment></React.Fragment>)
         }
     }
 }

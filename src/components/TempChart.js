@@ -28,7 +28,7 @@ class TempChart extends React.Component {
             }
 
             return (
-                <div>
+                <React.Fragment>
                     <VictoryChart domainPadding={20}
                         theme={VictoryTheme.greyscale}
                         scale={{ x: "time" }}
@@ -67,12 +67,12 @@ class TempChart extends React.Component {
                             data={this.props.tempData}
                         />
                     </VictoryChart>
-                </div>
+                </React.Fragment>
             );
         }
 
         else {
-            return(<div></div>)
+            return(<React.Fragment></React.Fragment>)
         }
     }
 }

@@ -16,7 +16,7 @@ class WindSpdChart extends React.Component {
                 this.props.spdData[i] = { x: this.props.spdData[i].x, y: this.props.spdData[i].y }
             }
             return (
-                <div>
+                <React.Fragment>
                     <VictoryChart domainPadding={20}
                         theme={VictoryTheme.greyscale}
                         scale={{ x: "time" }}
@@ -55,12 +55,12 @@ class WindSpdChart extends React.Component {
                             data={this.props.spdData}
                         />
                     </VictoryChart>
-                </div>
+                </React.Fragment>
             );
         }
 
         else {
-            return(<div></div>)
+            return(<React.Fragment></React.Fragment>)
         }
     }
 }

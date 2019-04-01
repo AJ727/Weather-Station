@@ -15,7 +15,7 @@ class WindSpdChart extends React.Component {
 
         if (this.props.dirData != undefined && this.props.dirData.length != 0) {
             return (
-                <div>
+                <React.Fragment>
                     <VictoryChart polar 
                         domainPadding={{y: 5}}
                         domain={{ x: [0, 360] }}
@@ -57,12 +57,12 @@ class WindSpdChart extends React.Component {
                             data={this.props.dirData}
                         />    
                     </VictoryChart>
-                </div>
+                </React.Fragment>
             );
         }
 
         else {
-            return(<div></div>)
+            return(<React.Fragment></React.Fragment>)
         }
     }
 }

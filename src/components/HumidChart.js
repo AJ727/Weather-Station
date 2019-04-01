@@ -18,7 +18,7 @@ class HumidChart extends React.Component {
                 this.props.humidData[i] = { x: this.props.humidData[i].x, y: this.props.humidData[i].y }
             }
             return (
-                <div>
+                <React.Fragment>
                     <VictoryChart domainPadding={20}
                         theme={VictoryTheme.greyscale}
                         scale={{ x: "time" }}
@@ -57,12 +57,12 @@ class HumidChart extends React.Component {
                             data={this.props.humidData}
                         />
                     </VictoryChart>
-                </div>
+                </React.Fragment>
             );
         }
 
         else {
-            return(<div></div>)
+            return(<React.Fragment></React.Fragment>)
         }
     }
 }
