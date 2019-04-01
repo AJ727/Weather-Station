@@ -13,7 +13,7 @@
     margin: auto;
     // width: 1000px;
     // height: 1000px;
-    width: 50%;
+    width: 60%;
     border-color: $dark-blue;
     border-width: 1px;
     border-style: solid;
@@ -53,7 +53,7 @@ div.fp-slidesNav.fp-bottom {
     text-align: center;
 
     @media (max-width: 880px) {
-        display: none;
+        //display: none;
     }
 
 }

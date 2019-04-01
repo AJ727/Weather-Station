@@ -20,7 +20,7 @@ export const fullpageOptions = {
     paddingTop: "84px",
     slidesNavigation: true,
     scrollingSpeed: 300,
-    scrollOverflow: true
+    scrollOverflow: true,
 }
 
 export const pluginWrapper = () => {
@@ -62,13 +62,16 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                                 </div>
                             </div>               
                         </div>
-
-                        <div className="slide" data-anchor="temperatures">
+                    
+                        <div className="sidebox-button show-for-desktop">
                             <CRWidget location={"Brooksville, FL"}                                 
                             tempData={tempData}
                             humidData={humidData} pressData={pressData}
                             curWinDir={curWinDir} spdData={spdData}
                             />
+                        </div>
+
+                        <div className="slide" data-anchor="temperatures">
                             <div className="pane">
                                 <TempChart tempData={tempData} />
                             </div>

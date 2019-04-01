@@ -8,7 +8,7 @@ class CRWidget extends React.Component {
 
         return (
             <div className="show-for-desktop">
-                <div className="btn tooltip sidebox-button">Current<br></br>Readings
+                <div className="tooltip">Current<br></br>Readings
                     <div className="left">
                         <DashLabel location={"Brooksville, FL"} 
                             tempData={this.props.tempData}

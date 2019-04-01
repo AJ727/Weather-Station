@@ -1,6 +1,5 @@
 .sidebox {
     background: $blue;
-    position: absolute;
     right: 0;
     top: 15%;
     z-index: 1;
@@ -18,12 +17,12 @@
     background-position: center;
     color: white;
     text-align: center;
-    display: inline-block;
-    position: relative;
     border-style: solid;
     border-color: grey;
-    right: 0;
-    top: 20%;
+    position: absolute;
+    right: 0px;
+    top: 25%;
+    width: 90px;
     pointer-events: auto;
     &:hover + .sidebox {
         -webkit-transition: 0.3s ease;
@@ -34,8 +33,9 @@
 }
 
 .tooltip {
-    display:inline-block;
-    position:relative;
+    display: inline-block;
+    position: relative;
+    z-index: 100;
 }
 
 .tooltip .left {
@@ -73,7 +73,7 @@
 
 .tooltip .left i::after {
     content:'';
-    position:absolute;
+    position: relative;
     width:12px;
     height:12px;
     left:0;
