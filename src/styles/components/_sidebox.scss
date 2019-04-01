@@ -1,13 +1,12 @@
 .sidebox {
     background: $blue;
     right: 0;
-    top: 15%;
+    position: relative;
     z-index: 1;
     color: white;
     border-style: solid;
     border-color: grey;
     border-radius: 6px;
-    padding: 5px;
     opacity: 0;
     visibility: hidden;
 }
@@ -17,12 +16,13 @@
     background-position: center;
     color: white;
     text-align: center;
+    font-size: 13px;
     border-style: solid;
     border-color: grey;
     position: absolute;
     right: 0px;
-    top: 25%;
-    width: 90px;
+    top: 100px;
+    width: 80px;
     pointer-events: auto;
     &:hover + .sidebox {
         -webkit-transition: 0.3s ease;
@@ -33,23 +33,23 @@
 }
 
 .tooltip {
-    display: inline-block;
+    display: block;
     position: relative;
     z-index: 100;
 }
 
 .tooltip .left {
     min-width:200px; 
-    top:50%;
+    top:360%;
     right:100%;
-    margin-right:20px;
+    margin-right:2px;
     transform:translate(0, -50%);
-    padding:10px 20px;
-    color:#FFFFFF;
+    padding:5px;
+    //color:#FFFFFF;
     background-color:#3399FF;
-    font-weight:normal;
+    //font-weight:normal;
     font-size:13px;
-    border-radius:8px;
+    //border-radius:8px;
     position:absolute;
     z-index:99999999;
     box-sizing:border-box;
@@ -58,11 +58,12 @@
 }
 
 .tooltip:hover .left {
-    visibility:visible; opacity:1;
+    visibility: visible;
+    opacity: .9;
 }
 
 .tooltip .left i {
-    position:absolute;
+    position: absolute;
     top:50%;
     left:100%;
     margin-top:-12px;
