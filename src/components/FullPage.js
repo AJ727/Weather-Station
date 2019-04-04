@@ -60,12 +60,19 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                                 <div className="dash-chart show-for-desktop">
                                     <WindSpdChart spdData={spdData} />
                                 </div>
-                            </div>               
+                            </div>
+                                <div className="pane-dash">
+                                    <div className="footer">
+                                        <h2>For any questions, comments, suggestions, or problems
+                                            e-mail us at 'placeholder for e-mail'
+                                        </h2>
+                                    </div>
+                                </div>            
                         </div>
                     
                         <div className="sidebox-button show-for-desktop">
-                            <CRWidget location={"Brooksville, FL"}                                 
-                            tempData={tempData}
+                            <CRWidget 
+                            location={"Brooksville, FL"} tempData={tempData}
                             humidData={humidData} pressData={pressData}
                             curWinDir={curWinDir} spdData={spdData}
                             />
@@ -96,7 +103,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                         </div>
 
                         <div className="slide" data-anchor="wind-directions">
-                            <div className="pane pane-dir">
+                            <div className="pane-dir">
                                 <WindDirChart dirData={dirData} />
                             </div>       
                         </div>
@@ -105,7 +112,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                             <h2 className="about-text">Learn about the creators!</h2>
                             <div className="pane-about">
                                 <AboutUs />
-                            </div>       
+                            </div>
                         </div>
 
                     </div>
