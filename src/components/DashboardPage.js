@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from './Main-Processor';
+import Main from './Main_Processor';
 
 const DashboardPage = () => (
     <div>

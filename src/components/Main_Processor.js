@@ -11,7 +11,7 @@ import FullPage from './FullPage';
 // FLOW: Fetch (GET) request -> JSON result -> weatherData = result -> arrayProcessing() -> 
 //       createArray() for each metric -> render child components passing in props
 
-class Chart extends React.PureComponent {
+class Main_Processor extends React.PureComponent {
     state = {
         error: null,
         isLoaded: false,
@@ -177,4 +177,4 @@ class Chart extends React.PureComponent {
             
 }
 
-export default Chart;
+export default Main_Processor;
