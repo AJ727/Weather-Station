@@ -61,13 +61,20 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                                     <WindSpdChart spdData={spdData} />
                                 </div>
                             </div>
-                                <div className="pane-dash">
+                                {/* <div className="pane-dash">
                                     <div className="footer">
-                                        <h2>For any questions, comments, suggestions, or problems
+                                        <p>For any questions, suggestions, or issues
                                             e-mail us at 'placeholder for e-mail'
-                                        </h2>
+                                        </p>
                                     </div>
-                                </div>            
+                                </div>             */}
+                        </div>
+                        <div className="pane-dash">
+                            <div className="footer">
+                                <p>For any questions, suggestions, or issues
+                                    e-mail us at 'placeholder for e-mail'
+                                </p>
+                            </div>
                         </div>
                     
                         <div className="sidebox-button show-for-desktop">

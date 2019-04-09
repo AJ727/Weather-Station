@@ -1,4 +1,9 @@
 .footer {
-    text-align: left;
+    position: absolute;
+    text-align: center;
     margin: 5px;
+    font-size: 0.7em;
+    font-weight: bold;
+    color: $dark-blue;
+    bottom: 10px;
 }

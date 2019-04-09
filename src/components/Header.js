@@ -7,7 +7,7 @@ export const Header = () => (
         <div className="content-container">
             <div className="header__content">
                 <a className="header__title" href="#readings">
-                    <img src="/images/logo2.png" height="50px" ></img>
+                    <img src="/images/logo.png" height="50px" ></img>
                 </a>
                 <div className="nav-buttons show-for-desktop">
                     <a href="#readings/1">

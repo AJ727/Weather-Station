@@ -14,7 +14,7 @@ class DashLabel extends React.Component {
             {
 
             tempReading = parseFloat(this.props.tempData[this.props.tempData.length-1].y.toFixed(0));
-            humidReading = this.props.humidData[this.props.humidData.length-1].y.toFixed(0);
+            humidReading = this.props.humidData[this.props.humidData.length-1].y.toFixed(1);
             pressReading = this.props.pressData[this.props.pressData.length-1].y.toFixed(2);
             spdReading = this.props.spdData[this.props.spdData.length-1].y.toFixed(0);
             dirReading = this.props.curWinDir;
@@ -24,16 +24,16 @@ class DashLabel extends React.Component {
 
             if (tempReading >= 60.0) {
                 tempColor = { color: "#F2B622" };
-                tempImage="/images/meme_sun.gif";
+                tempImage="/images/sun.gif";
                 if (humidReading >= 70 && pressReading < 30) {
-                    tempImage="/images/meme_cloud.gif";
+                    tempImage="/images/cloud.gif";
                 }
             }
             else if (tempReading < 60.0) {
                 tempColor = { color: "#37E3F4" };
-                tempImage="/images/meme_flake.gif";
+                tempImage="/images/flake.gif";
                 if (humidReading >= 70 && pressReading <= 29.90) {
-                    tempImage="/images/meme_cloud.gif";
+                    tempImage="/images/cloud.gif";
                 }
             }
             

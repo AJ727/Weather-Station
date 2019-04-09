@@ -4,6 +4,7 @@ div.current-dash {
     justify-content: flex-start;
     text-align: center;
     padding: 0.5%;
+    
 
     // background-color: $dark-blue-opaque;
     // border-color: $dark-blue;
@@ -20,6 +21,7 @@ div.current-dash {
 div.reading-dash {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 h3 {
