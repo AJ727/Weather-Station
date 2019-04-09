@@ -6,6 +6,7 @@ let tempColor = {};
 
 class DashLabel extends React.Component {
     state = {}
+
     render() {   
         if (this.props.tempData.length != 0 &&   
             this.props.humidData.length != 0 &&  
@@ -14,7 +15,7 @@ class DashLabel extends React.Component {
 
             tempReading = parseFloat(this.props.tempData[this.props.tempData.length-1].y.toFixed(0));
             humidReading = this.props.humidData[this.props.humidData.length-1].y.toFixed(0);
-            pressReading = this.props.pressData[this.props.pressData.length-1].y.toFixed(0);
+            pressReading = this.props.pressData[this.props.pressData.length-1].y.toFixed(2);
             spdReading = this.props.spdData[this.props.spdData.length-1].y.toFixed(0);
             dirReading = this.props.curWinDir;
 
@@ -40,12 +41,11 @@ class DashLabel extends React.Component {
                     <div className="reading-dash">
                         <h3 className="press-text">Pressure<br />{pressReading} inHg</h3>
                         <h3 className="humid-text">Humidity<br />{humidReading}%</h3>
-                        <h3 className="wind-text">Wind<br /><span>{dirReading}</span> {spdReading} mph</h3>
+                        <h3 className="wind-text">Wind<br /><span>{dirReading}</span> {spdReading} MPH</h3>
                     </div>
                 </div>
             );
         }
-
         else {
             return(<React.Fragment></React.Fragment>);
         }

@@ -69,15 +69,17 @@ module.exports = () => {
                 // Query that retrieves top X results from SQL Server
                 const numberOfResults = "1000";
                 // TOP(${numberOfResults})
-                const retrieveReadings = `USE weatherDB; SELECT TOP(${numberOfResults}) \
-                time_stamp, \
-                CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
-                CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
-                CONVERT(DECIMAL(10,2), Pressure) AS Pressure, \
-                WindDir, \
-                CONVERT(DECIMAL(10,2), WindSpd) AS WindSpd \
-                FROM Readings ORDER BY time_stamp DESC \
-                FOR JSON PATH;`;
+                // const retrieveReadings = `USE weatherDB; SELECT TOP(${numberOfResults}) \
+                // time_stamp, \
+                // CONVERT(DECIMAL(10,2), ExtTemp) AS ExtTemp, \
+                // CONVERT(DECIMAL(10,2), Humidity) AS Humidity, \
+                // CONVERT(DECIMAL(10,2), Pressure) AS Pressure, \
+                // WindDir, \
+                // CONVERT(DECIMAL(10,2), WindSpd) AS WindSpd \
+                // FROM Readings ORDER BY time_stamp DESC \
+                // FOR JSON PATH;`;
+
+                const retrieveReadings = `USE weatherDB; EXEC requestReadings @num = ${numberOfResults};`
                 
                 app.post('*', (req, res) => {
                     res.send("Dev Server - no POST functionality");
@@ -105,7 +107,7 @@ module.exports = () => {
                             });
 
                             // If we don't check if the dataset is empty, JSON parse errors will be thrown when trying to parse nothing
-                            request.on('done', () => {
+                            request.on('doneInProc', () => {
                                 if(data === null || data === ''){
                                     console.log("Loading data...");
                                 }

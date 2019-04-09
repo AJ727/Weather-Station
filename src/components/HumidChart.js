@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel, VictoryAxis, VictoryZoomContainer } from 'victory';
+import { VictoryLine, VictoryChart, VictoryTheme, VictoryLabel, VictoryAxis, VictoryTooltip, createContainer } from 'victory';
 
 // SPEC: Renders the humidity graph
 
@@ -11,29 +11,38 @@ class HumidChart extends React.Component {
     }
 
     render() {  
-        // If data is present in the passed in array, format the data to Victory's desired format
+
+        const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi");
+
+        // Checks if data array is empty. If not empty, render the chart; otherwise, nothing is rendered.
         if (this.props.humidData.length != 0) {
             for (let i = 0; i < this.props.humidData.length; i++) {
                 this.props.humidData[i].x = moment(this.props.humidData[i].x);
                 this.props.humidData[i] = { x: this.props.humidData[i].x, y: this.props.humidData[i].y }
             }
+
             return (
                 <React.Fragment>
                     <VictoryChart domainPadding={20}
                         theme={VictoryTheme.greyscale}
                         scale={{ x: "time" }}
                         containerComponent={
-                            <VictoryZoomContainer 
-                                //zoomDimension="x"
+                            <VictoryZoomVoronoiContainer
                                 zoomDomain={this.state.zoomDomain}
                                 onZoomDomainChange={() => this.handleZoom}
+                                labels={(d) => `${d.y}% \n ${moment(d.x).format('MMM. Do, h:mma')}`}
+                                labelComponent={
+                                    <VictoryTooltip
+                                      flyoutStyle={{ stroke: "blue" }}
+                                    />
+                                }
                             />
                         }
                     >
-                        <VictoryLabel text="Humidity (Percentage)" x={220} y={30} textAnchor="middle" />
+                        <VictoryLabel text="Relative Humidity (%)" x={220} y={30} textAnchor="middle" />
                         <VictoryAxis 
                             fixLabelOverlap={true}
-                            tickFormat={tick => moment(tick).format('MMM Do[\n]h:mma')}
+                            tickFormat={tick => moment(tick).format('MMM. Do[\n]h:mma')}
                             style={{
                                 grid: {stroke: "grey", strokeWidth: .25}
                             }}
@@ -52,7 +61,8 @@ class HumidChart extends React.Component {
                             }}
                             style={{
                                 data: { stroke: "blue", strokeWidth: 1 },
-                                parent: { border: "1px solid #ccc", background: "#555555" }
+                                parent: { border: "1px solid #ccc", background: "#555555" },
+                                labels: {fill: "blue"}
                             }}
                             data={this.props.humidData}
                         />
@@ -60,7 +70,6 @@ class HumidChart extends React.Component {
                 </React.Fragment>
             );
         }
-
         else {
             return(<React.Fragment></React.Fragment>)
         }
