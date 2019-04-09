@@ -25,10 +25,16 @@ class DashLabel extends React.Component {
             if (tempReading >= 60.0) {
                 tempColor = { color: "#F2B622" };
                 tempImage="/images/meme_sun.gif";
+                if (humidReading >= 70 && pressReading < 30) {
+                    tempImage="/images/meme_cloud.gif";
+                }
             }
             else if (tempReading < 60.0) {
                 tempColor = { color: "#37E3F4" };
                 tempImage="/images/meme_flake.gif";
+                if (humidReading >= 70 && pressReading <= 29.90) {
+                    tempImage="/images/meme_cloud.gif";
+                }
             }
             
             return (
