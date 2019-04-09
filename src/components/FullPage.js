@@ -61,27 +61,20 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                                     <WindSpdChart spdData={spdData} />
                                 </div>
                             </div>
-                                {/* <div className="pane-dash">
+                                <div className="pane-dash">
                                     <div className="footer">
                                         <p>For any questions, suggestions, or issues
                                             e-mail us at 'placeholder for e-mail'
                                         </p>
                                     </div>
-                                </div>             */}
-                        </div>
-                        <div className="pane-dash">
-                            <div className="footer">
-                                <p>For any questions, suggestions, or issues
-                                    e-mail us at 'placeholder for e-mail'
-                                </p>
-                            </div>
+                                </div>            
                         </div>
                     
                         <div className="sidebox-button show-for-desktop">
                             <CRWidget 
-                            location={"Brooksville, FL"} tempData={tempData}
-                            humidData={humidData} pressData={pressData}
-                            curWinDir={curWinDir} spdData={spdData}
+                                location={"Brooksville, FL"} tempData={tempData}
+                                humidData={humidData} pressData={pressData}
+                                curWinDir={curWinDir} spdData={spdData}
                             />
                         </div>
 
