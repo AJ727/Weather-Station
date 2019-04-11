@@ -309,7 +309,7 @@ unsigned long int calibration_H(signed long int adc_H)
    return (unsigned long int)(v_x1 >> 12);   
 }
 // Gets wind speed from Adafruit Anemometer
-int getSpeed()
+double getSpeed()
 {
    //Read the raw sensor value
     int sensor_value = analogRead(A2);
