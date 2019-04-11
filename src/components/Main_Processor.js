@@ -26,8 +26,8 @@ class Main_Processor extends React.PureComponent {
     // SPEC: Lifecycle method that is called once component is inserted as a node into the DOM
     componentDidMount = () => {
         this.loadData();
-        // call loadData every minute
-        setInterval(this.loadData, 60000);
+        // call loadData every 5 minutes
+        setInterval(this.loadData, 300000);
     }
     // SPEC: Creates arrays of same-typed values using the loaded data (loadData calls this function)
     arrayProcessing = () => { 

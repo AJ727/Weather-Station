@@ -40,7 +40,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                         <div className="slide">
                             <div className="pane-dash">
                                 <div className="dash-chart show-for-desktop">
-                                    <TempChart tempData={tempData} />
+                                    <TempChart tempData={tempData}  />
                                 </div>
                                 <DashLabel location={"Brooksville, FL"} tempData={tempData}
                                     humidData={humidData} pressData={pressData}
@@ -80,31 +80,31 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
 
                         <div className="slide" data-anchor="temperatures">
                             <div className="pane">
-                                <TempChart tempData={tempData} />
+                                <TempChart tempData={tempData} toZoom={true} />
                             </div>
                         </div>
 
                         <div className="slide" data-anchor="humidities">
                             <div className="pane">
-                                <HumidChart humidData={humidData} />
+                                <HumidChart humidData={humidData} toZoom={true} />
                             </div>        
                         </div>
                         
                         <div className="slide" data-anchor="pressures">
                             <div className="pane">
-                                <PressChart pressData={pressData} />
+                                <PressChart pressData={pressData} toZoom={true} />
                             </div>              
                         </div>
                         
                         <div className="slide" data-anchor="wind-speeds">
                             <div className="pane">
-                                <WindSpdChart spdData={spdData} />
+                                <WindSpdChart spdData={spdData} toZoom={true} />
                             </div> 
                         </div>
 
                         <div className="slide" data-anchor="wind-directions">
                             <div className="pane-dir">
-                                <WindDirChart dirData={dirData} />
+                                <WindDirChart dirData={dirData} toZoom={true} />
                             </div>       
                         </div>
 

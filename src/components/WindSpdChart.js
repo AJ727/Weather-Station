@@ -12,7 +12,11 @@ class WindSpdChart extends React.Component {
 
     render() {
 
-        const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi");
+        let VictoryZoomVoronoiContainer = createContainer("voronoi");
+
+        if(this.props.toZoom == true) {
+            VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi");
+        }
 
         // Checks if data array is empty. If not empty, render the chart; otherwise, nothing is rendered.
         if (this.props.spdData.length != 0) {
@@ -27,8 +31,6 @@ class WindSpdChart extends React.Component {
                         scale={{ x: "time" }}
                         containerComponent={
                             <VictoryZoomVoronoiContainer
-                                zoomDomain={this.state.zoomDomain}
-                                onZoomDomainChange={() => this.handleZoom}
                                 labels={(d) => `${d.y} MPH \n ${moment(d.x).format('MMM. Do, h:mma')}`}
                                 labelComponent={
                                     <VictoryTooltip
