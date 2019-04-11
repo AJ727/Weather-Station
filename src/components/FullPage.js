@@ -63,8 +63,8 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                             </div>
                                 <div className="pane-dash">
                                     <div className="footer">
-                                        <p>For any questions, suggestions, or issues
-                                            e-mail us at 'placeholder for e-mail'
+                                        <p>For any questions, suggestions, or issues e-mail us at:&nbsp;
+                                        <a href="mailto:weatherornot.kaar@gmail.com">weatherornot.kaar@gmail.com</a>
                                         </p>
                                     </div>
                                 </div>            
