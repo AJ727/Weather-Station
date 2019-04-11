@@ -12,11 +12,6 @@ class Email extends React.Component{
                         </h2>
                     </div>
                 </div>    
-                <form method="post" action="mailto:andrewerickson.1208@gmail.com">
-                    First:<input type="text" name="First" size="12" maxLength="12"/><br></br>
-                    Last:<input type="text" name="Last" size="24" maxLength="24"/> <br></br>
-                    <input type="submit" value="Send Email"/> 
-                </form>
             </div>
         );
     }
