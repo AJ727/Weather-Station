@@ -17,10 +17,12 @@
 .pane {
     margin: auto;
     width: 60%;
+    background-color: #a2e4fc;
     border-color: $dark-blue;
     border-width: 1px;
     border-style: solid;
     border-radius: 25px;
+    box-shadow: 1px 2px 10px 5px #4448; /* shadow behind */
     //padding: 2%;
     // Enlarges the graphs if they are in mobile view.
     @media (max-width: $desktop-breakpoint) {
@@ -44,6 +46,10 @@
 
 .hide-temporary {
     display: none;
+}
+
+.slide {
+    background-color: #e2dfdf;
 }
 
 // ---------NAV ELEMENTS--------- //

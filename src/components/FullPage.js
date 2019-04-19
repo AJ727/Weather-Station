@@ -65,7 +65,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                             <Email/>
                         </div>
                     
-                        <div className="sidebox-button show-for-desktop">
+                        <div className="sidebox show-for-desktop">
                             <CRWidget 
                                 location={"Brooksville, FL"} tempData={tempData}
                                 humidData={humidData} pressData={pressData}

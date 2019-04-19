@@ -1,17 +1,4 @@
 .sidebox {
-    background: $blue;
-    right: 0;
-    position: relative;
-    z-index: 1;
-    color: white;
-    border-style: solid;
-    border-color: grey;
-    border-radius: 6px;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.sidebox-button {
     background-image: url("/images/drip.gif");
     background-position: center;
     color: white;
@@ -20,13 +7,14 @@
     border-style: solid;
     border-color: grey;
     position: absolute;
+    z-index: 90;
     right: 0px;
     top: 100px;
     width: 80px;
     pointer-events: auto;
-    &:hover + .sidebox {
-        -webkit-transition: 0.3s ease;
-        transition: 0.3s ease;
+    &:hover {
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
         opacity: .9;
         visibility: visible;
     }
@@ -52,6 +40,7 @@
     box-sizing:border-box;
     border:1px solid #666666;box-shadow:0 1px 8px rgba(0,0,0,0.5);
     visibility:hidden; opacity:0; transition:opacity 0.8s;
+    box-shadow: 1px 2px 10px 2px #4448; /* shadow behind */
 }
 
 .tooltip:hover .left {
