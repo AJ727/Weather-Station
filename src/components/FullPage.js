@@ -8,6 +8,7 @@ import ReactFullpage from '@fullpage/react-fullpage';
 import AboutUs from './AboutUs';
 import DashLabel from './DashLabel';
 import CRWidget from './CRWidget';
+import Email from './Email';
 
 // SPEC: This component implements fullpage.js, a library for easy and smooth scrolling features.
 //       We utilize it to render all 7 of our "pages", by placing each component in a slide
@@ -61,13 +62,7 @@ const FullPageWrapper = ({ tempData, humidData, pressData, dirData, spdData, cur
                                     <WindSpdChart spdData={spdData} />
                                 </div>
                             </div>
-                                <div className="pane-dash">
-                                    <div className="footer">
-                                        <p>For any questions, suggestions, or issues e-mail us at:<br></br>
-                                        <a href="mailto:weatherornot.kaar@gmail.com">weatherornot.kaar@gmail.com</a>
-                                        </p>
-                                    </div>
-                                </div>            
+                            <Email/>
                         </div>
                     
                         <div className="sidebox-button show-for-desktop">

@@ -4,15 +4,13 @@ class Email extends React.Component{
     state = {}
     render(){
         return(
-            <div className="footer">
-                <div className="pane-dash">
-                    <div className="footer">
-                        <h2>For any questions, comments, suggestions, or problems
-                            e-mail us at 'placeholder for e-mail'
-                        </h2>
-                    </div>
-                </div>    
-            </div>
+            <div className="pane-dash">
+                <div className="footer">
+                    <p>For any questions, suggestions, or issues e-mail us at:<br></br>
+                    <a href="mailto:weatherornot.kaar@gmail.com">weatherornot.kaar@gmail.com</a>
+                    </p>
+                </div>
+            </div>            
         );
     }
 }
