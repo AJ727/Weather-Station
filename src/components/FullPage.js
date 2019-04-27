@@ -17,7 +17,7 @@ import Email from './Email';
 
 export const fullpageOptions = {
     anchors: ["readings"],
-    sectionsColor: ["#faf8f8"],
+    sectionsColor: ["#f1f5f7"],
     paddingTop: "84px",
     slidesNavigation: true,
     scrollingSpeed: 300,
