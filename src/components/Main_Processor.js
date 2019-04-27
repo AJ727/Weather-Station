@@ -29,6 +29,28 @@ class Main_Processor extends React.PureComponent {
         // call loadData every 5 minutes
         setInterval(this.loadData, 300000);
     }
+    // SPEC: Makes get to request to API, converts to JSON, sets the new state with the result,
+    //       and calls arrayProcessing to process the data
+    loadData = () => { 
+        // GET request to local api endpoint
+        fetch('/api')
+        .then(res => res.json()) // convert to json
+        .then(                   // change the local state
+            (result) => {
+                // log result here if wanting to see structure
+                this.setState(() => ({
+                    isLoaded: true,
+                    weatherData: result
+            }))
+        },
+            (error) => {
+                this.setState(() => ({
+                    isLoaded: true,
+                    error
+                }))
+            }) // after data is loaded, process it
+        .then(() => this.arrayProcessing());
+    }
     // SPEC: Creates arrays of same-typed values using the loaded data (loadData calls this function)
     arrayProcessing = () => { 
         let dateArr = [];
@@ -126,28 +148,6 @@ class Main_Processor extends React.PureComponent {
         enumeratedDirArr.push(nDir, neDir, eDir, seDir, sDir, swDir, wDir, nwDir);
 
         return enumeratedDirArr;
-    }
-    // SPEC: Makes get to request to API, converts to JSON, sets the new state with the result,
-    //       and calls arrayProcessing to process the data
-    loadData = () => { 
-        // GET request to local api endpoint
-        fetch('/api')
-        .then(res => res.json()) // convert to json
-        .then(                   // change the local state
-            (result) => {
-                // log result here if wanting to see structure
-                this.setState(() => ({
-                    isLoaded: true,
-                    weatherData: result
-            }))
-        },
-            (error) => {
-                this.setState(() => ({
-                    isLoaded: true,
-                    error
-                }))
-            }) // after data is loaded, process it
-        .then(() => this.arrayProcessing());
     }
     render() {
             if (this.state.error) {

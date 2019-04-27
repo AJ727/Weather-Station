@@ -41,6 +41,43 @@ FROM Readings ORDER BY time_stamp DESC \
 FOR JSON PATH;`;
 
 // ----------------API---------------- //
+
+// POST request handler (arduino data is sent here)
+// Sends validated and formatted data to SQL Server AWS Instance
+app.post('/api', (req, res) => {
+    let connection = new Connection(dbConfig);
+    // upon successful connection, execute if-else block
+    connection.on('connect', (err) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log('CONNECTED');
+            execSendToDb(req, connection);
+            console.log('WRITTEN TO DB');
+        }
+    })
+});
+
+// Creates SQL query that sends data to SQL Server
+let execSendToDb = (req, connection) => {
+    request = new Request("USE weatherDB; INSERT Readings (time_stamp, ExtTemp, Humidity, Pressure, WindDir, WindSpd) VALUES (GETDATE(), @ExtTemp, @Humidity, @Pressure, @WindDir, @WindSpd);", (err) => {
+        if(err){
+            console.log(err);
+        }
+    });
+    // @params - 1st is what variable is being replaced
+    // @params - 2nd is the data type of the variable
+    // @params - 3rd is the value to be passed in 
+    request.addParameter('ExtTemp', TYPES.Float, req.body.Temp);
+    request.addParameter('Humidity', TYPES.Float, req.body.Hum);
+    request.addParameter('Pressure', TYPES.Float, req.body.Press);
+    request.addParameter('WindDir', TYPES.VarChar, req.body.WindDir);
+    request.addParameter('WindSpd', TYPES.Float, req.body.WindSpd);
+    connection.execSql(request);
+
+}; // --- End Post --- //
+
 app.get('/api', (req, res) => {
     let connection = new Connection(dbConfig);
     connection.on('connect', (err) => {
@@ -88,44 +125,7 @@ app.get('/api', (req, res) => {
         }
     });
 
-});
-
-// POST request handler (arduino data is sent here)
-// Sends validated and formatted data to SQL Server AWS Instance
-app.post('/api', (req, res) => {
-    let connection = new Connection(dbConfig);
-    // upon successful connection, execute if-else block
-    connection.on('connect', (err) => {
-        if(err){
-            console.log(err);
-        }
-        else{
-            console.log('CONNECTED');
-            execSendToDb(req, connection);
-            console.log('WRITTEN TO DB');
-        }
-    })
-});
-
-// Creates SQL query that sends data to SQL Server
-let execSendToDb = (req, connection) => {
-    request = new Request("USE weatherDB; INSERT Readings (time_stamp, ExtTemp, Humidity, Pressure, WindDir, WindSpd) VALUES (GETDATE(), @ExtTemp, @Humidity, @Pressure, @WindDir, @WindSpd);", (err) => {
-        if(err){
-            console.log(err);
-        }
-    });
-    // @params - 1st is what variable is being replaced
-    // @params - 2nd is the data type of the variable
-    // @params - 3rd is the value to be passed in 
-    request.addParameter('ExtTemp', TYPES.Float, req.body.Temp);
-    request.addParameter('Humidity', TYPES.Float, req.body.Hum);
-    request.addParameter('Pressure', TYPES.Float, req.body.Press);
-    request.addParameter('WindDir', TYPES.VarChar, req.body.WindDir);
-    request.addParameter('WindSpd', TYPES.Float, req.body.WindSpd);
-    //console.log(request);
-    connection.execSql(request);
-
-};
+}); // --- End DB Get --- //
 
 // First arg: path (the * matches all unmatched routes)
 // Second arg: function that handles the unmatched requests
